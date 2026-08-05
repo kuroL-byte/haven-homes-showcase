@@ -34,7 +34,7 @@ function Contact() {
         eyebrow="Enquiries"
         title="Come and see the work."
         lede="Viewings are hosted by the team that built the building, seven days a week by appointment."
-        image={images.amenity ?? images.hero}
+        image={images.clubhouse}
       />
 
       <SectionWrapper>

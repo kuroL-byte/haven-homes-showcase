@@ -1,5 +1,5 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { projects } from "@/data/content";
+import { projects, type Project } from "@/data/content";
 import { type as typeScale } from "@/theme";
 import { PageHero } from "@/components/PageHero";
 import { SectionWrapper, Container, Hairline } from "@/components/Container";
@@ -50,7 +50,7 @@ function ProjectNotFound() {
 }
 
 function ProjectDetail() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as { project: Project };
 
   return (
     <>
