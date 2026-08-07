@@ -7,6 +7,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { LazyImage } from "@/components/LazyImage";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { StatusBadge } from "@/components/ProjectCard";
+import { FloorPlanViewer } from "@/components/project/FloorPlanViewer";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
@@ -17,7 +18,10 @@ export const Route = createFileRoute("/projects/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Project unavailable — Atelier Meridian" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Project unavailable — Atelier Meridian" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const { project } = loaderData;
@@ -41,7 +45,10 @@ function ProjectNotFound() {
       <div>
         <p className="eyebrow">Not found</p>
         <h1 className="mt-4 font-display text-4xl">That project isn't in the portfolio.</h1>
-        <Link to="/projects" className="link-underline mt-8 inline-block text-[11px] uppercase tracking-[0.24em]">
+        <Link
+          to="/projects"
+          className="link-underline mt-8 inline-block text-[11px] uppercase tracking-[0.24em]"
+        >
           Back to projects
         </Link>
       </div>
@@ -93,22 +100,28 @@ function ProjectDetail() {
         </div>
       </SectionWrapper>
 
-      {/* Gallery / floor plan imagery */}
-      <SectionWrapper tone="sand" tight>
-        <p className="eyebrow mb-8">Views &amp; plans</p>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {project.gallery.map((src, i) => (
-            <AnimatedSection key={src + i} delay={i * 80} variant="scale">
-              <LazyImage
-                src={src}
-                alt={`${project.name} — view ${i + 1}`}
-                width={1280}
-                height={960}
-                wrapperClassName="aspect-3/4"
-                className="transition-transform duration-[1400ms] hover:scale-[1.04]"
-              />
-            </AnimatedSection>
-          ))}
+      {/* Interactive Floor Plans & Specs */}
+      <SectionWrapper tone="sand">
+        <AnimatedSection variant="scale">
+          <FloorPlanViewer projectName={project.name} />
+        </AnimatedSection>
+
+        <div className="mt-16">
+          <p className="eyebrow mb-8">Views &amp; imagery</p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {project.gallery.map((src, i) => (
+              <AnimatedSection key={src + i} delay={i * 80} variant="scale">
+                <LazyImage
+                  src={src}
+                  alt={`${project.name} — view ${i + 1}`}
+                  width={1280}
+                  height={960}
+                  wrapperClassName="aspect-3/4"
+                  className="transition-transform duration-[1400ms] hover:scale-[1.04]"
+                />
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </SectionWrapper>
 

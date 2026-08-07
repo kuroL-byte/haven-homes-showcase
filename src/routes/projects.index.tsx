@@ -10,16 +10,16 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
-      { title: "Projects — Atelier Meridian" },
+      { title: "Portfolio — Parjane Buildcon" },
       {
         name: "description",
         content:
-          "Ongoing, upcoming and completed residential and commercial developments across Mumbai, Pune and Lonavala.",
+          "Explore ongoing, upcoming, and completed luxury residential towers, corporate office parks, and gated estates by Parjane Buildcon.",
       },
-      { property: "og:title", content: "Projects — Atelier Meridian" },
+      { property: "og:title", content: "Portfolio — Parjane Buildcon" },
       {
         property: "og:description",
-        content: "Full-floor residences, garden courts, hillside villas and Grade-A workplaces.",
+        content: "Luxury sky residences, Grade-A office towers, and hilltop estates.",
       },
     ],
   }),
@@ -42,17 +42,17 @@ function FilterRow({
 }) {
   return (
     <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-      <span className="eyebrow">{label}</span>
-      <div className="flex flex-wrap gap-x-6 gap-y-2">
+      <span className="eyebrow text-gold font-bold">{label}</span>
+      <div className="flex flex-wrap gap-x-3 gap-y-2">
         {options.map((opt) => (
           <button
             key={opt}
             onClick={() => onChange(opt)}
             className={cn(
-              "border-b pb-1 text-[11px] uppercase tracking-[0.2em] transition-colors duration-500",
+              "rounded-xl border px-4 py-2 text-xs uppercase tracking-wider font-semibold transition-all duration-300 cursor-pointer",
               active === opt
-                ? "border-bronze text-bronze"
-                : "border-transparent text-muted-foreground hover:text-foreground",
+                ? "border-gold bg-gold text-navy shadow-md"
+                : "border-slate-200 bg-white text-slate-600 hover:border-gold/50 hover:text-navy",
             )}
           >
             {opt}
@@ -78,28 +78,28 @@ function ProjectsIndex() {
   return (
     <>
       <PageHero
-        eyebrow="Portfolio"
-        title="Forty-one buildings, one language."
-        lede="Filter by stage or by use. Each project page carries specs, plans, amenities and an enquiry line."
+        eyebrow="Landmarks Portfolio"
+        title="150+ Projects Handed Over With Excellence."
+        lede="Filter by status or development category. Each project detail page features specifications, floor plans, and enquiry contacts."
         image={images.project2}
       />
 
-      <SectionWrapper>
-        <div className="flex flex-col gap-6 border-b border-border pb-8">
+      <SectionWrapper className="bg-slate-50">
+        <div className="flex flex-col gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
           <FilterRow label="Status" options={statuses} active={status} onChange={setStatus} />
           <FilterRow label="Type" options={types} active={type} onChange={setType} />
         </div>
 
-        <p className="mt-6 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-          {filtered.length} {filtered.length === 1 ? "project" : "projects"}
+        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+          Showing {filtered.length} {filtered.length === 1 ? "landmark" : "landmarks"}
         </p>
 
         {filtered.length === 0 ? (
-          <p className="mt-20 text-center font-display text-2xl text-muted-foreground">
-            No projects match that combination.
+          <p className="mt-20 text-center font-display text-2xl font-bold text-slate-400">
+            No projects match that filter criteria.
           </p>
         ) : (
-          <div className="mt-14 grid gap-x-8 gap-y-16 md:grid-cols-2">
+          <div className="mt-10 grid gap-10 md:grid-cols-2">
             {filtered.map((p, i) => (
               <AnimatedSection key={p.slug} delay={(i % 2) * 90} variant="scale">
                 <ProjectCard project={p} index={i} />

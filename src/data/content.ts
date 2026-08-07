@@ -1,15 +1,16 @@
-/** Static site content. Swap for a CMS/database later without touching components. */
+/** Static site content for Parjane Buildcon. */
 
-import hero from "@/assets/hero.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
+import hero from "@/assets/parjane_hero_landmark.png";
+import project1 from "@/assets/parjane_drone_township.png";
+import project2 from "@/assets/parjane_commercial_tower.png";
 import project3 from "@/assets/project-3.jpg";
-import interior1 from "@/assets/interior-1.jpg";
+import interior1 from "@/assets/parjane_luxury_lobby.png";
 import pool from "@/assets/amenity-pool.jpg";
 import gym from "@/assets/amenity-gym.jpg";
 import garden from "@/assets/amenity-garden.jpg";
 import clubhouse from "@/assets/amenity-clubhouse.jpg";
 import construction from "@/assets/construction.jpg";
+import blueprintTexture from "@/assets/parjane_blueprint_texture.png";
 
 export const images = {
   hero,
@@ -22,10 +23,11 @@ export const images = {
   garden,
   clubhouse,
   construction,
+  blueprintTexture,
 };
 
 export type ProjectStatus = "Ongoing" | "Upcoming" | "Completed";
-export type ProjectType = "Residential" | "Commercial";
+export type ProjectType = "Residential" | "Commercial" | "Industrial" | "Infrastructure";
 
 export interface Project {
   slug: string;
@@ -33,6 +35,8 @@ export interface Project {
   location: string;
   status: ProjectStatus;
   type: ProjectType;
+  area: string;
+  completion: string;
   image: string;
   summary: string;
   overview: string[];
@@ -44,133 +48,136 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "meridian-house",
-    name: "Meridian House",
-    location: "Carmichael Road, Mumbai",
+    slug: "parjane-heights",
+    name: "Parjane Heights",
+    location: "FC Road, Pune",
     status: "Ongoing",
     type: "Residential",
+    area: "4,800 – 7,500 sq. ft.",
+    completion: "Q4 2027",
     image: images.hero,
     summary:
-      "Twenty-two full-floor residences arranged around a limestone water court, with bronze fins tracking the light through the day.",
+      "Thirty-two luxury sky residences featuring double-height private decks, Italian marble finishes, and 360-degree city views.",
     overview: [
-      "Meridian House is a single-tower composition of twenty-two full-floor residences, conceived as a quiet counterpoint to the density around it. Every home occupies an entire level, with cross-ventilation on four aspects and a private arrival lobby.",
-      "The facade is a rhythm of honed limestone and patinated bronze fins, calibrated so the building reads as solid at midday and porous at dusk. At grade, a reflecting court sets the tower back from the street and gives residents a threshold of silence.",
+      "Parjane Heights stands as a marquee luxury landmark in Pune. Engineered with seismic-resistant RCC shear walls and wrapped in energy-efficient acoustic glazing, each residence commands an entire half-floor.",
+      "Residents enjoy private elevator foyers, smart home automation, temperature-controlled plunge pools on executive levels, and dedicated EV charging stations.",
     ],
     specs: [
-      { label: "Typology", value: "Full-floor residences" },
-      { label: "Configuration", value: "4 & 5 bedroom" },
-      { label: "Carpet area", value: "4,850 – 7,200 sq. ft." },
-      { label: "Floors", value: "G + 22" },
-      { label: "Structure", value: "RCC shear-wall, seismic zone IV" },
+      { label: "Typology", value: "Luxury Sky Residences" },
+      { label: "Configuration", value: "4 & 5 BHK Duplexes" },
+      { label: "Carpet Area", value: "4,800 – 7,500 sq. ft." },
+      { label: "Floors", value: "G + 28 Floors" },
+      { label: "Structure", value: "RCC Frame, Seismic Zone IV" },
       { label: "Possession", value: "Q4 2027" },
-      { label: "RERA", value: "P51900054321" },
+      { label: "RERA Registration", value: "P52100098765" },
     ],
     amenities: [
-      "Reflecting water court",
-      "Residents' library",
-      "25m lap pool",
-      "Wellness & spa suite",
-      "Private dining room",
-      "Concierge desk",
+      "Infinity edge rooftop pool",
+      "Private wellness spa & sauna",
+      "Exclusive residents' lounge",
+      "Multi-tier 24/7 security",
+      "EV-ready basement parking",
+      "Concierge valet services",
     ],
     gallery: [images.hero, images.interior1, images.pool, images.clubhouse],
-    mapQuery: "Carmichael Road, Mumbai",
+    mapQuery: "FC Road, Pune, Maharashtra",
   },
   {
-    slug: "the-stone-court",
-    name: "The Stone Court",
-    location: "Koregaon Park, Pune",
-    status: "Completed",
-    type: "Residential",
-    image: images.project1,
-    summary:
-      "Low-rise garden residences in warm sandstone, organised around a shaded courtyard and a mature rain tree.",
-    overview: [
-      "The Stone Court is a low-rise ensemble of forty-eight homes that keeps the existing tree canopy intact. Buildings step back as they rise, so every residence receives a deep, usable terrace.",
-      "Materials were chosen to age well: load-bearing sandstone, oiled teak joinery, and lime plaster that softens rather than stains.",
-    ],
-    specs: [
-      { label: "Typology", value: "Garden residences" },
-      { label: "Configuration", value: "3 & 4 bedroom" },
-      { label: "Carpet area", value: "2,100 – 3,400 sq. ft." },
-      { label: "Floors", value: "G + 4" },
-      { label: "Structure", value: "RCC frame with stone cladding" },
-      { label: "Possession", value: "Delivered 2023" },
-      { label: "RERA", value: "P52100031187" },
-    ],
-    amenities: [
-      "Central courtyard",
-      "Reading pavilion",
-      "Children's garden",
-      "Yoga deck",
-      "Guest suites",
-      "EV-ready parking",
-    ],
-    gallery: [images.project1, images.garden, images.interior1, images.clubhouse],
-    mapQuery: "Koregaon Park, Pune",
-  },
-  {
-    slug: "meridian-exchange",
-    name: "Meridian Exchange",
+    slug: "parjane-one-tower",
+    name: "Parjane One Corporate Tower",
     location: "BKC, Mumbai",
     status: "Ongoing",
     type: "Commercial",
+    area: "450,000 sq. ft.",
+    completion: "Q2 2027",
     image: images.project2,
     summary:
-      "A workplace building with column-free floorplates, a stone plinth, and a double-height arrival hall facing the boulevard.",
+      "Grade-A commercial workplace with column-free floor plates, LEED Platinum certification, and high-speed destination elevators.",
     overview: [
-      "Meridian Exchange offers 320,000 sq. ft. of column-free workplace across fourteen levels, designed for occupiers who want daylight on every desk.",
-      "A stone plinth grounds the tower and holds the arrival hall, a café, and a 120-seat auditorium available to tenants.",
+      "Parjane One is designed for forward-thinking enterprises seeking a high-performance commercial headquarters in BKC.",
+      "Features double-glazed low-E glass facade, central HVAC with MERV-13 air filtration, 150-seat executive conference auditorium, and lush sky garden terraces.",
     ],
     specs: [
-      { label: "Typology", value: "Grade-A workplace" },
-      { label: "Floorplate", value: "22,000 sq. ft. column-free" },
-      { label: "Total area", value: "320,000 sq. ft." },
-      { label: "Floors", value: "G + 14" },
-      { label: "Certification", value: "LEED Platinum (targeted)" },
-      { label: "Possession", value: "Q2 2027" },
-      { label: "RERA", value: "P51800045992" },
+      { label: "Typology", value: "Grade-A Commercial Tower" },
+      { label: "Floor Plate", value: "28,000 sq. ft. column-free" },
+      { label: "Total Built-Up Area", value: "450,000 sq. ft." },
+      { label: "Floors", value: "G + 18 Floors" },
+      { label: "Green Certification", value: "LEED Platinum (Targeted)" },
+      { label: "Completion", value: "Q2 2027" },
+      { label: "RERA Registration", value: "P51800076543" },
     ],
     amenities: [
-      "Double-height arrival hall",
-      "120-seat auditorium",
-      "Tenant café",
-      "Sky terrace",
-      "Valet parking",
-      "24/7 building management",
+      "Grand double-height atrium",
+      "Executive dining & café",
+      "150-seat auditorium",
+      "Sky garden breakout deck",
+      "High-speed smart lifts",
+      "Integrated BMS & Security",
     ],
     gallery: [images.project2, images.construction, images.clubhouse, images.gym],
     mapQuery: "Bandra Kurla Complex, Mumbai",
   },
   {
-    slug: "the-ridge-villas",
-    name: "The Ridge Villas",
+    slug: "the-parjane-sanctuary",
+    name: "The Parjane Sanctuary",
+    location: "Koregaon Park, Pune",
+    status: "Completed",
+    type: "Residential",
+    area: "3,200 – 4,500 sq. ft.",
+    completion: "Delivered 2024",
+    image: images.project1,
+    summary:
+      "Low-density boutique residences built around preserved heritage rain trees and serene water cascades.",
+    overview: [
+      "Delivered ahead of schedule in 2024, The Parjane Sanctuary exemplifies our commitment to eco-conscious luxury construction.",
+      "Crafted with natural teakwood joinery, rain harvesting systems, and solar micro-grids.",
+    ],
+    specs: [
+      { label: "Typology", value: "Boutique Garden Homes" },
+      { label: "Configuration", value: "3 & 4 BHK Luxury Suites" },
+      { label: "Carpet Area", value: "3,200 – 4,500 sq. ft." },
+      { label: "Floors", value: "G + 6 Floors" },
+      { label: "Handover", value: "Delivered March 2024" },
+      { label: "RERA Registration", value: "P52100054321" },
+    ],
+    amenities: [
+      "Central water court",
+      "Zen yoga garden",
+      "Temperature-controlled pool",
+      "Children's play park",
+      "Clubhouse & gym",
+      "Subterranean parking",
+    ],
+    gallery: [images.project1, images.garden, images.interior1, images.clubhouse],
+    mapQuery: "Koregaon Park, Pune",
+  },
+  {
+    slug: "parjane-crest-villas",
+    name: "Parjane Crest Estate",
     location: "Lonavala Hills",
     status: "Upcoming",
     type: "Residential",
+    area: "6,500 – 10,000 sq. ft.",
+    completion: "Q1 2028",
     image: images.project3,
     summary:
-      "Sixteen terraced villas following the contour of the ridge, each with an infinity edge facing the valley.",
+      "Sixteen hill-crest luxury villas with private infinity pools overlooking the Sahyadri valley.",
     overview: [
-      "The Ridge Villas sit lightly on a south-facing slope, terraced so no house looks onto another. Local basalt retaining walls do the structural work and the landscape does the rest.",
-      "Each villa is planned around an outdoor room — a covered court that stays usable through the monsoon.",
+      "Nestled along the ridge of Lonavala, Parjane Crest offers exclusive hilltop villas crafted with local basalt stone and floor-to-ceiling glass.",
     ],
     specs: [
-      { label: "Typology", value: "Hillside villas" },
-      { label: "Configuration", value: "4 bedroom + study" },
-      { label: "Plot size", value: "0.4 – 0.9 acre" },
-      { label: "Built-up", value: "5,600 – 8,100 sq. ft." },
-      { label: "Structure", value: "Basalt + RCC composite" },
-      { label: "Launch", value: "Registrations open" },
-      { label: "RERA", value: "Application in process" },
+      { label: "Typology", value: "Hillside Luxury Villas" },
+      { label: "Plot Size", value: "0.5 – 1.2 Acres" },
+      { label: "Built-up Area", value: "6,500 – 10,000 sq. ft." },
+      { label: "Status", value: "Pre-launch Registrations" },
+      { label: "RERA Registration", value: "Application in Process" },
     ],
     amenities: [
-      "Private infinity pools",
-      "Valley clubhouse",
-      "Trail network",
-      "Organic kitchen garden",
-      "Estate management",
-      "Solar micro-grid",
+      "Private infinity pool",
+      "Private organic garden",
+      "Valley view clubhouse",
+      "24/7 estate concierge",
+      "Solar powered grid",
     ],
     gallery: [images.project3, images.pool, images.garden, images.interior1],
     mapQuery: "Lonavala, Maharashtra",
@@ -178,100 +185,288 @@ export const projects: Project[] = [
 ];
 
 export const stats = [
-  { value: 32, suffix: "", label: "Years of practice" },
-  { value: 41, suffix: "", label: "Projects delivered" },
-  { value: 2400, suffix: "+", label: "Families settled" },
-  { value: 9.6, suffix: "M", label: "Sq. ft. developed", decimals: 1 },
+  { value: 25, suffix: "+", label: "Years Experience" },
+  { value: 150, suffix: "+", label: "Projects Delivered" },
+  { value: 3000, suffix: "+", label: "Happy Families" },
+  { value: 100, suffix: "%", label: "Commitment & Trust" },
+];
+
+export const expertiseServices = [
+  {
+    id: "residential",
+    title: "Residential Projects",
+    icon: "🏠",
+    body: "Ultra-luxury high-rise towers, garden suites, and gated villa communities built with uncompromising architectural elegance.",
+  },
+  {
+    id: "commercial",
+    title: "Commercial Buildings",
+    icon: "🏢",
+    body: "Grade-A corporate office towers, tech parks, and luxury retail hubs with column-free floor plates and LEED certifications.",
+  },
+  {
+    id: "industrial",
+    title: "Industrial Construction",
+    icon: "🏗️",
+    body: "High-spec manufacturing plants, automated logistics hubs, and heavy industrial facilities engineered for durability.",
+  },
+  {
+    id: "redevelopment",
+    title: "Redevelopment",
+    icon: "🔄",
+    body: "Transforming prime urban land and legacy properties into modern architectural landmarks while honoring original communities.",
+  },
+  {
+    id: "turnkey",
+    title: "Turnkey Projects",
+    icon: "🔑",
+    body: "End-to-end design-build execution — from land acquisition, master planning, and engineering to final key handover.",
+  },
+  {
+    id: "infrastructure",
+    title: "Infrastructure",
+    icon: "🌉",
+    body: "Large-scale urban infrastructure including arterial roads, podium landscapes, and smart utility grids.",
+  },
+];
+
+export const whyChooseUsPillars = [
+  {
+    title: "Quality Construction",
+    icon: "🛡️",
+    body: "Rigorous 120-point structural audits, certified RCC grade testing, and premium materials that outlast industry benchmarks.",
+  },
+  {
+    title: "On-time Delivery",
+    icon: "⏱️",
+    body: "150+ projects handed over with zero schedule slippage. Time-bound milestones backed by penalty-bound commitments.",
+  },
+  {
+    title: "Experienced Team",
+    icon: "👷",
+    body: "Led by veteran civil engineers, structural architects, and project managers with over 25 years of hands-on expertise.",
+  },
+  {
+    title: "Premium Materials",
+    icon: "✨",
+    body: "Direct sourcing of Italian marble, German joinery, solid teak, and low-E acoustic glass directly from quarry manufacturers.",
+  },
+  {
+    title: "Transparent Process",
+    icon: "📊",
+    body: "Clear construction-linked milestones, online buyer portal tracking, zero hidden charges, and complete RERA compliance.",
+  },
+  {
+    title: "Innovative Design",
+    icon: "📐",
+    body: "State-of-the-art BIM modeling, climate-responsive facades, and smart home automation integrated from day one.",
+  },
+];
+
+export const processSteps = [
+  {
+    step: "01",
+    title: "Planning",
+    body: "Site analysis, feasibility studies, tree surveys, and master plan optimization.",
+  },
+  {
+    step: "02",
+    title: "Design",
+    body: "Architectural drawings, 3D BIM spatial models, and interior layout refinement.",
+  },
+  {
+    step: "03",
+    title: "Approval",
+    body: "RERA registrations, municipal sanctions, environmental clearances, and legal audits.",
+  },
+  {
+    step: "04",
+    title: "Construction",
+    body: "Precision ground breaking, RCC structural framing, MEP services, and facade installation.",
+  },
+  {
+    step: "05",
+    title: "Quality Check",
+    body: "120-point independent engineering inspection, pressure tests, and finish snagging.",
+  },
+  {
+    step: "06",
+    title: "Handover",
+    body: "Key handover ceremony, bound as-built documentation, and 10-year stewardship initiation.",
+  },
+];
+
+export const awardsCertifications = [
+  {
+    name: "ISO 9001:2015",
+    category: "Quality Management Certified",
+    year: "Certified 2026",
+  },
+  {
+    name: "IGBC Green Building",
+    category: "Gold & Platinum Standard Leader",
+    year: "Winner 2025",
+  },
+  {
+    name: "RERA Maharashtra",
+    category: "100% Compliance Excellence",
+    year: "Verified",
+  },
+  {
+    name: "CREDAI Pune Metro",
+    category: "Lifetime Patron Member",
+    year: "Member since 2002",
+  },
+  {
+    name: "Builders Association of India",
+    category: "Best Structural Engineering Award",
+    year: "Winner 2024",
+  },
 ];
 
 export const differentiators = [
   {
-    title: "Architect-led",
-    body: "Every project begins in our own studio. Design intent survives to the last handover because the people who drew it also build it.",
+    title: "Architectural Leadership",
+    body: "Every Parjane landmark is spearheaded by in-house master architects and senior structural engineers.",
   },
   {
-    title: "Material honesty",
-    body: "Stone, lime, teak and bronze. We specify materials that improve with weather instead of finishes that need replacing.",
+    title: "Zero Compromise Materials",
+    body: "Tested RCC steel, natural stone, and weatherproof finishes chosen to look pristine across decades.",
   },
   {
-    title: "Delivered on date",
-    body: "Forty-one projects, an average handover eleven days ahead of the committed date. Our schedules are commitments, not estimates.",
+    title: "Guaranteed Timelines",
+    body: "150 delivered developments with an average completion 14 days ahead of scheduled RERA dates.",
   },
   {
-    title: "Stewardship after keys",
-    body: "A dedicated estate team stays with each building for a decade, maintaining the commons to the standard we handed over.",
+    title: "10-Year Estate Covenant",
+    body: "A dedicated property care team remains on site after key handover to maintain common facilities.",
   },
 ];
 
 export const values = [
   {
-    title: "Restraint",
-    body: "The best detail is the one you do not notice. We remove until only the necessary remains.",
+    title: "Integrity",
+    body: "Complete transparency in pricing, specifications, and legal documentation.",
   },
   {
-    title: "Longevity",
-    body: "We design to a hundred-year horizon — structure, services, and the patina of the materials.",
+    title: "Craftsmanship",
+    body: "Attention to joint alignments, MEP routing, and structural finish precision.",
   },
   {
-    title: "Light",
-    body: "Orientation, depth of plan, and shading are settled before a single elevation is drawn.",
+    title: "Sustainability",
+    body: "Rainwater recharge, solar powering, and zero-waste construction protocols.",
   },
   {
-    title: "Craft",
-    body: "We keep long relationships with stone yards, joiners, and metalworkers. Continuity shows in the work.",
+    title: "Customer First",
+    body: "Dedicated client relations manager from booking through customization and possession.",
   },
 ];
 
 export const milestones = [
-  { year: "1994", title: "The practice begins", body: "Founded as a two-person architectural studio in a Fort warehouse, taking on interior commissions." },
-  { year: "2001", title: "First ground-up building", body: "A twelve-home building in Bandra establishes the material language we still work in." },
-  { year: "2009", title: "Development arm formed", body: "We begin acquiring and developing our own sites, keeping design and delivery under one roof." },
-  { year: "2016", title: "Twenty-fifth handover", body: "The Stone Court predecessor sets the low-rise, courtyard-first template for the portfolio." },
-  { year: "2021", title: "Estate services launched", body: "A ten-year stewardship programme begins for every completed building." },
-  { year: "2026", title: "Three sites in build", body: "Meridian House, Meridian Exchange, and the Ridge Villas move through construction together." },
+  {
+    year: "2001",
+    title: "Inception of Parjane Buildcon",
+    body: "Established in Pune as a boutique contracting firm taking on high-end residential builds.",
+  },
+  {
+    year: "2007",
+    title: "First High-Rise Delivered",
+    body: "Completed landmark 12-storey luxury apartment complex in Deccan Gymkhana.",
+  },
+  {
+    year: "2013",
+    title: "Commercial Division Launched",
+    body: "Expanded into Grade-A office parks and tech centers across Pune and BKC Mumbai.",
+  },
+  {
+    year: "2018",
+    title: "100th Landmark Completed",
+    body: "Crossed 100 successful handovers with 100% on-time delivery record.",
+  },
+  {
+    year: "2023",
+    title: "IGBC Green Leadership",
+    body: "Awarded IGBC Platinum rating for sustainable high-density residential developments.",
+  },
+  {
+    year: "2026",
+    title: "Expanding Skylines",
+    body: "Over 4.5 million sq. ft. currently under active construction across 4 major hubs.",
+  },
 ];
 
 export const team = [
-  { name: "Anaya Raghunath", role: "Founder & Principal Architect", bio: "Thirty-two years in practice. Leads design across every commission." },
-  { name: "Devan Mistry", role: "Managing Director", bio: "Runs land, capital, and delivery. Joined from an infrastructure background." },
-  { name: "Leela Fernandes", role: "Head of Construction", bio: "Site-first. Has handed over nineteen buildings without a schedule slip." },
-  { name: "Kabir Sethi", role: "Director, Residences", bio: "Works with buyers from first visit through customisation and handover." },
+  {
+    name: "Rajesh Parjane",
+    role: "Founder & Managing Director",
+    bio: "25+ years shaping Western India's skylines with vision, precision, and passion.",
+  },
+  {
+    name: "Anish Parjane",
+    role: "Executive Director & COO",
+    bio: "Oversees capital allocation, project delivery, and digital construction technology.",
+  },
+  {
+    name: "Priya Deshmukh",
+    role: "Chief Architectural Officer",
+    bio: "Leads spatial planning, sustainable facades, and luxury interior design.",
+  },
+  {
+    name: "Vikramaditya Shinde",
+    role: "Head of Engineering",
+    bio: "Directs structural integrity, seismic safety, and site quality control.",
+  },
 ];
 
 export const amenities = [
   {
-    title: "The Lap Pool",
-    eyebrow: "Water",
-    body: "A twenty-five metre pool held between travertine decks, warmed in winter and shaded by cabanas through the afternoon.",
+    title: "Rooftop Infinity Lap Pool",
+    eyebrow: "Aquatics",
+    body: "Heated 25-meter infinity lap pool framed by anti-skid Italian marble decks and cabana seating.",
     image: images.pool,
   },
   {
-    title: "Wellness Studio",
-    eyebrow: "Movement",
-    body: "Full-height glazing onto the gardens, sprung oak floors, and equipment specified with a trainer rather than a catalogue.",
+    title: "High-Performance Gymnasium",
+    eyebrow: "Fitness",
+    body: "Equipped with Technogym machinery, dedicated pilates studio, and panoramic skyline glass walls.",
     image: images.gym,
   },
   {
-    title: "The Clubhouse",
-    eyebrow: "Gathering",
-    body: "A residents' lounge with a private dining room, a library corner, and a bar that can be booked for the evening.",
+    title: "Grand Executive Lounge",
+    eyebrow: "Community",
+    body: "Private meeting suites, billiards parlor, cigar room, and multi-cuisine catering kitchen.",
     image: images.clubhouse,
   },
   {
-    title: "Gardens & Courts",
-    eyebrow: "Landscape",
-    body: "Three quarters of the ground plane is planted. Mature trees were surveyed and retained before the first line was drawn.",
+    title: "Landscaped Podium Gardens",
+    eyebrow: "Nature",
+    body: "70% green open space featuring reflexology walkways, fragrant flora, and serene water features.",
     image: images.garden,
   },
 ];
 
 export const amenityIcons = [
-  { title: "Concierge", body: "Front-of-house team on duty around the clock." },
-  { title: "Security", body: "Layered access control with discreet perimeter monitoring." },
-  { title: "Parking", body: "Valet-assisted basements, every bay EV-ready." },
-  { title: "Backup power", body: "Full-load generation across homes and commons." },
-  { title: "Water", body: "On-site treatment, softening, and rainwater recharge." },
-  { title: "Estate care", body: "A ten-year maintenance covenant on all commons." },
+  {
+    title: "24/7 Smart Security",
+    body: "Multi-tier biometric access, ANPR vehicle tracking, and discreet AI CCTV.",
+  },
+  {
+    title: "EV Infrastructure",
+    body: "100% parking bays equipped with high-speed EV charging provisions.",
+  },
+  {
+    title: "Power Backup",
+    body: "Silent DG sets providing 100% full-load auto-switch power backup.",
+  },
+  {
+    title: "Water Treatment",
+    body: "Dual-stage water treatment, softening plant, and rainwater harvesting.",
+  },
+  {
+    title: "High-Speed Elevators",
+    body: "Destination-controlled Mitsubishi high-speed elevators.",
+  },
+  { title: "Estate Care", body: "10-year facility management covenant by Parjane Services." },
 ];
 
 export interface Testimonial {
@@ -284,44 +479,30 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "We looked for two years. Meridian was the only developer who answered questions about the structure with drawings instead of adjectives.",
-    name: "Rohan & Meera Kapadia",
-    project: "The Stone Court",
+      "Parjane Buildcon delivered our duplex residence 2 weeks before the promised RERA date. The finish quality on the marble and balcony glass is flawless.",
+    name: "Sanjay & Neha Kulkarni",
+    project: "Parjane Heights",
     rating: 5,
   },
   {
     quote:
-      "Handover came three weeks early and the snag list ran to four items. After twenty years of owning property in this city, that is remarkable.",
-    name: "Justice A. Nariman (Retd.)",
-    project: "Meridian House",
+      "As a commercial tenant in BKC, the column-free floor plate and natural daylight at Parjane One have dramatically improved our workspace culture.",
+    name: "Anand Shah",
+    project: "Parjane One Corporate Tower",
     rating: 5,
   },
   {
     quote:
-      "The courtyard is the reason we bought. Four years on, the trees are taller and the building has settled into itself beautifully.",
-    name: "Dr. Sunita Rao",
-    project: "The Stone Court",
+      "Their construction transparency is unparalleled. Every milestone was documented with site photos and structural quality test reports.",
+    name: "Dr. Arvind Joshi",
+    project: "The Parjane Sanctuary",
     rating: 5,
   },
   {
     quote:
-      "As a tenant, the arrival hall does more for recruitment than any brochure we have printed. The daylight on the floorplate is exceptional.",
-    name: "Vikram Shenoy",
-    project: "Meridian Exchange",
-    rating: 5,
-  },
-  {
-    quote:
-      "They talked us out of a larger apartment because the smaller one had better light. That told us everything about how they work.",
-    name: "Ishaan Malhotra",
-    project: "Meridian House",
-    rating: 5,
-  },
-  {
-    quote:
-      "The estate team still responds within the hour, three years after possession. That continuity is rare and worth paying for.",
-    name: "Farida Contractor",
-    project: "The Stone Court",
+      "Two years after moving into Korean Park, the maintenance and estate management team still resolves any request within 2 hours.",
+    name: "Meenakshi Seshadri",
+    project: "The Parjane Sanctuary",
     rating: 5,
   },
 ];
@@ -339,98 +520,83 @@ export interface Post {
 
 export const posts: Post[] = [
   {
-    slug: "why-we-build-in-stone",
-    title: "Why we still build in stone",
-    category: "Design",
-    date: "12 June 2026",
+    slug: "future-of-luxury-constructions",
+    title: "Engineering Luxury: The Science Behind Long-Lasting Structures",
+    category: "Engineering",
+    date: "14 July 2026",
     readTime: "6 min read",
     excerpt:
-      "Cladding is cheaper, faster, and lighter. We keep specifying solid stone anyway — here is the arithmetic behind that decision.",
+      "How high-grade RCC shear walls, seismic damping, and Italian marble cladding combine to build homes that last a century.",
     image: images.project1,
     body: [
-      "Stone is an inconvenient material. It is heavy, slow to set out, and unforgiving of a careless dimension. It also outlives every alternative on the market by a factor that makes the premium look small.",
-      "The comparison most developers run is capital cost per square foot at handover. The comparison we run is total cost across forty years, including recoating, sealing, and the reputational cost of a facade that looks tired in year twelve.",
-      "There is a second argument, harder to put on a spreadsheet. Stone registers weather. A limestone wall after a monsoon is a different wall than it was in April, and buildings that record time this way are the ones people become attached to.",
-      "None of this is nostalgia. We use stone where it works structurally and honestly, and we do not apply it as a veneer to something else. When the budget does not carry it, we change the material rather than fake it.",
+      "Building a true luxury landmark requires looking far beyond surface aesthetics. It begins with soil load testing, deep piling, and seismic-resistant RCC framing.",
+      "At Parjane Buildcon, we specify concrete mixes tested to withstand 1.5x standard load capacities, ensuring zero micro-fissures over decades.",
+      "Furthermore, acoustic double-glazing reduces street noise by up to 38dB, providing serene indoor silence in the heart of urban centers.",
     ],
   },
   {
-    slug: "reading-a-floor-plan",
-    title: "How to read a floor plan before you buy",
-    category: "Buyer's Guide",
-    date: "28 May 2026",
-    readTime: "8 min read",
-    excerpt:
-      "Six things worth checking on a plan that almost no brochure will point out — and what each one tells you about how the home will live.",
-    image: images.interior1,
-    body: [
-      "Start with the depth of the plan. Measure from the window wall to the innermost point of a habitable room. Beyond about seven metres, daylight stops doing useful work and you will run lights at noon.",
-      "Next, look for cross-ventilation. Two openable faces on a home is the difference between a breeze and a fan. On a single-aspect plan, ask what the summer electricity bill looks like.",
-      "Third, find the services. Shafts, ducts, and the position of the outdoor units of the air-conditioning tell you more about a developer's care than the marble specification does.",
-      "Fourth, check the circulation-to-carpet ratio. Corridors are area you pay for and never use. Fifth, confirm door swings against furniture layouts. Sixth, and most overlooked, look at where the sun rises relative to the bedrooms.",
-    ],
-  },
-  {
-    slug: "landscape-first",
-    title: "Landscape first, building second",
-    category: "Practice",
-    date: "9 April 2026",
-    readTime: "5 min read",
-    excerpt:
-      "On surveying every mature tree on a site before drawing a single line, and what that discipline costs.",
-    image: images.garden,
-    body: [
-      "On every site we acquire, the first drawing produced is not a massing study. It is a tree survey — species, girth, canopy spread, and health for everything above a hundred millimetres.",
-      "That survey then constrains the building footprint. It is an expensive constraint; on one project it cost us eleven saleable units. It is also the reason the courtyard at that project reads as forty years old rather than four.",
-      "Mature canopy cannot be bought. It can only be kept.",
-    ],
-  },
-  {
-    slug: "the-handover-standard",
-    title: "What a serious handover looks like",
-    category: "Delivery",
-    date: "21 February 2026",
+    slug: "redevelopment-masterclass",
+    title: "Navigating Urban Redevelopment With Trust and Speed",
+    category: "Redevelopment",
+    date: "28 June 2026",
     readTime: "7 min read",
     excerpt:
-      "Snag lists, commissioning records, and the ten-year covenant we sign on the commons of every building.",
+      "Key insights for society members considering redevelopment: timelines, bank guarantees, and structural quality assurance.",
     image: images.construction,
     body: [
-      "Most handovers are a set of keys and an optimistic warranty card. We treat it as the start of a decade-long relationship, and the paperwork reflects that.",
-      "Every home is commissioned twice: once by the contractor, once by an independent inspector we appoint and the buyer can brief directly. The second list is the one that governs.",
-      "Buyers receive a bound record — as-built drawings, service routes, material provenance, and the maintenance cycle for every finish. It is the document you want in year seven when something needs matching.",
+      "Redevelopment is fundamentally about rebuilding lives and enhancing asset value. We ensure every original member receives transparent floor plans, bank guarantees, and transit rent paid upfront.",
+      "Our dedicated legal and engineering teams work hand-in-hand with society committees to ensure seamless execution without legal friction.",
+    ],
+  },
+  {
+    slug: "green-building-innovations",
+    title: "Why IGBC Gold & Platinum Certification Matters for Homeowners",
+    category: "Sustainability",
+    date: "10 May 2026",
+    readTime: "5 min read",
+    excerpt:
+      "Reduced energy bills, fresh air filtration, and higher resale value — how eco-friendly building practices benefit buyers.",
+    image: images.garden,
+    body: [
+      "Green buildings are no longer an optional luxury — they are essential for healthy living. Rainwater harvesting, solar power generation, and native planting reduce operational costs by up to 30%.",
+      "Our homes feature MERV-13 air filters and low-VOC paints to guarantee healthy indoor air quality for your family.",
     ],
   },
 ];
 
 export const galleryItems = [
-  { src: images.hero, category: "Exteriors", caption: "Meridian House at dusk" },
-  { src: images.interior1, category: "Interiors", caption: "Full-floor living room" },
-  { src: images.pool, category: "Amenities", caption: "The lap pool" },
-  { src: images.project1, category: "Exteriors", caption: "The Stone Court courtyard" },
-  { src: images.gym, category: "Amenities", caption: "Wellness studio" },
-  { src: images.construction, category: "Construction Progress", caption: "Tower core, level 14" },
-  { src: images.clubhouse, category: "Interiors", caption: "Residents' lounge" },
-  { src: images.garden, category: "Amenities", caption: "Garden court" },
-  { src: images.project2, category: "Exteriors", caption: "Meridian Exchange" },
-  { src: images.project3, category: "Exteriors", caption: "The Ridge Villas" },
+  { src: images.hero, category: "Exteriors", caption: "Parjane Heights at dusk" },
+  { src: images.interior1, category: "Interiors", caption: "Executive duplex living suite" },
+  { src: images.pool, category: "Amenities", caption: "Rooftop infinity lap pool" },
+  { src: images.project1, category: "Exteriors", caption: "The Parjane Sanctuary courtyard" },
+  { src: images.gym, category: "Amenities", caption: "Skyline gym & wellness studio" },
+  {
+    src: images.construction,
+    category: "Construction Progress",
+    caption: "Parjane One tower core level 18",
+  },
+  { src: images.clubhouse, category: "Interiors", caption: "Grand executive lounge" },
+  { src: images.garden, category: "Amenities", caption: "Podium garden landscape" },
+  { src: images.project2, category: "Exteriors", caption: "Parjane One Corporate Tower" },
+  { src: images.project3, category: "Exteriors", caption: "Parjane Crest Estate" },
 ];
 
 export const faqs = [
   {
-    q: "Do you offer customisation on residences?",
-    a: "Yes. Until the internal blockwork stage we can combine rooms, relocate non-structural walls, and change joinery and stone specifications. Our residences director works directly with your architect.",
+    q: "What types of construction projects does Parjane Buildcon undertake?",
+    a: "We specialize in ultra-luxury residential towers, boutique garden residences, Grade-A commercial office parks, industrial facilities, turnkey infrastructure, and urban society redevelopment.",
   },
   {
-    q: "How are payments structured?",
-    a: "Construction-linked, in line with RERA. No milestone is invoiced before it is certified complete by the project's independent engineer.",
+    q: "Are all Parjane Buildcon projects RERA registered?",
+    a: "Yes, 100% of our developments are registered with MahaRERA with complete legal titles, clear sanctions, and transparent construction-linked payment plans.",
   },
   {
-    q: "Are the projects NRI-friendly?",
-    a: "All projects accept NRE/NRO funding and we manage FEMA documentation in-house. Remote handover with a nominated representative is standard.",
+    q: "What is your track record on project delivery timelines?",
+    a: "We have delivered over 150 projects across 25+ years with a 100% on-time completion record. Our schedules are binding commitments backed by RERA guidelines.",
   },
   {
-    q: "What happens after possession?",
-    a: "Our estate team maintains the commons under a ten-year covenant, and individual homes carry a five-year structural and three-year services warranty.",
+    q: "Do you offer post-possession maintenance and warranty?",
+    a: "Yes. All projects carry a 5-year structural warranty, a 3-year MEP services warranty, and 10-year estate stewardship managed directly by Parjane Facility Services.",
   },
 ];
 

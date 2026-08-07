@@ -12,16 +12,16 @@ import { ButtonLink } from "@/components/Button";
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Testimonials — Atelier Meridian" },
+      { title: "Testimonials — Parjane Buildcon" },
       {
         name: "description",
         content:
-          "What owners and tenants say about buying, living in and maintaining an Atelier Meridian building.",
+          "Read authentic client reviews and homeowner testimonials from residents across Parjane Buildcon landmarks.",
       },
-      { property: "og:title", content: "Testimonials — Atelier Meridian" },
+      { property: "og:title", content: "Testimonials — Parjane Buildcon" },
       {
         property: "og:description",
-        content: "Owners, four years on: unedited words from residents across the portfolio.",
+        content: "Reviews and testimonials from 3000+ happy families and corporate tenants.",
       },
     ],
   }),
@@ -32,15 +32,15 @@ function Testimonials() {
   return (
     <>
       <PageHero
-        eyebrow="In their words"
-        title="The only review that counts is year five."
-        lede="Anyone can be delighted at handover. These are people who have lived with the buildings."
+        eyebrow="Client Voices"
+        title="3,000+ Families Settled With Trust."
+        lede="Hear from home buyers and corporate tenants who have experienced Parjane construction quality firsthand."
         image={images.clubhouse}
       />
 
-      {/* Featured carousel */}
+      {/* Featured Carousel */}
       <SectionWrapper tone="dark">
-        <SectionHeading eyebrow="Featured" title="A few we return to." />
+        <SectionHeading eyebrow="Featured Reviews" title="Words From Our Homeowners" />
         <div className="mt-16">
           <Carousel
             perView={2}
@@ -52,9 +52,9 @@ function Testimonials() {
         </div>
       </SectionWrapper>
 
-      {/* Full grid */}
-      <SectionWrapper>
-        <SectionHeading eyebrow="All testimonials" title="Every voice, unedited." />
+      {/* Full Grid */}
+      <SectionWrapper className="bg-slate-50">
+        <SectionHeading eyebrow="All Feedback" title="Verified Reviews &amp; Experiences" />
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <AnimatedSection key={t.name} delay={(i % 3) * 90} className="h-full">
@@ -64,17 +64,17 @@ function Testimonials() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper tone="sand" tight>
+      <SectionWrapper tone="dark" tight>
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
             <AnimatedSection key={s.label} delay={i * 90}>
-              <StatCounter value={s.value} suffix={s.suffix} label={s.label} decimals={s.decimals ?? 0} />
+              <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
             </AnimatedSection>
           ))}
         </div>
         <AnimatedSection className="mt-16 text-center">
-          <ButtonLink to="/contact" size="lg">
-            Speak with an owner
+          <ButtonLink to="/contact" size="lg" className="rounded-2xl bg-gold text-navy font-bold">
+            Connect With Our Sales Desk
           </ButtonLink>
         </AnimatedSection>
       </SectionWrapper>

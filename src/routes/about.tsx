@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { images, milestones, values, team, stats } from "@/data/content";
-import { type as typeScale } from "@/theme";
+import { brand, type as typeScale } from "@/theme";
 import { PageHero } from "@/components/PageHero";
 import { SectionWrapper, Container, Hairline } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -12,16 +12,17 @@ import { ButtonLink } from "@/components/Button";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Atelier Meridian" },
+      { title: "About Us — Parjane Buildcon" },
       {
         name: "description",
         content:
-          "Founded in 1994 as a two-person studio. Our story, values, leadership team and the milestones behind forty-one delivered projects.",
+          "Established in 2001, Parjane Buildcon has completed over 150 landmarks across Western India with engineering excellence, quality materials, and unshakeable trust.",
       },
-      { property: "og:title", content: "About — Atelier Meridian" },
+      { property: "og:title", content: "About Us — Parjane Buildcon" },
       {
         property: "og:description",
-        content: "An architect-led development practice: our story, values and leadership.",
+        content:
+          "25+ years of engineering leadership, corporate values, and on-time project delivery.",
       },
     ],
   }),
@@ -32,46 +33,49 @@ function About() {
   return (
     <>
       <PageHero
-        eyebrow="Our legacy"
-        title="A studio that never stopped drawing."
-        lede="Thirty-two years, one discipline, and a deliberately small number of buildings."
+        eyebrow="Our Legacy"
+        title="25 Years of Engineering Excellence"
+        lede="Over two decades of crafting luxury landmarks with precision, quality, and complete transparency."
         image={images.project1}
       />
 
       {/* Founder story */}
       <SectionWrapper>
-        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20 lg:items-center">
           <AnimatedSection>
-            <p className="eyebrow mb-6">The founding</p>
-            <h2 className={typeScale.h2}>“We only build what we have drawn.”</h2>
+            <p className="eyebrow mb-6">Our Journey</p>
+            <h2 className={typeScale.h2}>
+              “We build with structural integrity and lasting trust.”
+            </h2>
             <p className={`${typeScale.body} mt-8`}>
-              Anaya Raghunath founded the practice in 1994 with a single draughting table and a
-              commission to remodel a Fort warehouse. The rule she set then still governs: the
-              studio takes no project it cannot see through from first sketch to final handover.
+              Rajesh Parjane established {brand.name} in 2001 with a clear mandate: to redefine
+              urban construction standards in Western India through uncompromising engineering
+              quality, structural safety, and transparent buyer commitments.
             </p>
             <p className={`${typeScale.body} mt-5`}>
-              In 2009 we began acquiring our own sites. The reason was not ambition but control —
-              too many good drawings had been diluted by developers optimising after the fact.
-              Bringing land, design and construction under one roof let us hold the line on
-              structure, services and material quality where it actually matters.
+              Over 25 years, our practice has delivered more than 150 projects — spanning high-rise
+              luxury towers, boutique gated communities, Grade-A corporate office parks, and major
+              turnkey infrastructure.
             </p>
             <p className={`${typeScale.body} mt-5`}>
-              We remain small on purpose. Three sites in build at any time is our ceiling, because
-              it is the number the principals can visit weekly.
+              By keeping land acquisition, architectural design, structural engineering, and estate
+              care under one roof, we maintain 100% control over build quality and delivery dates.
             </p>
-            <p className="mt-10 font-display text-2xl">Anaya Raghunath</p>
-            <p className="mt-1 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Founder &amp; Principal Architect
-            </p>
+            <div className="mt-10">
+              <p className="font-display text-2xl font-bold text-navy">Rajesh Parjane</p>
+              <p className="mt-1 text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
+                Founder &amp; Managing Director
+              </p>
+            </div>
           </AnimatedSection>
 
           <AnimatedSection delay={140} variant="scale">
             <LazyImage
               src={images.interior1}
-              alt="Interior of a completed Meridian residence"
+              alt="Completed Parjane Buildcon luxury interior"
               width={1280}
               height={960}
-              wrapperClassName="aspect-4/5"
+              wrapperClassName="aspect-4/5 rounded-3xl border border-slate-200 shadow-2xl"
             />
           </AnimatedSection>
         </div>
@@ -79,13 +83,17 @@ function About() {
 
       {/* Values */}
       <SectionWrapper tone="sand">
-        <SectionHeading eyebrow="Mission & values" title="What the work is measured against." />
-        <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading eyebrow="Core Values" title="Principles That Drive Every Landmark" />
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
-            <AnimatedSection key={v.title} delay={i * 90}>
-              <div className="h-px w-10 bg-bronze" />
-              <h3 className="mt-6 font-display text-2xl">{v.title}</h3>
-              <p className="mt-4 text-sm font-light leading-[1.85] text-muted-foreground">{v.body}</p>
+            <AnimatedSection
+              key={v.title}
+              delay={i * 90}
+              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm"
+            >
+              <div className="h-1 w-12 bg-gold rounded-full" />
+              <h3 className="mt-6 font-display text-2xl font-bold text-navy">{v.title}</h3>
+              <p className="mt-4 text-sm font-light leading-[1.85] text-slate-600">{v.body}</p>
             </AnimatedSection>
           ))}
         </div>
@@ -93,19 +101,24 @@ function About() {
 
       {/* Milestones timeline */}
       <SectionWrapper>
-        <SectionHeading eyebrow="Milestones" title="Three decades, told briefly." />
-        <ol className="mt-16 border-l border-border">
+        <SectionHeading eyebrow="Milestones" title="25 Years of Architectural Milestones" />
+        <ol className="mt-16 border-l-2 border-gold/40">
           {milestones.map((m, i) => (
-            <AnimatedSection key={m.year} as="li" delay={i * 70} className="relative pb-14 pl-8 last:pb-0 sm:pl-14">
+            <AnimatedSection
+              key={m.year}
+              as="li"
+              delay={i * 70}
+              className="relative pb-14 pl-8 last:pb-0 sm:pl-14"
+            >
               <span
                 aria-hidden
-                className="absolute left-0 top-2 size-2 -translate-x-1/2 rounded-full bg-bronze"
+                className="absolute left-0 top-2 size-4 -translate-x-[9px] rounded-full border-2 border-gold bg-navy"
               />
               <div className="grid gap-2 sm:grid-cols-[7rem_1fr] sm:gap-8">
-                <span className="font-display text-2xl text-bronze">{m.year}</span>
+                <span className="font-display text-3xl font-extrabold text-gold">{m.year}</span>
                 <div>
-                  <h3 className="font-display text-2xl">{m.title}</h3>
-                  <p className="mt-3 max-w-xl text-sm font-light leading-[1.85] text-muted-foreground">
+                  <h3 className="font-display text-2xl font-bold text-navy">{m.title}</h3>
+                  <p className="mt-3 max-w-xl text-sm font-light leading-[1.85] text-slate-600">
                     {m.body}
                   </p>
                 </div>
@@ -120,7 +133,7 @@ function About() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
             <AnimatedSection key={s.label} delay={i * 100}>
-              <StatCounter value={s.value} suffix={s.suffix} label={s.label} decimals={s.decimals ?? 0} />
+              <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
             </AnimatedSection>
           ))}
         </div>
@@ -128,19 +141,25 @@ function About() {
 
       {/* Leadership */}
       <SectionWrapper>
-        <SectionHeading eyebrow="Leadership" title="The people you will actually meet." />
-        <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading eyebrow="Leadership" title="Executive Leadership &amp; Engineering Team" />
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member, i) => (
-            <AnimatedSection key={member.name} delay={i * 90} className="border-t border-border pt-8">
-              <div className="grid size-14 place-items-center rounded-full border border-bronze/40 font-display text-lg text-bronze">
+            <AnimatedSection
+              key={member.name}
+              delay={i * 90}
+              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold hover:shadow-xl"
+            >
+              <div className="grid size-16 place-items-center rounded-2xl bg-navy font-display text-xl font-bold text-gold">
                 {member.name
                   .split(" ")
                   .map((w) => w[0])
                   .join("")}
               </div>
-              <h3 className="mt-6 font-display text-xl">{member.name}</h3>
-              <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-bronze">{member.role}</p>
-              <p className="mt-4 text-sm font-light leading-[1.85] text-muted-foreground">{member.bio}</p>
+              <h3 className="mt-6 font-display text-xl font-bold text-navy">{member.name}</h3>
+              <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-gold font-semibold">
+                {member.role}
+              </p>
+              <p className="mt-4 text-sm font-light leading-[1.85] text-slate-600">{member.bio}</p>
             </AnimatedSection>
           ))}
         </div>
@@ -150,11 +169,15 @@ function About() {
         </Container>
 
         <AnimatedSection className="mt-16 text-center">
-          <h2 className="font-display text-[clamp(1.75rem,3vw,2.75rem)]">
-            Come and see one of the buildings.
+          <h2 className="font-display text-[clamp(1.75rem,3vw,2.75rem)] font-bold text-navy">
+            Visit one of our completed landmarks.
           </h2>
-          <ButtonLink to="/contact" size="lg" className="mt-8">
-            Arrange a viewing
+          <ButtonLink
+            to="/contact"
+            size="lg"
+            className="mt-8 rounded-2xl bg-gold text-navy font-bold"
+          >
+            Schedule a Private Viewing
           </ButtonLink>
         </AnimatedSection>
       </SectionWrapper>

@@ -14,11 +14,14 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Article unavailable — Atelier Meridian" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Article Unavailable — Parjane Buildcon" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const { post } = loaderData as { post: Post };
-    const title = `${post.title} — Atelier Meridian`;
+    const title = `${post.title} — Parjane Buildcon`;
     return {
       meta: [
         { title },
@@ -37,10 +40,13 @@ function PostNotFound() {
   return (
     <div className="flex min-h-screen items-center justify-center px-6 text-center">
       <div>
-        <p className="eyebrow">Not found</p>
-        <h1 className="mt-4 font-display text-4xl">That article has moved.</h1>
-        <Link to="/blog" className="link-underline mt-8 inline-block text-[11px] uppercase tracking-[0.24em]">
-          Back to insights
+        <p className="eyebrow">Not Found</p>
+        <h1 className="mt-4 font-display text-4xl font-bold">That article has moved.</h1>
+        <Link
+          to="/blog"
+          className="link-underline mt-8 inline-block text-xs uppercase tracking-[0.2em] font-semibold text-gold"
+        >
+          Back to Insights
         </Link>
       </div>
     </div>
@@ -52,18 +58,20 @@ function BlogPost() {
   const related = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
-    <article>
+    <article className="bg-white">
       <SectionWrapper narrow className="pb-0 pt-36 sm:pt-44">
         <AnimatedSection>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-            <span className="text-bronze">{post.category}</span>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase font-semibold tracking-wider text-slate-500">
+            <span className="text-gold font-bold">{post.category}</span>
             <span aria-hidden>·</span>
             <span>{post.date}</span>
             <span aria-hidden>·</span>
             <span>{post.readTime}</span>
           </div>
-          <h1 className="mt-6 font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.08]">{post.title}</h1>
-          <p className="mt-6 text-[17px] font-light leading-[1.9] text-muted-foreground">{post.excerpt}</p>
+          <h1 className="mt-6 font-display text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold text-navy leading-[1.1]">
+            {post.title}
+          </h1>
+          <p className="mt-6 text-lg font-light leading-[1.8] text-slate-600">{post.excerpt}</p>
         </AnimatedSection>
       </SectionWrapper>
 
@@ -74,7 +82,7 @@ function BlogPost() {
             alt={post.title}
             width={1280}
             height={960}
-            wrapperClassName="aspect-16/9"
+            wrapperClassName="aspect-16/9 rounded-3xl border border-slate-200 shadow-xl"
           />
         </AnimatedSection>
       </Container>
@@ -86,8 +94,8 @@ function BlogPost() {
               <p
                 className={
                   i === 0
-                    ? "text-[19px] font-light leading-[1.85] first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-6xl first-letter:leading-[0.8] first-letter:text-bronze"
-                    : "text-[17px] font-light leading-[1.9] text-muted-foreground"
+                    ? "text-xl font-light leading-[1.8] text-slate-700 first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-6xl first-letter:font-extrabold first-letter:leading-[0.8] first-letter:text-gold"
+                    : "text-base font-light leading-[1.85] text-slate-600"
                 }
               >
                 {para}
@@ -101,15 +109,18 @@ function BlogPost() {
         </div>
 
         <AnimatedSection className="mt-10">
-          <Link to="/blog" className="link-underline text-[11px] uppercase tracking-[0.24em]">
-            ← All insights
+          <Link
+            to="/blog"
+            className="link-underline text-xs uppercase tracking-[0.2em] font-semibold text-navy"
+          >
+            ← All Insights &amp; Journal
           </Link>
         </AnimatedSection>
       </SectionWrapper>
 
       <SectionWrapper tone="sand">
-        <p className="eyebrow mb-10">Continue reading</p>
-        <div className="grid gap-10 md:grid-cols-3">
+        <p className="eyebrow text-gold font-bold mb-8">Related Articles</p>
+        <div className="grid gap-8 md:grid-cols-3">
           {related.map((p, i) => (
             <AnimatedSection key={p.slug} delay={i * 90}>
               <BlogCard post={p} />

@@ -10,16 +10,16 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "Insights — Atelier Meridian" },
+      { title: "Insights & Journal — Parjane Buildcon" },
       {
         name: "description",
         content:
-          "Notes from the studio on materials, floor plans, landscape and what a serious handover looks like.",
+          "Articles and buyer's guides from Parjane Buildcon engineers on structural safety, green construction, and urban redevelopment.",
       },
-      { property: "og:title", content: "Insights — Atelier Meridian" },
+      { property: "og:title", content: "Insights & Journal — Parjane Buildcon" },
       {
         property: "og:description",
-        content: "Essays and buyer's guides from an architect-led development practice.",
+        content: "Engineering insights, buyer guides, and construction updates.",
       },
     ],
   }),
@@ -34,23 +34,23 @@ function BlogIndex() {
   return (
     <>
       <PageHero
-        eyebrow="Insights"
-        title="Notes from the studio."
-        lede="Longer-form writing on the decisions behind the buildings, and guidance for buyers."
+        eyebrow="Insights & Journal"
+        title="Engineering & Construction Knowledge."
+        lede="Articles from our structural engineers and architects on material science, redevelopment guides, and green building."
         image={images.construction}
       />
 
-      <SectionWrapper>
-        <div className="flex flex-wrap gap-x-8 gap-y-3 border-b border-border pb-6">
+      <SectionWrapper className="bg-slate-50">
+        <div className="flex flex-wrap gap-x-3 gap-y-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
           {categories.map((c) => (
             <button
               key={c}
               onClick={() => setCategory(c)}
               className={cn(
-                "border-b pb-1 text-[11px] uppercase tracking-[0.2em] transition-colors duration-500",
+                "rounded-xl border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer",
                 category === c
-                  ? "border-bronze text-bronze"
-                  : "border-transparent text-muted-foreground hover:text-foreground",
+                  ? "border-gold bg-gold text-navy shadow-md"
+                  : "border-transparent text-slate-600 hover:border-gold/50 hover:text-navy",
               )}
             >
               {c}
@@ -58,7 +58,7 @@ function BlogIndex() {
           ))}
         </div>
 
-        <div className="mt-14 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((post, i) => (
             <AnimatedSection key={post.slug} delay={(i % 3) * 90}>
               <BlogCard post={post} />

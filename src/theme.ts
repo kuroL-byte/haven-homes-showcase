@@ -1,46 +1,44 @@
 /**
- * Centralized brand/theme config.
- * Color + font *values* live in src/styles.css as design tokens; this file
- * holds the semantic class names and layout scales that components share so
- * the whole site stays visually consistent.
+ * Centralized brand & theme configuration for Parjane Buildcon.
  */
 
 export const brand = {
-  name: "Atelier Meridian",
-  tagline: "Developers of considered architecture",
-  phone: "+91 98200 41100",
-  whatsapp: "919820041100",
-  email: "residences@ateliermeridian.com",
-  address: ["Meridian House, 12 Carmichael Road", "Mumbai 400026, India"],
-  hours: "Monday – Saturday · 10:00 – 19:00",
+  name: "Parjane Buildcon",
+  tagline: "Building Tomorrow's Landmarks Today",
+  phone: "+91 98220 12345",
+  whatsapp: "919822012345",
+  email: "contact@parjanebuildcon.com",
+  address: ["Parjane Heights, Main Avenue, FC Road", "Pune 411004, Maharashtra, India"],
+  hours: "Monday – Saturday · 09:30 – 19:00",
   socials: [
-    { label: "Instagram", href: "https://instagram.com" },
     { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Pinterest", href: "https://pinterest.com" },
+    { label: "Instagram", href: "https://instagram.com" },
+    { label: "Facebook", href: "https://facebook.com" },
+    { label: "YouTube", href: "https://youtube.com" },
   ],
 } as const;
 
 /** Shared layout rhythm */
 export const layout = {
-  container: "mx-auto w-full max-w-[1320px] px-6 sm:px-8 lg:px-12",
-  containerNarrow: "mx-auto w-full max-w-[860px] px-6 sm:px-8",
+  container: "mx-auto w-full max-w-[1340px] px-6 sm:px-8 lg:px-12",
+  containerNarrow: "mx-auto w-full max-w-[880px] px-6 sm:px-8",
   sectionY: "py-20 sm:py-28 lg:py-36",
   sectionYTight: "py-14 sm:py-20",
 } as const;
 
 /** Type scale used for headings across pages */
 export const type = {
-  hero: "font-display text-[clamp(3rem,8vw,6rem)] leading-[1.02] tracking-[-0.02em]",
-  h1: "font-display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.06]",
-  h2: "font-display text-[clamp(2rem,4vw,3.25rem)] leading-[1.1]",
-  h3: "font-display text-[clamp(1.5rem,2.4vw,2rem)] leading-[1.2]",
-  body: "text-[15px] leading-[1.85] font-light text-muted-foreground",
+  hero: "font-display font-extrabold text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.03em]",
+  h1: "font-display font-bold text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.08] tracking-[-0.02em]",
+  h2: "font-display font-bold text-[clamp(1.85rem,3.5vw,3rem)] leading-[1.12] tracking-[-0.02em]",
+  h3: "font-display font-semibold text-[clamp(1.35rem,2.2vw,1.85rem)] leading-[1.25]",
+  body: "text-[15px] sm:text-[16px] leading-[1.8] font-normal text-muted-foreground",
   eyebrow: "eyebrow",
 } as const;
 
 export const navLinks = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "About Us", to: "/about" },
   { label: "Projects", to: "/projects" },
   { label: "Amenities", to: "/amenities" },
   { label: "Gallery", to: "/gallery" },

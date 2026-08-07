@@ -8,11 +8,13 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Toaster } from "sonner";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { WhatsAppWidget } from "@/components/common/WhatsAppWidget";
 
 function NotFoundComponent() {
   return (
@@ -79,17 +81,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Atelier Meridian — Architect-led Luxury Development" },
+      { title: "Parjane Buildcon — Building Tomorrow's Landmarks Today" },
       {
         name: "description",
         content:
-          "An architect-led development practice building considered residences and workplaces since 1994.",
+          "Parjane Buildcon: Crafting premium residential and commercial developments with innovation, quality, and trust.",
       },
-      { name: "author", content: "Atelier Meridian" },
-      { property: "og:title", content: "Atelier Meridian" },
+      { name: "author", content: "Parjane Buildcon" },
+      { property: "og:title", content: "Parjane Buildcon — Building Tomorrow's Landmarks Today" },
       {
         property: "og:description",
-        content: "Architect-led luxury residences and workplaces. Est. 1994.",
+        content:
+          "Luxury residential, commercial, industrial and turnkey infrastructure developments.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -101,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@200;300;400;500&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap",
       },
     ],
   }),
@@ -136,7 +139,13 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppWidget />
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: { background: "#0f172a", color: "#ffffff", border: "1px solid #c8a96a" },
+        }}
+      />
     </QueryClientProvider>
   );
 }
-

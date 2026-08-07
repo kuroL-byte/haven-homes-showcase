@@ -1,31 +1,43 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { images, differentiators, stats, projects, testimonials, posts } from "@/data/content";
+import {
+  differentiators,
+  stats,
+  projects,
+  testimonials,
+  posts,
+  expertiseServices,
+  whyChooseUsPillars,
+  values,
+} from "@/data/content";
 import { brand, layout, type as typeScale } from "@/theme";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Container, Hairline, SectionWrapper } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ButtonLink } from "@/components/Button";
 import { StatCounter } from "@/components/StatCounter";
-import { LazyImage } from "@/components/LazyImage";
 import { ProjectCard } from "@/components/ProjectCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { BlogCard } from "@/components/BlogCard";
 import { Carousel } from "@/components/Carousel";
+import { ArchitecturalHero } from "@/components/common/ArchitecturalHero";
+import { ProcessTimeline } from "@/components/common/ProcessTimeline";
+import { AwardsSection } from "@/components/common/AwardsSection";
+import { ExpertiseCard } from "@/components/project/ExpertiseCard";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Atelier Meridian — Architect-led Luxury Residences" },
+      { title: "Parjane Buildcon — Building Tomorrow's Landmarks Today" },
       {
         name: "description",
         content:
-          "An architect-led development practice creating a small number of considered residences and workplaces in Mumbai, Pune and Lonavala.",
+          "Parjane Buildcon: Luxury real estate developer and construction pioneer across Maharashtra. Over 25 years of engineering excellence, quality, and trust.",
       },
-      { property: "og:title", content: "Atelier Meridian — Architect-led Luxury Residences" },
+      { property: "og:title", content: "Parjane Buildcon — Building Tomorrow's Landmarks Today" },
       {
         property: "og:description",
         content:
-          "Full-floor residences, garden courts and Grade-A workplaces. Thirty-two years of considered architecture.",
+          "High-rise residential towers, Grade-A commercial parks, turnkey infrastructure, and urban redevelopment.",
       },
     ],
   }),
@@ -35,83 +47,75 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative flex min-h-svh items-center overflow-hidden">
-        <LazyImage
-          src={images.hero}
-          alt="Meridian House at dusk, seen across its reflecting court"
-          priority
-          width={1920}
-          height={1200}
-          wrapperClassName="absolute inset-0"
-        />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/40 to-ink/45" />
+      {/* ── 1. HERO SECTION ───────────────────────────────────────── */}
+      <ArchitecturalHero />
 
-        <Container className="relative pt-32 pb-28">
-          <AnimatedSection className="max-w-4xl text-ivory">
-            <p className="eyebrow mb-8 text-bronze-soft">Est. 1994 · Mumbai</p>
-            <h1 className={typeScale.hero}>
-              Buildings that keep
-              <br />
-              their composure.
-            </h1>
-            <p className="mt-8 max-w-lg text-[15px] font-light leading-[1.9] text-ivory/75">
-              We design and build a small number of residences each decade — full-floor homes,
-              garden courts, and workplaces made from materials that improve with weather.
-            </p>
-            <div className="mt-12 flex flex-wrap items-center gap-4">
-              <ButtonLink to="/projects" variant="light" size="lg">
-                View the portfolio
-              </ButtonLink>
-              <ButtonLink to="/contact" variant="ghost" size="lg" className="text-ivory/80 hover:text-ivory">
-                Arrange a viewing →
-              </ButtonLink>
-            </div>
-          </AnimatedSection>
-        </Container>
-
-        {/* Scroll indicator */}
-        <a
-          href="#intro"
-          aria-label="Scroll to content"
-          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-ivory/60 transition-colors hover:text-ivory sm:flex"
-        >
-          <span className="text-[9px] uppercase tracking-[0.3em]">Scroll</span>
-          <span className="block h-14 w-px animate-pulse bg-ivory/40" />
-        </a>
-      </section>
-
-      {/* ── Intro / about teaser ─────────────────────────────── */}
-      <SectionWrapper id="intro">
-        <div className="grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
+      {/* ── 2. ABOUT PARJANE BUILDCON ─────────────────────────────── */}
+      <SectionWrapper id="about-section" className="bg-white">
+        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20 lg:items-center">
           <AnimatedSection>
-            <p className="eyebrow mb-6">Our legacy</p>
+            <p className="eyebrow mb-4">About Parjane Buildcon</p>
             <h2 className={typeScale.h2}>
-              Thirty-two years in one
-              <br className="hidden sm:block" /> discipline.
+              25 Years of Engineering Excellence &amp; Unshakeable Trust.
             </h2>
-            <div className="mt-8 flex items-baseline gap-5">
-              <span className="font-display text-7xl leading-none text-bronze">32</span>
-              <span className="max-w-[12rem] text-[11px] uppercase leading-relaxed tracking-[0.22em] text-muted-foreground">
-                Years designing and delivering under one roof
-              </span>
+            <p className="mt-6 text-base font-light leading-[1.85] text-slate-600">
+              Founded over two decades ago, {brand.name} has grown into one of Western India's most
+              respected construction and real estate developers. We combine architectural
+              innovation, structural integrity, and transparent execution across every residential
+              landmark and commercial tower we build.
+            </p>
+            <p className="mt-4 text-base font-light leading-[1.85] text-slate-600">
+              Our in-house team of structural engineers, architects, and project leaders ensures
+              that design vision translates into certified, long-lasting construction without
+              compromise.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <ButtonLink
+                to="/about"
+                variant="outline"
+                className="rounded-xl border-navy text-navy hover:bg-navy hover:text-white"
+              >
+                Read Our Story
+              </ButtonLink>
             </div>
           </AnimatedSection>
 
-          <AnimatedSection delay={120}>
-            <p className="text-[17px] font-light leading-[1.9]">
-              {brand.name} began as a two-person studio in a Fort warehouse. We still draw every
-              project ourselves, and we still build only what we have drawn.
-            </p>
-            <p className={`${typeScale.body} mt-6`}>
-              That continuity is unusual in this industry, and it is the whole proposition. Design
-              intent survives to the last handover because the people who set it are on site when
-              the stone is cut. We take on fewer commissions than we could, and we keep an estate
-              team on every building for a decade after the keys are handed over.
-            </p>
-            <ButtonLink to="/about" variant="outline" className="mt-10">
-              Our story
-            </ButtonLink>
+          {/* Mission, Vision & Values Cards */}
+          <AnimatedSection delay={140} className="space-y-4">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+              <span className="eyebrow text-gold font-bold">Our Mission</span>
+              <h3 className="mt-1 font-display text-xl font-bold text-navy">
+                Crafting Quality Landmarks
+              </h3>
+              <p className="mt-2 text-xs font-light text-slate-600">
+                To deliver world-class infrastructure and luxury residences through engineering
+                innovation, zero-defect execution, and transparent buyer practices.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+              <span className="eyebrow text-gold font-bold">Our Vision</span>
+              <h3 className="mt-1 font-display text-xl font-bold text-navy">
+                Defining Future Skylines
+              </h3>
+              <p className="mt-2 text-xs font-light text-slate-600">
+                To remain Western India's most trusted developer, recognized for sustainable green
+                construction, architectural timelessness, and customer delight.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-gold/40 bg-navy p-6 text-white shadow-xl">
+              <span className="eyebrow text-gold font-bold">Core Values</span>
+              <div className="mt-3 grid grid-cols-2 gap-3 text-xs font-medium">
+                {values.map((v) => (
+                  <div key={v.title} className="flex items-center gap-2">
+                    <span className="text-gold">✦</span>
+                    <span>{v.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </SectionWrapper>
@@ -120,52 +124,40 @@ function Home() {
         <Hairline />
       </Container>
 
-      {/* ── Why choose us ─────────────────────────────────────── */}
-      <SectionWrapper>
+      {/* ── 3. OUR EXPERTISE ───────────────────────────────────────── */}
+      <SectionWrapper className="bg-slate-50">
         <SectionHeading
-          eyebrow="Why Meridian"
-          title="Four things we refuse to compromise."
-          lede="Every project is measured against these before it is measured against a budget."
+          eyebrow="Capabilities"
+          title="Our Construction & Development Expertise"
+          lede="From ultra-luxury high-rise residences to turnkey industrial infrastructure, our engineering capabilities span 6 core domains."
         />
-        <div className="mt-16 grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {differentiators.map((item, i) => (
-            <AnimatedSection
-              key={item.title}
-              delay={i * 90}
-              className="group bg-background p-8 transition-colors duration-700 hover:bg-secondary lg:p-10"
-            >
-              <span className="font-display text-4xl text-bronze/40 transition-colors duration-700 group-hover:text-bronze">
-                0{i + 1}
-              </span>
-              <h3 className="mt-8 font-display text-2xl">{item.title}</h3>
-              <p className="mt-4 text-sm font-light leading-[1.85] text-muted-foreground">{item.body}</p>
-            </AnimatedSection>
+
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {expertiseServices.map((service, i) => (
+            <ExpertiseCard key={service.id} item={service} index={i} />
           ))}
         </div>
       </SectionWrapper>
 
-      {/* ── Stats band (dark) ─────────────────────────────────── */}
-      <SectionWrapper tone="dark" tight>
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s, i) => (
-            <AnimatedSection key={s.label} delay={i * 100}>
-              <StatCounter value={s.value} suffix={s.suffix} label={s.label} decimals={s.decimals ?? 0} />
-            </AnimatedSection>
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* ── Featured projects ─────────────────────────────────── */}
-      <SectionWrapper>
+      {/* ── 4. FEATURED PROJECTS ──────────────────────────────────── */}
+      <SectionWrapper className="bg-white">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Featured residences" title="Currently in build and recently delivered." />
+          <SectionHeading
+            eyebrow="Portfolio"
+            title="Featured Landmarks & Developments"
+            lede="Explore our current active construction sites and recently handed over luxury residences."
+          />
           <AnimatedSection delay={100}>
-            <Link to="/projects" className="link-underline text-[11px] uppercase tracking-[0.24em]">
-              All projects
+            <Link
+              to="/projects"
+              className="link-underline text-xs uppercase tracking-[0.2em] font-semibold text-navy"
+            >
+              View All Projects →
             </Link>
           </AnimatedSection>
         </div>
-        <div className="mt-16 grid gap-x-8 gap-y-16 md:grid-cols-2">
+
+        <div className="mt-16 grid gap-10 md:grid-cols-2">
           {projects.slice(0, 4).map((p, i) => (
             <AnimatedSection key={p.slug} delay={(i % 2) * 100} variant="scale">
               <ProjectCard project={p} index={i} />
@@ -174,60 +166,133 @@ function Home() {
         </div>
       </SectionWrapper>
 
-      {/* ── Testimonials preview ──────────────────────────────── */}
-      <SectionWrapper tone="dark">
-        <SectionHeading eyebrow="In their words" title="Owners, four years on." />
-        <div className="mt-16">
-          <Carousel
-            perView={2}
-            controlsTone="light"
-            slides={testimonials.slice(0, 4).map((t) => (
-              <TestimonialCard key={t.name} testimonial={t} className="h-full" />
-            ))}
-          />
-        </div>
-        <AnimatedSection className="mt-12">
-          <Link to="/testimonials" className="link-underline text-[11px] uppercase tracking-[0.24em]">
-            Read all testimonials
-          </Link>
-        </AnimatedSection>
-      </SectionWrapper>
+      {/* ── 5. WHY CHOOSE US ───────────────────────────────────────── */}
+      <SectionWrapper className="bg-slate-50">
+        <SectionHeading
+          eyebrow="The Parjane Advantage"
+          title="Why Leading Buyers & Corporate Clients Choose Us"
+          lede="Every Parjane development is built on six foundational promises."
+        />
 
-      {/* ── Insights ──────────────────────────────────────────── */}
-      <SectionWrapper>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Insights" title="Notes from the studio." />
-          <AnimatedSection delay={100}>
-            <Link to="/blog" className="link-underline text-[11px] uppercase tracking-[0.24em]">
-              All insights
-            </Link>
-          </AnimatedSection>
-        </div>
-        <div className="mt-16 grid gap-10 md:grid-cols-3">
-          {posts.slice(0, 3).map((post, i) => (
-            <AnimatedSection key={post.slug} delay={i * 100}>
-              <BlogCard post={post} />
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {whyChooseUsPillars.map((pillar, i) => (
+            <AnimatedSection
+              key={pillar.title}
+              delay={i * 80}
+              className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold hover:shadow-xl"
+            >
+              <span className="grid size-12 place-items-center rounded-2xl bg-navy/5 text-2xl transition-transform group-hover:scale-110 group-hover:bg-gold group-hover:text-navy">
+                {pillar.icon}
+              </span>
+              <h3 className="mt-6 font-display text-xl font-bold text-navy group-hover:text-gold transition-colors">
+                {pillar.title}
+              </h3>
+              <p className="mt-3 text-sm font-light leading-relaxed text-slate-600">
+                {pillar.body}
+              </p>
             </AnimatedSection>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* ── CTA strip ─────────────────────────────────────────── */}
-      <section className={`${layout.sectionYTight} bg-secondary`}>
-        <Container>
-          <AnimatedSection className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-            <div className="max-w-xl">
-              <p className="eyebrow mb-4">Private viewings</p>
-              <h2 className="font-display text-[clamp(1.75rem,3vw,2.75rem)] leading-tight">
-                Visit a residence with the architect who drew it.
-              </h2>
+      {/* ── 6. COMPANY NUMBERS (ANIMATED STATS COUNTER) ──────────── */}
+      <SectionWrapper tone="dark" tight className="relative overflow-hidden">
+        {/* Background blueprint pattern */}
+        <div className="absolute inset-0 bg-blueprint opacity-10 pointer-events-none" />
+
+        <div className="relative z-10 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((s, i) => (
+            <AnimatedSection key={s.label} delay={i * 100}>
+              <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
+            </AnimatedSection>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      {/* ── 7. CONSTRUCTION PROCESS TIMELINE ──────────────────────── */}
+      <SectionWrapper className="bg-white">
+        <SectionHeading
+          eyebrow="Methodology"
+          title="Our Construction Process &amp; Handover Timeline"
+          lede="From initial planning to key handover, explore how we execute projects with precision."
+        />
+
+        <div className="mt-16">
+          <ProcessTimeline />
+        </div>
+      </SectionWrapper>
+
+      {/* ── 8. TESTIMONIALS ───────────────────────────────────────── */}
+      <SectionWrapper tone="dark">
+        <SectionHeading
+          eyebrow="Testimonials"
+          title="What Our Clients &amp; Owners Say"
+          lede="Unedited words from residents and commercial partners across our portfolio."
+        />
+        <div className="mt-16">
+          <Carousel
+            perView={2}
+            controlsTone="light"
+            slides={testimonials.map((t) => (
+              <TestimonialCard key={t.name} testimonial={t} className="h-full" />
+            ))}
+          />
+        </div>
+      </SectionWrapper>
+
+      {/* ── 9. AWARDS & CERTIFICATIONS ────────────────────────────── */}
+      <SectionWrapper className="bg-slate-50">
+        <SectionHeading
+          eyebrow="Recognition"
+          title="Awards &amp; Certifications"
+          lede="Certified by industry regulatory bodies for quality management, green construction, and engineering safety."
+        />
+
+        <div className="mt-12">
+          <AwardsSection />
+        </div>
+      </SectionWrapper>
+
+      {/* ── 10. CALL TO ACTION ─────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-navy py-24 text-white">
+        {/* Background graphic glow */}
+        <div className="absolute top-0 right-0 size-96 rounded-full bg-gold/10 blur-[120px]" />
+
+        <Container className="relative z-10 text-center">
+          <AnimatedSection className="mx-auto max-w-3xl">
+            <span className="eyebrow text-gold font-bold">Start Your Journey</span>
+            <h2 className="mt-4 font-display text-[clamp(2.25rem,4vw,3.75rem)] font-extrabold leading-tight text-white">
+              Let's Build Something <br />
+              <span className="text-gold">Extraordinary Together.</span>
+            </h2>
+            <p className="mt-6 text-base sm:text-lg font-light text-slate-300">
+              Schedule a private site visit with our senior engineering team or request our complete
+              project specification kit.
+            </p>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <ButtonLink
+                to="/contact"
+                variant="solid"
+                size="lg"
+                className="rounded-2xl bg-gold text-navy font-bold hover:bg-gold-light hover:scale-105 transition-all shadow-xl"
+              >
+                Schedule Private Viewing
+              </ButtonLink>
+              <ButtonLink
+                to="/projects"
+                variant="light"
+                size="lg"
+                className="rounded-2xl border-white/30 text-white hover:border-gold hover:bg-white/10"
+              >
+                Explore Portfolio
+              </ButtonLink>
             </div>
-            <ButtonLink to="/contact" size="lg">
-              Arrange a viewing
-            </ButtonLink>
           </AnimatedSection>
         </Container>
       </section>
+
+      {/* ── 11. FOOTER IS MOUNTED IN ROOT LAYOUT ─────────────────── */}
     </>
   );
 }
