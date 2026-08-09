@@ -1,11 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-/**
- * Interactive WebGL 3D Architectural Scene for Parjane Buildcon Hero.
- * Renders a 3D building skyscraper wireframe structure with floating gold ambient particles
- * and reactive mouse tilt movement.
- */
 export function Hero3DCanvas() {
   const mountRef = useRef<HTMLDivElement>(null);
 

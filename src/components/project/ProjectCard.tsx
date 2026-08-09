@@ -51,29 +51,29 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             <h3 className="font-display text-2xl font-bold text-navy group-hover:text-gold transition-colors">
               {project.name}
             </h3>
-            <p className="mt-1 text-xs uppercase tracking-[0.18em] font-medium text-slate-500">
+            <p className="mt-1 text-xs uppercase tracking-[0.18em] font-semibold text-slate-700">
               📍 {project.location}
             </p>
           </div>
         </div>
 
-        <p className="mt-4 text-sm font-light leading-relaxed text-slate-600 line-clamp-2">
+        <p className="mt-4 text-sm font-normal leading-relaxed text-slate-700 line-clamp-2">
           {project.summary}
         </p>
 
         {/* Project Key Metrics Row */}
-        <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-xs">
+        <div className="mt-6 flex items-center justify-between border-t border-slate-200 pt-4 text-xs">
           <div>
-            <span className="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold">
+            <span className="block text-[10px] uppercase tracking-wider text-slate-600 font-bold">
               Area
             </span>
-            <span className="font-display font-bold text-navy">{project.area}</span>
+            <span className="font-display font-bold text-navy text-sm">{project.area}</span>
           </div>
           <div className="text-right">
-            <span className="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold">
+            <span className="block text-[10px] uppercase tracking-wider text-slate-600 font-bold">
               Completion
             </span>
-            <span className="font-display font-bold text-gold">{project.completion}</span>
+            <span className="font-display font-extrabold text-gold text-sm">{project.completion}</span>
           </div>
         </div>
 

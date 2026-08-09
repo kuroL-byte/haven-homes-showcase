@@ -1,29 +1,28 @@
-/** Static site content for Parjane Buildcon. */
-
-import hero from "@/assets/parjane_hero_landmark.png";
-import project1 from "@/assets/parjane_drone_township.png";
-import project2 from "@/assets/parjane_commercial_tower.png";
-import project3 from "@/assets/project-3.jpg";
-import interior1 from "@/assets/parjane_luxury_lobby.png";
-import pool from "@/assets/amenity-pool.jpg";
-import gym from "@/assets/amenity-gym.jpg";
-import garden from "@/assets/amenity-garden.jpg";
-import clubhouse from "@/assets/amenity-clubhouse.jpg";
-import construction from "@/assets/construction.jpg";
-import blueprintTexture from "@/assets/parjane_blueprint_texture.png";
+import hero3d from "@/assets/parjane_hero_landmark_3d.png";
+import commercial3d from "@/assets/parjane_commercial_tower_3d.png";
+import droneTownship3d from "@/assets/parjane_drone_township_3d.png";
+import crestVillas3d from "@/assets/parjane_crest_villas_3d.png";
+import pool3d from "@/assets/amenity_pool_3d.png";
+import gym3d from "@/assets/amenity_gym_3d.png";
+import horizon3d from "@/assets/parjane_horizon_3d.png";
+import bayfront3d from "@/assets/parjane_bayfront_3d.png";
+import grandeur3d from "@/assets/parjane_grandeur_3d.png";
 
 export const images = {
-  hero,
-  project1,
-  project2,
-  project3,
-  interior1,
-  pool,
-  gym,
-  garden,
-  clubhouse,
-  construction,
-  blueprintTexture,
+  hero: hero3d,
+  project1: droneTownship3d,
+  project2: commercial3d,
+  project3: crestVillas3d,
+  interior1: hero3d,
+  pool: pool3d,
+  gym: gym3d,
+  garden: droneTownship3d,
+  clubhouse: grandeur3d,
+  construction: horizon3d,
+  blueprintTexture: hero3d,
+  horizon: horizon3d,
+  bayfront: bayfront3d,
+  grandeur: grandeur3d,
 };
 
 export type ProjectStatus = "Ongoing" | "Upcoming" | "Completed";
@@ -47,6 +46,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  // ── ONGOING PROJECTS ─────────────────────────────────────────
   {
     slug: "parjane-heights",
     name: "Parjane Heights",
@@ -118,6 +118,102 @@ export const projects: Project[] = [
     mapQuery: "Bandra Kurla Complex, Mumbai",
   },
   {
+    slug: "parjane-horizon-residences",
+    name: "Parjane Horizon Twin Towers",
+    location: "Kharadi, Pune",
+    status: "Ongoing",
+    type: "Residential",
+    area: "2,400 – 3,800 sq. ft.",
+    completion: "Q3 2027",
+    image: images.horizon,
+    summary:
+      "Iconic high-rise twin towers connected by a skybridge lounge, offering 3 & 4 BHK smart tech residences.",
+    overview: [
+      "Located in Pune's booming East corridor, Parjane Horizon blends futuristic architectural lines with elevated skybridge amenities.",
+      "Features central air filtration, smart home IoT hubs, rooftop infinity pool, and acoustic double glazing.",
+    ],
+    specs: [
+      { label: "Typology", value: "Smart Tech Twin Towers" },
+      { label: "Configuration", value: "3 & 4 BHK Luxury Suites" },
+      { label: "Floors", value: "G + 32 Floors" },
+      { label: "Skybridge Level", value: "24th Floor Sky Lounge" },
+      { label: "RERA Registration", value: "P52100088990" },
+    ],
+    amenities: [
+      "24th Floor Skybridge lounge",
+      "Automated smart home access",
+      "Rooftop infinity pool",
+      "Olympic size swimming pool",
+      "Squash & badminton courts",
+    ],
+    gallery: [images.horizon, images.pool, images.gym, images.interior1],
+    mapQuery: "Kharadi, Pune, Maharashtra",
+  },
+
+  // ── UPCOMING PROJECTS ─────────────────────────────────────────
+  {
+    slug: "parjane-crest-villas",
+    name: "Parjane Crest Estate",
+    location: "Lonavala Hills",
+    status: "Upcoming",
+    type: "Residential",
+    area: "6,500 – 10,000 sq. ft.",
+    completion: "Q1 2028",
+    image: images.project3,
+    summary:
+      "Sixteen hill-crest luxury villas with private infinity pools overlooking the Sahyadri valley.",
+    overview: [
+      "Nestled along the ridge of Lonavala, Parjane Crest offers exclusive hilltop villas crafted with local basalt stone and floor-to-ceiling glass.",
+    ],
+    specs: [
+      { label: "Typology", value: "Hillside Luxury Villas" },
+      { label: "Plot Size", value: "0.5 – 1.2 Acres" },
+      { label: "Built-up Area", value: "6,500 – 10,000 sq. ft." },
+      { label: "Status", value: "Pre-launch Registrations" },
+      { label: "RERA Registration", value: "Application in Process" },
+    ],
+    amenities: [
+      "Private infinity pool",
+      "Private organic garden",
+      "Valley view clubhouse",
+      "24/7 estate concierge",
+      "Solar powered grid",
+    ],
+    gallery: [images.project3, images.pool, images.garden, images.interior1],
+    mapQuery: "Lonavala, Maharashtra",
+  },
+  {
+    slug: "parjane-bayfront-tower",
+    name: "Parjane Bayfront Supertall",
+    location: "Worli Sea Face, Mumbai",
+    status: "Upcoming",
+    type: "Residential",
+    area: "5,200 – 8,900 sq. ft.",
+    completion: "Q2 2028",
+    image: images.bayfront,
+    summary:
+      "Super-luxury coastal skyscraper featuring private marina access, helipad, and unobstructed Arabian Sea views.",
+    overview: [
+      "A flagship coastal architecture icon rising above Worli Sea Face with aerodynamic curved glass balconies and private elevator foyers.",
+    ],
+    specs: [
+      { label: "Typology", value: "Supertall Seafront Tower" },
+      { label: "Floors", value: "G + 55 Floors" },
+      { label: "Private Marina", value: "Exclusive Resident Access" },
+      { label: "RERA Registration", value: "P51900011223 (Pre-launch)" },
+    ],
+    amenities: [
+      "Private yacht marina dock",
+      "Rooftop helipad & lounge",
+      "Indoor heated lap pool",
+      "Private wine cellar & cigar lounge",
+    ],
+    gallery: [images.bayfront, images.pool, images.interior1, images.clubhouse],
+    mapQuery: "Worli Sea Face, Mumbai",
+  },
+
+  // ── COMPLETED PROJECTS ─────────────────────────────────────────
+  {
     slug: "the-parjane-sanctuary",
     name: "The Parjane Sanctuary",
     location: "Koregaon Park, Pune",
@@ -152,35 +248,32 @@ export const projects: Project[] = [
     mapQuery: "Koregaon Park, Pune",
   },
   {
-    slug: "parjane-crest-villas",
-    name: "Parjane Crest Estate",
-    location: "Lonavala Hills",
-    status: "Upcoming",
+    slug: "parjane-grandeur-residences",
+    name: "Parjane Grandeur",
+    location: "Kalyani Nagar, Pune",
+    status: "Completed",
     type: "Residential",
-    area: "6,500 – 10,000 sq. ft.",
-    completion: "Q1 2028",
-    image: images.project3,
+    area: "3,800 – 5,600 sq. ft.",
+    completion: "Delivered 2023",
+    image: images.grandeur,
     summary:
-      "Sixteen hill-crest luxury villas with private infinity pools overlooking the Sahyadri valley.",
+      "Award-winning luxury residential tower featuring illuminated ground water fountains and private clubhouse.",
     overview: [
-      "Nestled along the ridge of Lonavala, Parjane Crest offers exclusive hilltop villas crafted with local basalt stone and floor-to-ceiling glass.",
+      "Handed over in 2023, Parjane Grandeur stands as a testament to timely delivery and 100% snag-free handover.",
     ],
     specs: [
-      { label: "Typology", value: "Hillside Luxury Villas" },
-      { label: "Plot Size", value: "0.5 – 1.2 Acres" },
-      { label: "Built-up Area", value: "6,500 – 10,000 sq. ft." },
-      { label: "Status", value: "Pre-launch Registrations" },
-      { label: "RERA Registration", value: "Application in Process" },
+      { label: "Typology", value: "High-Rise Luxury Tower" },
+      { label: "Handover", value: "Delivered Nov 2023" },
+      { label: "RERA Registration", value: "P52100033445" },
     ],
     amenities: [
-      "Private infinity pool",
-      "Private organic garden",
-      "Valley view clubhouse",
-      "24/7 estate concierge",
-      "Solar powered grid",
+      "Illuminated grand water plaza",
+      "Resident banquet lounge",
+      "State-of-the-art gym",
+      "EV charging bays",
     ],
-    gallery: [images.project3, images.pool, images.garden, images.interior1],
-    mapQuery: "Lonavala, Maharashtra",
+    gallery: [images.grandeur, images.gym, images.pool, images.interior1],
+    mapQuery: "Kalyani Nagar, Pune",
   },
 ];
 

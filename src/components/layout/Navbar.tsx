@@ -54,7 +54,7 @@ export function Navbar() {
             <span className="block font-display text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-gold transition-colors">
               PARJANE <span className="font-light text-gold">BUILDCON</span>
             </span>
-            <span className="mt-0.5 block text-[9px] uppercase tracking-[0.3em] text-slate-300">
+            <span className="mt-0.5 block text-[9px] uppercase tracking-[0.3em] font-medium text-slate-200">
               Building Tomorrow's Landmarks
             </span>
           </div>
@@ -66,8 +66,8 @@ export function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              className="link-reveal text-xs uppercase tracking-[0.2em] font-medium text-slate-200 opacity-90 transition-colors hover:opacity-100 hover:text-gold"
-              activeProps={{ className: "opacity-100 text-gold font-semibold" }}
+              className="link-reveal text-xs uppercase tracking-[0.2em] font-bold text-white transition-colors hover:text-gold"
+              activeProps={{ className: "text-gold font-extrabold" }}
               activeOptions={{ exact: link.to === "/" }}
             >
               {link.label}

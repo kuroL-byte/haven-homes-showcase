@@ -27,14 +27,14 @@ export function PageHero({
       />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/45 to-ink/25"
+        className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/70 to-navy/40"
       />
-      <Container className="relative">
-        <AnimatedSection className="max-w-3xl text-ivory">
-          <p className="eyebrow mb-5 text-bronze-soft">{eyebrow}</p>
-          <h1 className={typeScale.h1}>{title}</h1>
+      <Container className="relative z-10">
+        <AnimatedSection className="max-w-3xl text-white">
+          <p className="eyebrow mb-4 text-gold-light font-bold text-xs uppercase tracking-[0.25em]">{eyebrow}</p>
+          <h1 className="font-display font-extrabold text-white text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.08] tracking-[-0.02em]">{title}</h1>
           {lede && (
-            <p className="mt-6 max-w-xl text-[15px] font-light leading-[1.85] text-ivory/75">
+            <p className="mt-6 max-w-xl text-base font-normal leading-[1.8] text-slate-200">
               {lede}
             </p>
           )}

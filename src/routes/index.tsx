@@ -58,13 +58,13 @@ function Home() {
             <h2 className={typeScale.h2}>
               25 Years of Engineering Excellence &amp; Unshakeable Trust.
             </h2>
-            <p className="mt-6 text-base font-light leading-[1.85] text-slate-600">
+            <p className="mt-6 text-base font-normal leading-[1.85] text-slate-700">
               Founded over two decades ago, {brand.name} has grown into one of Western India's most
               respected construction and real estate developers. We combine architectural
               innovation, structural integrity, and transparent execution across every residential
               landmark and commercial tower we build.
             </p>
-            <p className="mt-4 text-base font-light leading-[1.85] text-slate-600">
+            <p className="mt-4 text-base font-normal leading-[1.85] text-slate-700">
               Our in-house team of structural engineers, architects, and project leaders ensures
               that design vision translates into certified, long-lasting construction without
               compromise.
@@ -88,7 +88,7 @@ function Home() {
               <h3 className="mt-1 font-display text-xl font-bold text-navy">
                 Crafting Quality Landmarks
               </h3>
-              <p className="mt-2 text-xs font-light text-slate-600">
+              <p className="mt-2 text-xs font-normal text-slate-700">
                 To deliver world-class infrastructure and luxury residences through engineering
                 innovation, zero-defect execution, and transparent buyer practices.
               </p>
@@ -99,7 +99,7 @@ function Home() {
               <h3 className="mt-1 font-display text-xl font-bold text-navy">
                 Defining Future Skylines
               </h3>
-              <p className="mt-2 text-xs font-light text-slate-600">
+              <p className="mt-2 text-xs font-normal text-slate-700">
                 To remain Western India's most trusted developer, recognized for sustainable green
                 construction, architectural timelessness, and customer delight.
               </p>
@@ -187,7 +187,7 @@ function Home() {
               <h3 className="mt-6 font-display text-xl font-bold text-navy group-hover:text-gold transition-colors">
                 {pillar.title}
               </h3>
-              <p className="mt-3 text-sm font-light leading-relaxed text-slate-600">
+              <p className="mt-3 text-sm font-normal leading-relaxed text-slate-700">
                 {pillar.body}
               </p>
             </AnimatedSection>

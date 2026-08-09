@@ -28,11 +28,11 @@ export const layout = {
 
 /** Type scale used for headings across pages */
 export const type = {
-  hero: "font-display font-extrabold text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.03em]",
-  h1: "font-display font-bold text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.08] tracking-[-0.02em]",
-  h2: "font-display font-bold text-[clamp(1.85rem,3.5vw,3rem)] leading-[1.12] tracking-[-0.02em]",
-  h3: "font-display font-semibold text-[clamp(1.35rem,2.2vw,1.85rem)] leading-[1.25]",
-  body: "text-[15px] sm:text-[16px] leading-[1.8] font-normal text-muted-foreground",
+  hero: "font-display font-extrabold text-[clamp(2.75rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.03em] text-navy",
+  h1: "font-display font-bold text-[clamp(2.25rem,4.5vw,4rem)] leading-[1.08] tracking-[-0.02em] text-navy",
+  h2: "font-display font-bold text-[clamp(1.85rem,3.5vw,3rem)] leading-[1.12] tracking-[-0.02em] text-navy",
+  h3: "font-display font-semibold text-[clamp(1.35rem,2.2vw,1.85rem)] leading-[1.25] text-navy",
+  body: "text-[15px] sm:text-[16px] leading-[1.8] font-normal text-slate-600",
   eyebrow: "eyebrow",
 } as const;
 
