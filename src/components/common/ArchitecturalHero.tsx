@@ -12,7 +12,7 @@ export function ArchitecturalHero() {
   }, []);
 
   return (
-    <section className="relative w-full h-svh min-h-screen overflow-hidden bg-[#181d24]">
+    <section className="relative w-full h-[100dvh] min-h-[500px] overflow-hidden bg-[#181d24]">
       <video
         ref={videoRef}
         autoPlay
@@ -22,12 +22,8 @@ export function ArchitecturalHero() {
         className="absolute inset-0 h-full w-full object-cover"
       >
         <source src="/sample.mp4" type="video/mp4" />
-        <source src="/hero-video.mp4" type="video/mp4" />
         Your browser does not support HTML5 video.
       </video>
     </section>
   );
 }
-
-
-

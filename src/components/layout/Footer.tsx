@@ -21,7 +21,7 @@ export function Footer() {
   return (
     <footer className="section-dark bg-navy border-t border-gold/20 text-white">
       <div className={layout.container}>
-        <div className="grid gap-14 py-20 sm:py-24 lg:grid-cols-[1.3fr_1fr_1fr_1.4fr] lg:gap-10">
+        <div className="grid gap-10 py-12 sm:py-20 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.4fr] lg:gap-10">
           {/* Brand Column */}
           <div className="max-w-sm">
             <div className="flex items-center gap-3">

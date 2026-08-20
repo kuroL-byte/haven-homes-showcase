@@ -15,7 +15,7 @@ export function EnquiryForm({
   const [loading, setLoading] = useState(false);
 
   const field =
-    "h-12 w-full border border-input bg-transparent px-4 text-sm font-light outline-none transition-colors duration-500 placeholder:text-muted-foreground focus:border-bronze";
+    "h-12 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-navy font-normal outline-none transition-colors duration-300 placeholder:text-slate-400 focus:border-gold focus:ring-1 focus:ring-gold";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,17 +29,17 @@ export function EnquiryForm({
 
   if (sent) {
     return (
-      <div className="border border-border p-10 text-center">
-        <p className="eyebrow">Received</p>
-        <p className="mt-4 font-display text-2xl">Thank you for writing.</p>
-        <p className="mt-3 text-sm font-light text-muted-foreground">
-          A member of the residences team will respond within one working day.
+      <div className="rounded-3xl border border-gold/40 bg-white p-10 text-center shadow-md">
+        <p className="eyebrow text-gold font-bold">Received</p>
+        <p className="mt-4 font-display text-2xl font-bold text-navy">Thank you for writing.</p>
+        <p className="mt-3 text-sm font-normal text-slate-600">
+          A member of the Parjane Buildcon team will respond within 2 hours.
         </p>
         <Button
           type="button"
-          variant="outline"
+          variant="solid"
           size="sm"
-          className="mt-6"
+          className="mt-6 rounded-xl bg-gold text-navy font-bold"
           onClick={() => setSent(false)}
         >
           Send another enquiry
@@ -52,13 +52,13 @@ export function EnquiryForm({
     <form className="space-y-4" onSubmit={handleSubmit}>
       <div className={compact ? "space-y-4" : "grid gap-4 sm:grid-cols-2"}>
         <div>
-          <label htmlFor="ef-name" className="eyebrow">
+          <label htmlFor="ef-name" className="eyebrow text-gold font-bold">
             Name
           </label>
           <input id="ef-name" required className={`${field} mt-2`} placeholder="Full name" />
         </div>
         <div>
-          <label htmlFor="ef-email" className="eyebrow">
+          <label htmlFor="ef-email" className="eyebrow text-gold font-bold">
             Email
           </label>
           <input
@@ -70,7 +70,7 @@ export function EnquiryForm({
           />
         </div>
         <div>
-          <label htmlFor="ef-phone" className="eyebrow">
+          <label htmlFor="ef-phone" className="eyebrow text-gold font-bold">
             Phone
           </label>
           <input
@@ -81,7 +81,7 @@ export function EnquiryForm({
           />
         </div>
         <div>
-          <label htmlFor="ef-project" className="eyebrow">
+          <label htmlFor="ef-project" className="eyebrow text-gold font-bold">
             Project interest
           </label>
           <select id="ef-project" defaultValue={defaultProject ?? ""} className={`${field} mt-2`}>
@@ -97,13 +97,13 @@ export function EnquiryForm({
       </div>
 
       <div>
-        <label htmlFor="ef-message" className="eyebrow">
+        <label htmlFor="ef-message" className="eyebrow text-gold font-bold">
           Message
         </label>
         <textarea
           id="ef-message"
           rows={5}
-          className="mt-2 w-full border border-input bg-transparent p-4 text-sm font-light outline-none transition-colors duration-500 placeholder:text-muted-foreground focus:border-bronze"
+          className="mt-2 w-full rounded-2xl border border-slate-200 bg-white p-4 text-sm font-normal text-navy outline-none transition-colors duration-300 placeholder:text-slate-400 focus:border-gold focus:ring-1 focus:ring-gold"
           placeholder="Tell us what you are looking for."
         />
       </div>

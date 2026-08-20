@@ -41,7 +41,7 @@ export function Modal({
       <button
         aria-label="Close"
         onClick={onClose}
-        className="absolute inset-0 animate-[fade-in_0.4s_ease-out] bg-ink/92 backdrop-blur-sm"
+        className="absolute inset-0 animate-[fade-in_0.4s_ease-out] bg-navy/92 backdrop-blur-md"
       />
       <div
         className={cn("relative z-10 w-full max-w-5xl animate-[scale-in_0.4s_ease-out]", className)}
@@ -49,7 +49,7 @@ export function Modal({
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute -top-12 right-0 cursor-pointer text-[11px] uppercase tracking-[0.24em] text-ivory/70 transition-colors hover:text-ivory"
+          className="absolute -top-10 right-0 cursor-pointer rounded-full bg-navy/80 border border-gold/40 px-4 py-1 text-[11px] font-bold uppercase tracking-[0.24em] text-gold transition-all hover:bg-gold hover:text-navy shadow-lg"
         >
           Close ✕
         </button>

@@ -19,9 +19,9 @@ export function Accordion({ items, className }: { items: AccordionItem[]; classN
             <button
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-6 py-7 text-left transition-colors duration-500 hover:text-bronze"
+              className="flex w-full items-center justify-between gap-6 py-7 text-left transition-colors duration-300 hover:text-gold text-navy cursor-pointer"
             >
-              <span className="font-display text-xl leading-snug">{item.title}</span>
+              <span className="font-display text-xl font-bold leading-snug">{item.title}</span>
               <span
                 aria-hidden
                 className={cn(

@@ -93,12 +93,12 @@ export function Carousel({
               aria-label={`Go to slide ${i + 1}`}
               aria-current={i === index}
               className={cn(
-                "h-px w-10 transition-all duration-500 cursor-pointer",
+                "h-1 rounded-full transition-all duration-500 cursor-pointer",
                 i === index
-                  ? "bg-bronze"
+                  ? "w-10 bg-gold"
                   : light
-                    ? "bg-ivory/30 hover:bg-ivory/60"
-                    : "bg-border hover:bg-bronze/50",
+                    ? "w-6 bg-white/30 hover:bg-white/60"
+                    : "w-6 bg-slate-300 hover:bg-gold/50",
               )}
             />
           ))}
@@ -111,13 +111,13 @@ export function Carousel({
               onClick={() => go(dir === "prev" ? index - 1 : index + 1)}
               aria-label={dir === "prev" ? "Previous slide" : "Next slide"}
               className={cn(
-                "grid size-11 place-items-center border transition-all duration-500 cursor-pointer",
+                "grid size-11 place-items-center rounded-xl border transition-all duration-300 cursor-pointer shadow-sm",
                 light
-                  ? "border-ivory/25 text-ivory hover:border-ivory hover:bg-ivory hover:text-ink"
-                  : "border-border text-foreground hover:border-bronze hover:text-bronze",
+                  ? "border-white/20 text-white hover:border-gold hover:bg-gold hover:text-navy"
+                  : "border-slate-200 text-navy hover:border-gold hover:bg-gold hover:text-navy",
               )}
             >
-              <span aria-hidden className="text-sm">
+              <span aria-hidden className="text-base font-bold">
                 {dir === "prev" ? "←" : "→"}
               </span>
             </button>

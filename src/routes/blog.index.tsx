@@ -41,13 +41,13 @@ function BlogIndex() {
       />
 
       <SectionWrapper className="bg-slate-50">
-        <div className="flex flex-wrap gap-x-3 gap-y-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div className="flex flex-wrap gap-2 rounded-2xl border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
           {categories.map((c) => (
             <button
               key={c}
               onClick={() => setCategory(c)}
               className={cn(
-                "rounded-xl border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer",
+                "rounded-xl border px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer",
                 category === c
                   ? "border-gold bg-gold text-navy shadow-md"
                   : "border-transparent text-slate-600 hover:border-gold/50 hover:text-navy",
@@ -58,7 +58,7 @@ function BlogIndex() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((post, i) => (
             <AnimatedSection key={post.slug} delay={(i % 3) * 90}>
               <BlogCard post={post} />

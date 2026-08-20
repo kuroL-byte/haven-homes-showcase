@@ -60,10 +60,43 @@ const defaultPlans: PlanVariant[] = [
 ];
 
 const samplePlansMap: Record<string, PlanVariant[]> = {
-  "Meridian House": defaultPlans,
-  "The Stone Court": defaultPlans,
-  "Meridian Exchange": defaultPlans,
-  "The Ridge Villas": defaultPlans,
+  "Parjane Heights": defaultPlans,
+  "Parjane One Corporate Tower": [
+    {
+      title: "Full Floor Corporate Office",
+      type: "Grade-A Office Plate",
+      carpetArea: "28,000 sq. ft.",
+      balconyArea: "1,200 sq. ft. executive breakout terrace",
+      exposure: "North & East BKC skyline view",
+      description:
+        "Column-free floor plate with 4.2m clear height, central HVAC, and 8 high-speed smart elevators.",
+      specs: [
+        { label: "Executive Bay", value: "Corner MD suites with private washrooms" },
+        { label: "Conference Room", value: "30-seat board room provision" },
+        { label: "Power Capacity", value: "100% 1:1 DG power backup" },
+        { label: "Parking Slots", value: "24 dedicated basement EV slots" },
+      ],
+    },
+    {
+      title: "Duplex Headquarters Unit",
+      type: "Executive Office Suite",
+      carpetArea: "18,500 sq. ft.",
+      balconyArea: "850 sq. ft. sky terrace",
+      exposure: "360° Financial District View",
+      description:
+        "Interconnected internal stairs, double-height reception lobby, and private CEO lounge.",
+      specs: [
+        { label: "Lobby Height", value: "24 ft. grand internal atrium" },
+        { label: "FACADE", value: "Acoustic low-E double glass" },
+        { label: "Green Cert", value: "LEED Platinum targeted" },
+      ],
+    },
+  ],
+  "Parjane Horizon Twin Towers": defaultPlans,
+  "Parjane Crest Estate": defaultPlans,
+  "Parjane Bayfront Supertall": defaultPlans,
+  "The Parjane Sanctuary": defaultPlans,
+  "Parjane Grandeur": defaultPlans,
 };
 
 export function FloorPlanViewer({ projectName }: { projectName: string }) {
@@ -72,11 +105,13 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
   const current: PlanVariant = (plans[activeIdx] ?? plans[0] ?? defaultPlans[0]) as PlanVariant;
 
   return (
-    <div className="border border-border bg-card p-6 sm:p-10">
+    <div className="border border-slate-200 rounded-3xl bg-white p-6 sm:p-10 shadow-sm">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="eyebrow">Architectural Layouts</p>
-          <h3 className="font-display text-2xl sm:text-3xl">Interactive Floor Plans</h3>
+          <p className="eyebrow text-gold font-bold">Architectural Layouts</p>
+          <h3 className="font-display text-2xl sm:text-3xl font-bold text-navy">
+            Interactive Floor Plans
+          </h3>
         </div>
 
         {/* Tab Selector */}
@@ -86,10 +121,10 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
               key={p.title}
               onClick={() => setActiveIdx(i)}
               className={cn(
-                "border px-4 py-2 text-[11px] uppercase tracking-[0.2em] transition-all duration-500 cursor-pointer",
+                "rounded-xl border px-4 py-2 text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 cursor-pointer",
                 activeIdx === i
-                  ? "border-bronze bg-bronze text-primary-foreground"
-                  : "border-border text-muted-foreground hover:border-bronze/50 hover:text-foreground",
+                  ? "border-gold bg-gold text-navy shadow-md"
+                  : "border-slate-200 text-slate-600 hover:border-gold/50 hover:text-navy",
               )}
             >
               {p.title}
@@ -100,27 +135,27 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1.3fr_1fr]">
         {/* Schematic Layout Card */}
-        <div className="relative flex flex-col justify-between border border-border bg-secondary/50 p-8 min-h-[340px]">
+        <div className="relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50 p-8 min-h-[340px]">
           <div className="flex justify-between items-start">
             <div>
-              <span className="inline-block border border-bronze/40 px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-bronze">
+              <span className="inline-block rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] font-bold text-gold">
                 {current.type}
               </span>
-              <h4 className="mt-4 font-display text-2xl">{current.title}</h4>
+              <h4 className="mt-4 font-display text-2xl font-bold text-navy">{current.title}</h4>
             </div>
             <div className="text-right">
-              <p className="font-display text-3xl text-bronze">{current.carpetArea}</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <p className="font-display text-3xl font-bold text-gold">{current.carpetArea}</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400">
                 Carpet Area
               </p>
             </div>
           </div>
 
           {/* Graphical Schematic Diagram Placeholder */}
-          <div className="my-8 relative flex h-48 w-full items-center justify-center border border-dashed border-bronze/30 bg-background/80 p-6 text-center">
+          <div className="my-8 relative flex h-48 w-full items-center justify-center rounded-2xl border border-dashed border-gold/40 bg-white p-6 text-center shadow-inner">
             <div className="space-y-2">
               <svg
-                className="mx-auto h-10 w-10 text-bronze/60"
+                className="mx-auto h-10 w-10 text-gold"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

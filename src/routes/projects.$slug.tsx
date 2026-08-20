@@ -19,13 +19,13 @@ export const Route = createFileRoute("/projects/$slug")({
     if (!loaderData) {
       return {
         meta: [
-          { title: "Project unavailable — Atelier Meridian" },
+          { title: "Project Unavailable — Parjane Buildcon" },
           { name: "robots", content: "noindex" },
         ],
       };
     }
     const { project } = loaderData;
-    const title = `${project.name}, ${project.location} — Atelier Meridian`;
+    const title = `${project.name}, ${project.location} — Parjane Buildcon`;
     return {
       meta: [
         { title },

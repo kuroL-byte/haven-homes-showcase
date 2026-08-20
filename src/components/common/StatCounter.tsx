@@ -59,12 +59,14 @@ export function StatCounter({
 
   return (
     <div ref={ref} className={cn("text-center sm:text-left", className)}>
-      <div className="font-display text-[clamp(2.75rem,5vw,4.25rem)] leading-none tabular-nums">
+      <div className="font-display text-[clamp(2.75rem,5vw,4.25rem)] font-extrabold leading-none tabular-nums text-white">
         {display.toFixed(decimals)}
-        <span className="text-bronze-soft">{suffix}</span>
+        <span className="text-gold">{suffix}</span>
       </div>
-      <div className="mt-4 h-px w-10 bg-bronze/50 max-sm:mx-auto" />
-      <p className="mt-4 text-[11px] uppercase tracking-[0.24em] text-muted-foreground">{label}</p>
+      <div className="mt-4 h-0.5 w-10 bg-gold max-sm:mx-auto" />
+      <p className="mt-4 text-[11px] uppercase tracking-[0.24em] font-semibold text-slate-300">
+        {label}
+      </p>
     </div>
   );
 }

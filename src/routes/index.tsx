@@ -52,7 +52,7 @@ function Home() {
 
       {/* ── 2. ABOUT PARJANE BUILDCON ─────────────────────────────── */}
       <SectionWrapper id="about-section" className="bg-white">
-        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20 lg:items-center">
+        <div className="grid gap-8 sm:gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20 lg:items-center">
           <AnimatedSection>
             <p className="eyebrow mb-4">About Parjane Buildcon</p>
             <h2 className={typeScale.h2}>
@@ -83,7 +83,7 @@ function Home() {
 
           {/* Mission, Vision & Values Cards */}
           <AnimatedSection delay={140} className="space-y-4">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+            <div className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50 p-5 sm:p-6 shadow-sm">
               <span className="eyebrow text-gold font-bold">Our Mission</span>
               <h3 className="mt-1 font-display text-xl font-bold text-navy">
                 Crafting Quality Landmarks
@@ -94,7 +94,7 @@ function Home() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
+            <div className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50 p-5 sm:p-6 shadow-sm">
               <span className="eyebrow text-gold font-bold">Our Vision</span>
               <h3 className="mt-1 font-display text-xl font-bold text-navy">
                 Defining Future Skylines
@@ -105,9 +105,9 @@ function Home() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-gold/40 bg-navy p-6 text-white shadow-xl">
+            <div className="rounded-2xl sm:rounded-3xl border border-gold/40 bg-navy p-5 sm:p-6 text-white shadow-xl">
               <span className="eyebrow text-gold font-bold">Core Values</span>
-              <div className="mt-3 grid grid-cols-2 gap-3 text-xs font-medium">
+              <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-xs font-medium">
                 {values.map((v) => (
                   <div key={v.title} className="flex items-center gap-2">
                     <span className="text-gold">✦</span>

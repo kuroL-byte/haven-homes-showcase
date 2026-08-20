@@ -73,7 +73,9 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
             <span className="block text-[10px] uppercase tracking-wider text-slate-600 font-bold">
               Completion
             </span>
-            <span className="font-display font-extrabold text-gold text-sm">{project.completion}</span>
+            <span className="font-display font-extrabold text-gold text-sm">
+              {project.completion}
+            </span>
           </div>
         </div>
 

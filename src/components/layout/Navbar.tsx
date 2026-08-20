@@ -29,32 +29,37 @@ export function Navbar() {
     };
   }, [menuOpen]);
 
-  const transparent = overHero && !scrolled && !menuOpen;
+  const transparent = !scrolled && !menuOpen;
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out",
         transparent
-          ? "bg-transparent py-6 text-white"
+          ? "bg-gradient-to-b from-navy/80 via-navy/40 to-transparent py-5 sm:py-6 text-white"
           : "bg-navy/95 py-4 text-white shadow-xl shadow-navy/20 backdrop-blur-lg border-b border-gold/20",
       )}
     >
-      <div className={cn(layout.container, "flex items-center justify-between gap-6")}>
+      <div
+        className={cn(
+          layout.container,
+          "flex items-center justify-between gap-2 sm:gap-6 w-full max-w-full",
+        )}
+      >
         {/* Brand Logo Mark */}
         <Link
           to="/"
-          className="group flex items-center gap-3 leading-none"
+          className="group flex items-center gap-2 sm:gap-3 leading-none shrink min-w-0"
           aria-label={`${brand.name} — home`}
         >
-          <div className="grid size-10 place-items-center rounded-xl bg-gold font-display font-black text-navy text-xl shadow-md transition-transform duration-300 group-hover:scale-105">
+          <div className="grid size-8 sm:size-10 shrink-0 place-items-center rounded-xl bg-gold font-display font-black text-navy text-lg sm:text-xl shadow-md transition-transform duration-300 group-hover:scale-105">
             P
           </div>
-          <div>
-            <span className="block font-display text-xl sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-gold transition-colors">
+          <div className="min-w-0 shrink">
+            <span className="block font-display text-base sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-gold transition-colors truncate">
               PARJANE <span className="font-light text-gold">BUILDCON</span>
             </span>
-            <span className="mt-0.5 block text-[9px] uppercase tracking-[0.3em] font-medium text-slate-200">
+            <span className="mt-0.5 block text-[7.5px] sm:text-[9px] uppercase tracking-wider sm:tracking-[0.3em] font-medium text-slate-200 truncate">
               Building Tomorrow's Landmarks
             </span>
           </div>
@@ -108,7 +113,7 @@ export function Navbar() {
       {/* Mobile Drawer Menu */}
       <div
         className={cn(
-          "fixed inset-0 top-0 z-40 flex flex-col justify-between bg-navy px-8 pb-12 pt-28 text-white transition-all duration-500 ease-out lg:hidden",
+          "fixed inset-0 top-0 z-40 flex flex-col justify-between bg-navy px-8 pb-12 pt-24 text-white transition-all duration-500 ease-out max-h-screen overflow-y-auto lg:hidden",
           menuOpen ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-8 opacity-0",
         )}
       >

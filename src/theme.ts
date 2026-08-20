@@ -20,10 +20,10 @@ export const brand = {
 
 /** Shared layout rhythm */
 export const layout = {
-  container: "mx-auto w-full max-w-[1340px] px-6 sm:px-8 lg:px-12",
-  containerNarrow: "mx-auto w-full max-w-[880px] px-6 sm:px-8",
-  sectionY: "py-20 sm:py-28 lg:py-36",
-  sectionYTight: "py-14 sm:py-20",
+  container: "mx-auto w-full max-w-[1340px] px-4 sm:px-8 lg:px-12",
+  containerNarrow: "mx-auto w-full max-w-[880px] px-4 sm:px-8",
+  sectionY: "py-12 sm:py-24 lg:py-32",
+  sectionYTight: "py-10 sm:py-16",
 } as const;
 
 /** Type scale used for headings across pages */

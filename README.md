@@ -40,17 +40,21 @@ src/
 ## 🚀 Getting Started
 
 ### 1. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 2. Start Development Server
+
 ```bash
 npm run dev
 ```
+
 Open [http://localhost:8080](http://localhost:8080) to view the application in your browser.
 
 ### 3. Production Build
+
 ```bash
 npm run build
 ```

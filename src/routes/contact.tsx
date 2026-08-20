@@ -38,9 +38,9 @@ function Contact() {
       />
 
       <SectionWrapper className="bg-white">
-        <div className="grid gap-16 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
           {/* Form */}
-          <AnimatedSection className="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm">
+          <AnimatedSection className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-slate-50 p-5 sm:p-8 shadow-sm">
             <p className="eyebrow text-gold font-bold mb-4">Direct Enquiry</p>
             <h2 className="font-display text-[clamp(1.75rem,3vw,2.5rem)] font-bold text-navy leading-tight">
               Let's Discuss Your Landmark Requirements.

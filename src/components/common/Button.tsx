@@ -12,12 +12,12 @@ const base =
   "focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  solid: "bg-primary text-primary-foreground hover:bg-charcoal hover:tracking-[0.26em]",
+  solid: "bg-gold text-navy font-bold hover:bg-gold-light hover:tracking-[0.26em]",
   outline:
-    "border border-border text-foreground hover:border-primary hover:text-primary hover:tracking-[0.26em]",
-  ghost: "text-foreground hover:text-primary",
+    "border border-border text-foreground hover:border-gold hover:text-gold hover:tracking-[0.26em]",
+  ghost: "text-foreground hover:text-gold",
   light:
-    "border border-ivory/40 text-ivory backdrop-blur-[2px] hover:bg-ivory hover:text-ink hover:tracking-[0.26em]",
+    "border border-white/40 text-white backdrop-blur-[2px] hover:bg-white hover:text-navy hover:tracking-[0.26em]",
 };
 
 const sizes: Record<Size, string> = {
