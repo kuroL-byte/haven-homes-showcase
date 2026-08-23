@@ -9,7 +9,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const overHero = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -18,15 +17,32 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close menu when pathname changes
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
     return () => {
       document.body.style.overflow = "";
     };
+  }, [menuOpen]);
+
+  // Close on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    if (menuOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
   const transparent = !scrolled && !menuOpen;
@@ -34,21 +50,22 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out",
         transparent
-          ? "bg-gradient-to-b from-navy/80 via-navy/40 to-transparent py-5 sm:py-6 text-white"
+          ? "bg-gradient-to-b from-navy/90 via-navy/50 to-transparent py-4 sm:py-5 text-white"
           : "bg-navy/95 py-4 text-white shadow-xl shadow-navy/20 backdrop-blur-lg border-b border-gold/20",
       )}
     >
       <div
         className={cn(
           layout.container,
-          "flex items-center justify-between gap-2 sm:gap-6 w-full max-w-full",
+          "flex items-center justify-between gap-2 sm:gap-6 w-full max-w-full relative z-50",
         )}
       >
         {/* Brand Logo Mark */}
         <Link
           to="/"
+          onClick={() => setMenuOpen(false)}
           className="group flex items-center gap-2 sm:gap-3 leading-none shrink min-w-0"
           aria-label={`${brand.name} — home`}
         >
@@ -93,18 +110,18 @@ export function Navbar() {
           onClick={() => setMenuOpen((v) => !v)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          className="relative z-50 flex size-10 shrink-0 flex-col items-center justify-center gap-1.5 lg:hidden cursor-pointer"
+          className="relative z-50 flex size-10 shrink-0 flex-col items-center justify-center gap-1.5 lg:hidden cursor-pointer rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
         >
           <span
             className={cn(
-              "block h-0.5 w-6 bg-gold transition-transform duration-300",
-              menuOpen && "translate-y-[4px] rotate-45",
+              "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
+              menuOpen ? "translate-y-[4px] rotate-45" : "translate-y-0 rotate-0",
             )}
           />
           <span
             className={cn(
-              "block h-0.5 w-6 bg-gold transition-transform duration-300",
-              menuOpen && "-translate-y-[4px] -rotate-45",
+              "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
+              menuOpen ? "-translate-y-[4px] -rotate-45" : "translate-y-0 rotate-0",
             )}
           />
         </button>
@@ -113,21 +130,24 @@ export function Navbar() {
       {/* Mobile Drawer Menu */}
       <div
         className={cn(
-          "fixed inset-0 top-0 z-40 flex flex-col justify-between bg-navy px-8 pb-12 pt-24 text-white transition-all duration-500 ease-out max-h-screen overflow-y-auto lg:hidden",
-          menuOpen ? "translate-x-0 opacity-100" : "pointer-events-none translate-x-8 opacity-0",
+          "fixed inset-0 top-0 z-40 flex h-[100dvh] w-full flex-col justify-between bg-navy/98 px-6 sm:px-10 pb-10 pt-24 text-white backdrop-blur-2xl transition-all duration-500 ease-out lg:hidden overflow-y-auto",
+          menuOpen
+            ? "translate-x-0 opacity-100 pointer-events-auto"
+            : "translate-x-full opacity-0 pointer-events-none",
         )}
       >
-        <nav className="flex flex-col gap-3">
+        <nav className="flex flex-col gap-2 mt-2">
           {navLinks.map((link, i) => (
             <Link
               key={link.to}
               to={link.to}
-              style={{ transitionDelay: menuOpen ? `${80 + i * 35}ms` : "0ms" }}
+              onClick={() => setMenuOpen(false)}
+              style={{ transitionDelay: menuOpen ? `${60 + i * 30}ms` : "0ms" }}
               className={cn(
-                "border-b border-white/10 py-3 font-display text-2xl font-bold text-white transition-all duration-300 hover:text-gold",
-                menuOpen ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
+                "border-b border-white/10 py-3 font-display text-xl sm:text-2xl font-bold text-white transition-all duration-300 hover:text-gold hover:pl-2",
+                menuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
               )}
-              activeProps={{ className: "text-gold" }}
+              activeProps={{ className: "text-gold font-black pl-2" }}
               activeOptions={{ exact: link.to === "/" }}
             >
               {link.label}
@@ -137,13 +157,14 @@ export function Navbar() {
 
         <div className="mt-8 space-y-4 border-t border-white/10 pt-6">
           <div className="text-xs text-slate-300">
-            <p className="font-semibold text-gold">{brand.phone}</p>
+            <p className="font-semibold text-gold text-sm">{brand.phone}</p>
             <p className="mt-1">{brand.email}</p>
           </div>
           <ButtonLink
             to="/contact"
+            onClick={() => setMenuOpen(false)}
             variant="solid"
-            className="w-full rounded-xl bg-gold text-navy font-bold"
+            className="w-full rounded-xl bg-gold text-navy font-bold py-3.5 text-center justify-center"
           >
             Contact Us
           </ButtonLink>
