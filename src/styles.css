@@ -4,13 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * PARJANE BUILDCON — Design System
- * Primary: #0F172A (Dark Navy)
- * Secondary / Accent: #C8A96A (Luxury Gold)
- * Backgrounds: White (#FFFFFF) & Soft Grey (#F8FAFC)
- * Typography: Plus Jakarta Sans / Manrope (Headings), Inter (Body)
- */
 
 @theme inline {
   --radius-sm: 0.5rem;
@@ -156,13 +149,11 @@
 @utility hairline {
   height: 1px;
   width: 100%;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--hairline) 15%,
-    var(--hairline) 85%,
-    transparent
-  );
+  background: linear-gradient(to right,
+      transparent,
+      var(--hairline) 15%,
+      var(--hairline) 85%,
+      transparent);
 }
 
 /* Blueprint grid overlay background */
@@ -177,6 +168,7 @@
 @utility link-reveal {
   position: relative;
   display: inline-block;
+
   &::after {
     content: "";
     position: absolute;
@@ -189,6 +181,7 @@
     transform-origin: right;
     transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
+
   &:hover::after {
     transform: scaleX(1);
     transform-origin: left;
@@ -204,6 +197,7 @@
   transition:
     border-color 0.4s ease,
     color 0.4s ease;
+
   &:hover {
     border-color: var(--gold-light);
     color: var(--gold);
@@ -233,6 +227,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
