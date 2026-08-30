@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppWidget } from "@/components/common/WhatsAppWidget";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 function NotFoundComponent() {
   return (
@@ -129,20 +130,22 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Navbar />
-      <main>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-      </main>
-      <Footer />
-      <WhatsAppWidget />
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          style: { background: "#0f172a", color: "#ffffff", border: "1px solid #c8a96a" },
-        }}
-      />
-    </QueryClientProvider>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Navbar />
+        <main>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <Footer />
+        <WhatsAppWidget />
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            style: { background: "var(--navy)", color: "var(--foreground)", border: "1px solid var(--gold)" },
+          }}
+        />
+      </QueryClientProvider>
+    </ThemeProvider>
   );
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { brand, layout, navLinks } from "@/theme";
 import { ButtonLink } from "@/components/common/Button";
+import { ThemeSwitcher } from "@/components/common/ThemeSwitcher";
 
 /** Sticky glass header for Parjane Buildcon */
 export function Navbar() {
@@ -82,8 +83,8 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
-        <nav className="hidden items-center gap-8 lg:flex">
+        {/* Desktop Nav Links & Theme Switcher */}
+        <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.slice(1).map((link) => (
             <Link
               key={link.to}
@@ -95,6 +96,7 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          <ThemeSwitcher />
           <ButtonLink
             to="/contact"
             variant="solid"
@@ -105,26 +107,29 @@ export function Navbar() {
           </ButtonLink>
         </nav>
 
-        {/* Mobile Toggle Hamburger */}
-        <button
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          className="relative z-50 flex size-10 shrink-0 flex-col items-center justify-center gap-1.5 lg:hidden cursor-pointer rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-        >
-          <span
-            className={cn(
-              "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
-              menuOpen ? "translate-y-[4px] rotate-45" : "translate-y-0 rotate-0",
-            )}
-          />
-          <span
-            className={cn(
-              "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
-              menuOpen ? "-translate-y-[4px] -rotate-45" : "translate-y-0 rotate-0",
-            )}
-          />
-        </button>
+        {/* Mobile Action Controls */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeSwitcher />
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            className="relative z-50 flex size-10 shrink-0 flex-col items-center justify-center gap-1.5 cursor-pointer rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          >
+            <span
+              className={cn(
+                "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
+                menuOpen ? "translate-y-[4px] rotate-45" : "translate-y-0 rotate-0",
+              )}
+            />
+            <span
+              className={cn(
+                "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
+                menuOpen ? "-translate-y-[4px] -rotate-45" : "translate-y-0 rotate-0",
+              )}
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Menu */}
