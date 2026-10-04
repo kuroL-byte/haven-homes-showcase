@@ -38,13 +38,13 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function PostNotFound() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-6 text-center">
+    <div className="flex min-h-screen items-center justify-center bg-[#080c14] px-6 text-center text-white">
       <div>
-        <p className="eyebrow">Not Found</p>
-        <h1 className="mt-4 font-display text-4xl font-bold">That article has moved.</h1>
+        <p className="eyebrow text-amber-400 font-bold">Not Found</p>
+        <h1 className="mt-4 font-display text-4xl font-black">That article has moved or expired.</h1>
         <Link
           to="/blog"
-          className="link-underline mt-8 inline-block text-xs uppercase tracking-[0.2em] font-semibold text-gold"
+          className="mt-8 inline-block rounded-xl bg-gradient-to-r from-[#d4af37] to-[#c59b27] px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#080c14] shadow-lg"
         >
           Back to Insights
         </Link>
@@ -58,44 +58,49 @@ function BlogPost() {
   const related = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
-    <article className="bg-white">
-      <SectionWrapper narrow className="pb-0 pt-36 sm:pt-44">
+    <article className="text-white">
+      <SectionWrapper narrow className="pb-0 pt-24 sm:pt-28">
         <AnimatedSection>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase font-semibold tracking-wider text-slate-500">
-            <span className="text-gold font-bold">{post.category}</span>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] uppercase font-bold tracking-wider text-slate-400">
+            <span className="text-amber-400">{post.category}</span>
             <span aria-hidden>·</span>
             <span>{post.date}</span>
             <span aria-hidden>·</span>
             <span>{post.readTime}</span>
           </div>
-          <h1 className="mt-6 font-display text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold text-navy leading-[1.1]">
+          <h1 className="mt-4 font-display text-[clamp(1.6rem,2.8vw,2.4rem)] font-semibold text-white leading-tight">
             {post.title}
           </h1>
-          <p className="mt-6 text-lg font-light leading-[1.8] text-slate-600">{post.excerpt}</p>
+          <p className="mt-3 text-sm sm:text-base font-normal leading-relaxed text-slate-300">
+            {post.excerpt}
+          </p>
         </AnimatedSection>
       </SectionWrapper>
 
-      <Container className="mt-14">
+      <Container className="mt-6 sm:mt-8">
         <AnimatedSection variant="scale">
-          <LazyImage
-            src={post.image}
-            alt={post.title}
-            width={1280}
-            height={960}
-            wrapperClassName="aspect-16/9 rounded-3xl border border-slate-200 shadow-xl"
-          />
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-xl">
+            <LazyImage
+              src={post.image}
+              alt={post.title}
+              width={1280}
+              height={960}
+              wrapperClassName="aspect-16/9"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </AnimatedSection>
       </Container>
 
       <SectionWrapper narrow>
-        <div className="space-y-7">
+        <div className="space-y-4 rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-8 shadow-xl">
           {post.body.map((para, i) => (
-            <AnimatedSection key={i} delay={i * 40}>
+            <AnimatedSection key={i} delay={i * 30}>
               <p
                 className={
                   i === 0
-                    ? "text-xl font-light leading-[1.8] text-slate-700 first-letter:float-left first-letter:mr-3 first-letter:font-display first-letter:text-6xl first-letter:font-extrabold first-letter:leading-[0.8] first-letter:text-gold"
-                    : "text-base font-light leading-[1.85] text-slate-600"
+                    ? "text-sm sm:text-base font-normal leading-relaxed text-slate-100 first-letter:float-left first-letter:mr-2.5 first-letter:font-display first-letter:text-4xl first-letter:font-bold first-letter:leading-[0.8] first-letter:text-amber-400"
+                    : "text-xs sm:text-sm font-normal leading-relaxed text-slate-300"
                 }
               >
                 {para}
@@ -104,25 +109,25 @@ function BlogPost() {
           ))}
         </div>
 
-        <div className="mt-16">
+        <div className="mt-8">
           <Hairline />
         </div>
 
-        <AnimatedSection className="mt-10">
+        <AnimatedSection className="mt-5">
           <Link
             to="/blog"
-            className="link-underline text-xs uppercase tracking-[0.2em] font-semibold text-navy"
+            className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider font-bold text-amber-400 hover:underline cursor-pointer"
           >
-            ← All Insights &amp; Journal
+            ← Back to Insights &amp; Journal
           </Link>
         </AnimatedSection>
       </SectionWrapper>
 
-      <SectionWrapper tone="sand">
-        <p className="eyebrow text-gold font-bold mb-8">Related Articles</p>
-        <div className="grid gap-8 md:grid-cols-3">
+      <SectionWrapper className="border-t border-amber-500/20 bg-black/25 backdrop-blur-md">
+        <p className="eyebrow text-amber-400 font-bold mb-4">Related Engineering Articles</p>
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
           {related.map((p, i) => (
-            <AnimatedSection key={p.slug} delay={i * 90}>
+            <AnimatedSection key={p.slug} delay={i * 70}>
               <BlogCard post={p} />
             </AnimatedSection>
           ))}

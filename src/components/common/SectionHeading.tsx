@@ -24,12 +24,12 @@ export function SectionHeading({
   const Heading = level === 1 ? "h1" : "h2";
   return (
     <AnimatedSection
-      className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}
+      className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}
     >
-      {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
+      {eyebrow && <p className="eyebrow mb-2 font-semibold">{eyebrow}</p>}
       <Heading className={level === 1 ? typeScale.h1 : typeScale.h2}>{title}</Heading>
       {lede && (
-        <p className={cn(typeScale.body, "mt-6 max-w-2xl", align === "center" && "mx-auto")}>
+        <p className={cn(typeScale.body, "mt-2.5 max-w-xl", align === "center" && "mx-auto")}>
           {lede}
         </p>
       )}

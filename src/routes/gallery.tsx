@@ -47,13 +47,14 @@ function Gallery() {
     <>
       <PageHero
         eyebrow="Visual Portfolio"
-        title="Landmarks Photographed as Built."
+        title="Landmarks Photographed As Built."
         lede="Explore high-resolution photography of our completed towers, luxury interior show flats, and site progress."
         image={images.interior1}
       />
 
-      <SectionWrapper className="bg-slate-50">
-        <div className="flex flex-wrap gap-2 rounded-2xl border border-slate-200 bg-white p-3 sm:p-4 shadow-sm">
+      <SectionWrapper>
+        {/* Filter Pills */}
+        <div className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-3 shadow-xl">
           {categories.map((c) => (
             <button
               key={c}
@@ -62,10 +63,10 @@ function Gallery() {
                 setActive(null);
               }}
               className={cn(
-                "rounded-xl border px-3 py-1.5 sm:px-4 sm:py-2 text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer",
+                "rounded-xl border px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer",
                 category === c
-                  ? "border-gold bg-gold text-navy shadow-md"
-                  : "border-transparent text-slate-600 hover:border-gold/50 hover:text-navy",
+                  ? "border-amber-400 bg-gradient-to-r from-[#d4af37] to-[#c59b27] text-[#080c14] font-extrabold shadow-sm"
+                  : "border-transparent bg-transparent text-slate-300 hover:border-amber-400/50 hover:text-white",
               )}
             >
               {c}
@@ -74,30 +75,34 @@ function Gallery() {
         </div>
 
         {/* Masonry Grid */}
-        <div className="mt-8 sm:mt-12 columns-1 gap-4 sm:gap-6 sm:columns-2 lg:columns-3 [&>*]:mb-4 sm:[&>*]:mb-6">
+        <div className="mt-6 sm:mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
           {items.map((item, i) => (
             <AnimatedSection
               key={item.caption}
-              delay={(i % 3) * 80}
+              delay={(i % 3) * 70}
               variant="scale"
               className="break-inside-avoid"
             >
               <button
                 onClick={() => setActive(i)}
-                className="group block w-full overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-3 text-left shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold hover:shadow-xl cursor-pointer"
+                className="group block w-full overflow-hidden rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-2.5 text-left shadow-xl transition-all duration-400 hover:-translate-y-1 hover:border-amber-400/50 hover:bg-black/35 hover:shadow-[0_16px_36px_rgba(212,175,55,0.15)] cursor-pointer"
                 aria-label={`Open ${item.caption}`}
               >
-                <LazyImage
-                  src={item.src}
-                  alt={item.caption}
-                  width={1280}
-                  height={960}
-                  wrapperClassName={cn("rounded-2xl", i % 3 === 1 ? "aspect-3/4" : "aspect-4/3")}
-                  className="transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                />
-                <div className="flex items-baseline justify-between gap-4 pt-4 px-2 pb-1">
-                  <span className="font-display font-bold text-sm text-navy">{item.caption}</span>
-                  <span className="shrink-0 rounded-full border border-gold/40 bg-gold/10 px-2.5 py-0.5 text-[9px] uppercase font-bold tracking-wider text-gold">
+                <div className="overflow-hidden rounded-xl">
+                  <LazyImage
+                    src={item.src}
+                    alt={item.caption}
+                    width={1280}
+                    height={960}
+                    wrapperClassName={cn("w-full", i % 3 === 1 ? "aspect-3/4" : "aspect-4/3")}
+                    className="transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex items-center justify-between gap-3 pt-3 px-1.5 pb-0.5">
+                  <span className="font-display font-semibold text-xs sm:text-sm text-white group-hover:text-amber-300 transition-colors drop-shadow-sm">
+                    {item.caption}
+                  </span>
+                  <span className="shrink-0 rounded-full border border-amber-400/30 bg-amber-500/15 px-2 py-0.5 text-[8px] uppercase font-bold tracking-wider text-amber-300">
                     {item.category}
                   </span>
                 </div>
@@ -110,35 +115,35 @@ function Gallery() {
       {/* Lightbox Modal */}
       <Modal open={current !== null} onClose={() => setActive(null)} label="Gallery image">
         {current && (
-          <figure className="rounded-3xl bg-navy p-4 sm:p-6 border border-gold/30 text-white max-h-[85vh] overflow-y-auto">
+          <figure className="rounded-2xl bg-black/80 backdrop-blur-2xl p-4 sm:p-5 border border-amber-500/30 text-white max-h-[85vh] overflow-y-auto">
             <img
               src={current.src}
               alt={current.caption}
-              className="max-h-[55vh] sm:max-h-[70vh] w-full rounded-2xl object-contain"
+              className="max-h-[55vh] sm:max-h-[70vh] w-full rounded-xl object-contain"
             />
-            <figcaption className="mt-5 flex flex-wrap items-center justify-between gap-4">
-              <span className="font-display text-lg sm:text-xl font-bold">{current.caption}</span>
-              <span className="flex items-center gap-4 sm:gap-6">
-                <span className="text-xs uppercase font-semibold text-gold">
+            <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-3">
+              <span className="font-display text-base sm:text-lg font-semibold text-white">{current.caption}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-[10px] uppercase font-bold text-amber-400">
                   {current.category}
                 </span>
-                <span className="flex gap-3">
+                <div className="flex gap-1.5">
                   <button
                     onClick={() => step(-1)}
                     aria-label="Previous image"
-                    className="grid size-10 place-items-center rounded-xl border border-white/20 text-white transition-colors hover:bg-gold hover:text-navy cursor-pointer"
+                    className="grid size-8 place-items-center rounded-lg border border-white/20 text-white transition-colors hover:border-amber-400 hover:text-amber-400 cursor-pointer"
                   >
                     ←
                   </button>
                   <button
                     onClick={() => step(1)}
                     aria-label="Next image"
-                    className="grid size-10 place-items-center rounded-xl border border-white/20 text-white transition-colors hover:bg-gold hover:text-navy cursor-pointer"
+                    className="grid size-8 place-items-center rounded-lg border border-white/20 text-white transition-colors hover:border-amber-400 hover:text-amber-400 cursor-pointer"
                   >
                     →
                   </button>
-                </span>
-              </span>
+                </div>
+              </div>
             </figcaption>
           </figure>
         )}

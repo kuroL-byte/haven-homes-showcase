@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { images, milestones, values, team, stats } from "@/data/content";
-import { brand, type as typeScale } from "@/theme";
+import { brand } from "@/theme";
 import { PageHero } from "@/components/PageHero";
 import { SectionWrapper, Container, Hairline } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -33,104 +33,121 @@ function About() {
   return (
     <>
       <PageHero
-        eyebrow="Our Legacy"
-        title="25 Years of Engineering Excellence"
-        lede="Over two decades of crafting luxury landmarks with precision, quality, and complete transparency."
+        eyebrow="Our Engineering Legacy"
+        title="25 Years of Building Tomorrow's Landmarks."
+        lede="Over two decades of crafting luxury residences and corporate towers with structural precision, quality, and complete transparency."
         image={images.project1}
       />
 
-      {/* Founder story */}
+      {/* ── Founder Story & Heritage ──────────────────────────────── */}
       <SectionWrapper>
-        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20 lg:items-center">
+        <div className="grid gap-8 sm:gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:items-center">
           <AnimatedSection>
-            <p className="eyebrow mb-6">Our Journey</p>
-            <h2 className={typeScale.h2}>
-              “We build with structural integrity and lasting trust.”
+            <p className="eyebrow text-amber-400 font-bold mb-2.5">Founder's Vision</p>
+            <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-semibold text-white leading-tight">
+              “We build with structural integrity, ethical precision, and lasting trust.”
             </h2>
-            <p className={`${typeScale.body} mt-8`}>
+            <p className="mt-4 text-xs sm:text-sm font-normal leading-relaxed text-slate-300">
               Rajesh Parjane established {brand.name} in 2001 with a clear mandate: to redefine
               urban construction standards in Western India through uncompromising engineering
-              quality, structural safety, and transparent buyer commitments.
+              quality, earthquake-resistant structural safety, and transparent MahaRERA buyer commitments.
             </p>
-            <p className={`${typeScale.body} mt-5`}>
-              Over 25 years, our practice has delivered more than 150 projects — spanning high-rise
-              luxury towers, boutique gated communities, Grade-A corporate office parks, and major
+            <p className="mt-3 text-xs sm:text-sm font-normal leading-relaxed text-slate-300">
+              Over 25 years, our company has delivered more than 150 projects — spanning high-rise
+              luxury towers, boutique sky duplexes, Grade-A corporate office parks, and major
               turnkey infrastructure.
             </p>
-            <p className={`${typeScale.body} mt-5`}>
+            <p className="mt-3 text-xs sm:text-sm font-normal leading-relaxed text-slate-300">
               By keeping land acquisition, architectural design, structural engineering, and estate
-              care under one roof, we maintain 100% control over build quality and delivery dates.
+              care under one integrated leadership, we maintain 100% control over build quality and delivery dates.
             </p>
-            <div className="mt-10">
-              <p className="font-display text-2xl font-bold text-navy">Rajesh Parjane</p>
-              <p className="mt-1 text-[11px] uppercase tracking-[0.22em] text-gold font-semibold">
+            <div className="mt-6 border-t border-white/10 pt-3.5">
+              <p className="font-display text-lg sm:text-xl font-semibold text-white">Rajesh Parjane</p>
+              <p className="mt-0.5 text-[10px] uppercase tracking-wider text-amber-400 font-bold">
                 Founder &amp; Managing Director
               </p>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={140} variant="scale">
-            <LazyImage
-              src={images.interior1}
-              alt="Completed Parjane Buildcon luxury interior"
-              width={1280}
-              height={960}
-              wrapperClassName="aspect-4/5 rounded-3xl border border-slate-200 shadow-2xl"
-            />
+            <div className="overflow-hidden rounded-2xl border border-amber-500/25 bg-black/25 shadow-xl">
+              <LazyImage
+                src={images.interior1}
+                alt="Completed Parjane Buildcon luxury interior"
+                width={1280}
+                height={960}
+                wrapperClassName="aspect-4/3 sm:aspect-4/5"
+                className="transition-transform duration-[1400ms] hover:scale-105"
+              />
+            </div>
           </AnimatedSection>
         </div>
       </SectionWrapper>
 
-      {/* Values */}
-      <SectionWrapper tone="sand">
-        <SectionHeading eyebrow="Core Values" title="Principles That Drive Every Landmark" />
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <Container>
+        <Hairline />
+      </Container>
+
+      {/* ── Core Values ───────────────────────────────────────────── */}
+      <SectionWrapper>
+        <SectionHeading
+          eyebrow="Core Values"
+          title="Foundational Principles Guiding Every Project"
+          lede="Every blueprint and foundation is grounded in these four uncompromised standards."
+        />
+        <div className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <AnimatedSection
               key={v.title}
-              delay={i * 90}
-              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm"
+              delay={i * 80}
+              className="group rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-6 shadow-xl transition-all duration-300 hover:border-amber-400/50 hover:bg-black/35 hover:-translate-y-1"
             >
-              <div className="h-1 w-12 bg-gold rounded-full" />
-              <h3 className="mt-6 font-display text-2xl font-bold text-navy">{v.title}</h3>
-              <p className="mt-4 text-sm font-light leading-[1.85] text-slate-600">{v.body}</p>
+              <div className="h-0.5 w-8 bg-gradient-to-r from-amber-400 to-amber-200 rounded-full" />
+              <h3 className="mt-4 font-display text-base sm:text-lg font-semibold text-white group-hover:text-amber-300 transition-colors drop-shadow-sm">
+                {v.title}
+              </h3>
+              <p className="mt-2 text-xs sm:text-[13px] font-normal leading-relaxed text-slate-300">
+                {v.body}
+              </p>
             </AnimatedSection>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* Milestones timeline */}
-      <SectionWrapper>
-        <SectionHeading eyebrow="Milestones" title="25 Years of Architectural Milestones" />
-        <ol className="mt-16 border-l-2 border-gold/40">
+      {/* ── Milestones Timeline ───────────────────────────────────── */}
+      <SectionWrapper className="border-y border-amber-500/20 bg-black/25 backdrop-blur-md">
+        <SectionHeading
+          eyebrow="Growth Trajectory"
+          title="25 Years of Architectural Milestones"
+          lede="A chronological journey through landmark handovers across Western India."
+        />
+        <ol className="mt-8 sm:mt-10 border-l-2 border-amber-400/30 ml-3 sm:ml-5">
           {milestones.map((m, i) => (
             <AnimatedSection
               key={m.year}
               as="li"
-              delay={i * 70}
-              className="relative pb-14 pl-8 last:pb-0 sm:pl-14"
+              delay={i * 60}
+              className="relative pb-8 pl-5 sm:pl-8 last:pb-0"
             >
               <span
                 aria-hidden
-                className="absolute left-0 top-2 size-4 -translate-x-[9px] rounded-full border-2 border-gold bg-navy"
+                className="absolute left-0 top-2 size-3 -translate-x-[7px] rounded-full border-2 border-amber-400 bg-[#080c14] shadow-[0_0_8px_rgba(212,175,55,0.5)]"
               />
-              <div className="grid gap-2 sm:grid-cols-[7rem_1fr] sm:gap-8">
-                <span className="font-display text-3xl font-extrabold text-gold">{m.year}</span>
-                <div>
-                  <h3 className="font-display text-2xl font-bold text-navy">{m.title}</h3>
-                  <p className="mt-3 max-w-xl text-sm font-light leading-[1.85] text-slate-600">
-                    {m.body}
-                  </p>
-                </div>
+              <div className="rounded-xl border border-white/10 bg-black/25 backdrop-blur-xl p-4 sm:p-5 shadow-md">
+                <span className="font-display text-lg sm:text-xl font-bold text-amber-300">{m.year}</span>
+                <h3 className="mt-1 font-display text-base font-semibold text-white drop-shadow-sm">{m.title}</h3>
+                <p className="mt-1 text-xs sm:text-[13px] font-normal leading-relaxed text-slate-300">
+                  {m.body}
+                </p>
               </div>
             </AnimatedSection>
           ))}
         </ol>
       </SectionWrapper>
 
-      {/* Stats */}
-      <SectionWrapper tone="dark" tight>
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      {/* ── Company Stats Strip ────────────────────────────────────── */}
+      <SectionWrapper tone="dark" tight className="border-b border-amber-500/20 bg-black/35 backdrop-blur-md py-6 sm:py-8">
+        <div className="grid gap-6 sm:gap-8 grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
             <AnimatedSection key={s.label} delay={i * 100}>
               <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
@@ -139,45 +156,54 @@ function About() {
         </div>
       </SectionWrapper>
 
-      {/* Leadership */}
+      {/* ── Executive Leadership ──────────────────────────────────── */}
       <SectionWrapper>
-        <SectionHeading eyebrow="Leadership" title="Executive Leadership &amp; Engineering Team" />
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <SectionHeading
+          eyebrow="Executive Board"
+          title="Executive Leadership &amp; Engineering Directors"
+          lede="Seasoned civil engineers, architects, and financial leaders driving our landmark projects."
+        />
+        <div className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member, i) => (
             <AnimatedSection
               key={member.name}
-              delay={i * 90}
-              className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:border-gold hover:shadow-xl"
+              delay={i * 80}
+              className="group rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-6 shadow-xl transition-all duration-400 hover:-translate-y-1 hover:border-amber-400/50 hover:bg-black/35 hover:shadow-[0_16px_36px_rgba(212,175,55,0.12)]"
             >
-              <div className="grid size-16 place-items-center rounded-2xl bg-navy font-display text-xl font-bold text-gold">
+              <div className="grid size-11 place-items-center rounded-xl bg-gradient-to-br from-[#d4af37] to-[#aa820a] font-display text-sm font-bold text-[#080c14] shadow-sm">
                 {member.name
                   .split(" ")
                   .map((w) => w[0])
                   .join("")}
               </div>
-              <h3 className="mt-6 font-display text-xl font-bold text-navy">{member.name}</h3>
-              <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-gold font-semibold">
+              <h3 className="mt-4 font-display text-base sm:text-lg font-semibold text-white group-hover:text-amber-300 transition-colors drop-shadow-sm">
+                {member.name}
+              </h3>
+              <p className="mt-0.5 text-[10px] uppercase tracking-wider text-amber-400 font-bold">
                 {member.role}
               </p>
-              <p className="mt-4 text-sm font-light leading-[1.85] text-slate-600">{member.bio}</p>
+              <p className="mt-2 text-xs font-normal leading-relaxed text-slate-300">{member.bio}</p>
             </AnimatedSection>
           ))}
         </div>
 
-        <Container className="mt-24 px-0">
+        <Container className="mt-12 px-0">
           <Hairline />
         </Container>
 
-        <AnimatedSection className="mt-16 text-center">
-          <h2 className="font-display text-[clamp(1.75rem,3vw,2.75rem)] font-bold text-navy">
-            Visit one of our completed landmarks.
+        <AnimatedSection className="mt-10 text-center">
+          <h2 className="font-display text-xl sm:text-2xl font-semibold text-white">
+            Visit one of our completed landmarks in person.
           </h2>
+          <p className="mt-2 text-xs sm:text-sm text-slate-300 max-w-lg mx-auto">
+            Book a guided site tour with our engineering directors and experience structural excellence firsthand.
+          </p>
           <ButtonLink
             to="/contact"
-            size="lg"
-            className="mt-8 rounded-2xl bg-gold text-navy font-bold"
+            size="sm"
+            className="mt-6 rounded-xl bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] text-[#080c14] font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105"
           >
-            Schedule a Private Viewing
+            Schedule a Private Viewing →
           </ButtonLink>
         </AnimatedSection>
       </SectionWrapper>

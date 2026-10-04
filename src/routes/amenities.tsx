@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { images, amenities, amenityIcons } from "@/data/content";
-import { type as typeScale } from "@/theme";
 import { PageHero } from "@/components/PageHero";
 import { SectionWrapper } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -34,33 +33,39 @@ function Amenities() {
       <PageHero
         eyebrow="Lifestyle & Infrastructure"
         title="Shared Spaces Held to The Highest Standard."
-        lede="From rooftop infinity pools to 24/7 smart security, our amenities are engineered for long-term luxury and effortless living."
+        lede="From temperature-controlled rooftop pools to MERV-13 air-filtered wellness lounges, our amenities are engineered for long-term luxury and effortless living."
         image={images.pool}
       />
 
-      {/* Alternating image/text blocks */}
-      <SectionWrapper className="bg-white">
-        <div className="space-y-24 lg:space-y-36">
+      {/* ── Alternating Editorial Showcase ────────────────────────── */}
+      <SectionWrapper>
+        <div className="space-y-12 lg:space-y-16">
           {amenities.map((item, i) => {
             const flip = i % 2 === 1;
             return (
-              <div key={item.title} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+              <div key={item.title} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
                 <AnimatedSection variant="scale" className={cn(flip && "lg:order-2")}>
-                  <LazyImage
-                    src={item.image}
-                    alt={item.title}
-                    width={1280}
-                    height={960}
-                    wrapperClassName="aspect-4/3 rounded-3xl border border-slate-200 shadow-xl"
-                    className="transition-transform duration-[1600ms] hover:scale-[1.04]"
-                  />
+                  <div className="overflow-hidden rounded-2xl border border-amber-500/25 bg-black/25 shadow-xl">
+                    <LazyImage
+                      src={item.image}
+                      alt={item.title}
+                      width={1280}
+                      height={960}
+                      wrapperClassName="aspect-4/3"
+                      className="transition-transform duration-[1600ms] hover:scale-105"
+                    />
+                  </div>
                 </AnimatedSection>
 
                 <AnimatedSection delay={120} className={cn(flip && "lg:order-1")}>
-                  <p className="eyebrow text-gold font-bold mb-4">{item.eyebrow}</p>
-                  <h2 className={typeScale.h2}>{item.title}</h2>
-                  <p className={`${typeScale.body} mt-6 max-w-lg`}>{item.body}</p>
-                  <div className="mt-8 h-1 w-16 bg-gold rounded-full" />
+                  <p className="eyebrow text-amber-400 font-bold mb-2 text-[10px]">{item.eyebrow}</p>
+                  <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-semibold text-white leading-tight">
+                    {item.title}
+                  </h2>
+                  <p className="mt-3 text-xs sm:text-sm font-normal leading-relaxed text-slate-300 max-w-lg">
+                    {item.body}
+                  </p>
+                  <div className="mt-4 h-0.5 w-12 bg-gradient-to-r from-amber-400 to-amber-200 rounded-full" />
                 </AnimatedSection>
               </div>
             );
@@ -68,31 +73,43 @@ function Amenities() {
         </div>
       </SectionWrapper>
 
-      {/* Service grid */}
-      <SectionWrapper tone="dark">
-        <SectionHeading eyebrow="Services" title="Quiet Infrastructure Running in the Background" />
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* ── Estate Infrastructure Service Grid ────────────────────── */}
+      <SectionWrapper className="border-y border-amber-500/20 bg-black/25 backdrop-blur-md">
+        <SectionHeading
+          eyebrow="Estate Operations"
+          title="Quiet Infrastructure Running in the Background"
+          lede="High-performance building systems ensuring seamless 24/7 power, security, water treatment, and concierge maintenance."
+        />
+        <div className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {amenityIcons.map((item, i) => (
             <AnimatedSection
               key={item.title}
-              delay={i * 70}
-              className="rounded-3xl border border-white/10 bg-navy/80 p-8 shadow-sm transition-all duration-500 hover:border-gold"
+              delay={i * 60}
+              className="rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-6 shadow-xl transition-all duration-400 hover:border-amber-400/50 hover:bg-black/35 hover:-translate-y-1"
             >
-              <span className="font-display text-3xl font-bold text-gold">0{i + 1}</span>
-              <h3 className="mt-6 font-display text-xl font-bold text-white">{item.title}</h3>
-              <p className="mt-3 text-sm font-light leading-[1.85] text-slate-300">{item.body}</p>
+              <span className="font-display text-xl sm:text-2xl font-bold text-amber-400">0{i + 1}</span>
+              <h3 className="mt-3.5 font-display text-base sm:text-lg font-semibold text-white drop-shadow-sm">{item.title}</h3>
+              <p className="mt-1.5 text-xs font-normal leading-relaxed text-slate-300">{item.body}</p>
             </AnimatedSection>
           ))}
         </div>
       </SectionWrapper>
 
-      <SectionWrapper tone="sand" tight>
-        <AnimatedSection className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-          <h2 className="max-w-xl font-display text-[clamp(1.75rem,3vw,2.75rem)] font-bold text-navy leading-tight">
-            Schedule an amenity walkthrough with our engineering team.
-          </h2>
-          <ButtonLink to="/contact" size="lg" className="rounded-2xl bg-gold text-navy font-bold">
-            Book Site Walkthrough
+      {/* ── Amenity Walkthrough CTA ───────────────────────────────── */}
+      <SectionWrapper tight>
+        <AnimatedSection className="rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-6 sm:p-8 shadow-xl flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center">
+          <div>
+            <span className="eyebrow text-amber-400 font-bold text-[10px]">Private Tour</span>
+            <h2 className="mt-1.5 max-w-xl font-display text-lg sm:text-xl lg:text-2xl font-semibold text-white leading-tight drop-shadow-sm">
+              Schedule an amenity walkthrough with our engineering director.
+            </h2>
+          </div>
+          <ButtonLink
+            to="/contact"
+            size="sm"
+            className="rounded-xl bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] text-[#080c14] font-bold text-xs uppercase tracking-wider shadow-md shrink-0 hover:scale-105"
+          >
+            Book Site Walkthrough →
           </ButtonLink>
         </AnimatedSection>
       </SectionWrapper>

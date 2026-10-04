@@ -3,16 +3,18 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { brand, layout, navLinks } from "@/theme";
 import { ButtonLink } from "@/components/common/Button";
-import { ThemeSwitcher } from "@/components/common/ThemeSwitcher";
 
-/** Sticky glass header for Parjane Buildcon */
+/**
+ * Minimalist transparent Navbar with Three-Line Menu Trigger and
+ * all navigation links, contact details, and CTA inside the side drawer.
+ */
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -23,7 +25,7 @@ export function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when sidebar menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
@@ -46,135 +48,166 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [menuOpen]);
 
-  const transparent = !scrolled && !menuOpen;
-
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-out",
-        transparent
-          ? "bg-gradient-to-b from-navy/90 via-navy/50 to-transparent py-4 sm:py-5 text-white"
-          : "bg-navy/95 py-4 text-white shadow-xl shadow-navy/20 backdrop-blur-lg border-b border-gold/20",
-      )}
-    >
-      <div
+    <>
+      <header
         className={cn(
-          layout.container,
-          "flex items-center justify-between gap-2 sm:gap-6 w-full max-w-full relative z-50",
+          "fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out",
+          scrolled
+            ? "bg-black/60 py-3 sm:py-3.5 text-white shadow-md border-b border-white/10 backdrop-blur-md"
+            : "bg-transparent py-4 sm:py-5 text-white",
         )}
       >
-        {/* Brand Logo Mark */}
-        <Link
-          to="/"
-          onClick={() => setMenuOpen(false)}
-          className="group flex items-center gap-2 sm:gap-3 leading-none shrink min-w-0"
-          aria-label={`${brand.name} — home`}
+        <div
+          className={cn(
+            layout.container,
+            "flex items-center justify-between gap-4 w-full max-w-full",
+          )}
         >
-          <div className="grid size-8 sm:size-10 shrink-0 place-items-center rounded-xl bg-gold font-display font-black text-navy text-lg sm:text-xl shadow-md transition-transform duration-300 group-hover:scale-105">
-            P
-          </div>
-          <div className="min-w-0 shrink">
-            <span className="block font-display text-base sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-gold transition-colors truncate">
-              PARJANE <span className="font-light text-gold">BUILDCON</span>
-            </span>
-            <span className="mt-0.5 block text-[7.5px] sm:text-[9px] uppercase tracking-wider sm:tracking-[0.3em] font-medium text-slate-200 truncate">
-              Building Tomorrow's Landmarks
-            </span>
-          </div>
-        </Link>
+          {/* Brand Logo */}
+          <Link
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            className="group flex items-center gap-2.5 sm:gap-3.5 leading-none shrink min-w-0"
+            aria-label={`${brand.name} — home`}
+          >
+            <div className="grid size-9 sm:size-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#f3e5ab] via-[#d4af37] to-[#aa820a] font-display font-black text-[#080c14] text-lg sm:text-xl shadow-md transition-transform duration-300 group-hover:scale-105">
+              P
+            </div>
+            <div className="min-w-0 shrink">
+              <span className="block font-display text-lg sm:text-2xl font-extrabold tracking-tight text-white group-hover:text-amber-400 transition-colors truncate drop-shadow">
+                PARJANE <span className="font-light text-gradient-gold">BUILDCON</span>
+              </span>
+              <span className="mt-0.5 block text-[8px] sm:text-[9px] uppercase tracking-widest font-medium text-slate-200 truncate drop-shadow">
+                Building Tomorrow's Landmarks
+              </span>
+            </div>
+          </Link>
 
-        {/* Desktop Nav Links & Theme Switcher */}
-        <nav className="hidden items-center gap-6 lg:flex">
-          {navLinks.slice(1).map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className="link-reveal text-xs uppercase tracking-[0.2em] font-bold text-white transition-colors hover:text-gold"
-              activeProps={{ className: "text-gold font-extrabold" }}
-              activeOptions={{ exact: link.to === "/" }}
+          {/* Right Action Controls: Three-lines Menu Button Only */}
+          <div className="flex items-center">
+            <button
+              onClick={() => setMenuOpen(true)}
+              aria-label="Open navigation menu"
+              aria-expanded={menuOpen}
+              className="group flex items-center gap-2.5 rounded-xl border border-white/25 bg-black/35 backdrop-blur-md px-4 py-2 text-white transition-all duration-300 hover:border-amber-400 hover:bg-amber-400 hover:text-[#080c14] cursor-pointer shadow-lg"
             >
-              {link.label}
-            </Link>
-          ))}
-          <ThemeSwitcher />
-          <ButtonLink
-            to="/contact"
-            variant="solid"
-            size="sm"
-            className="rounded-xl bg-gold text-navy font-semibold hover:bg-gold-light hover:scale-105 transition-all shadow-md"
-          >
-            Enquire Now
-          </ButtonLink>
-        </nav>
-
-        {/* Mobile Action Controls */}
-        <div className="flex items-center gap-2 lg:hidden">
-          <ThemeSwitcher />
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            className="relative z-50 flex size-10 shrink-0 flex-col items-center justify-center gap-1.5 cursor-pointer rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-          >
-            <span
-              className={cn(
-                "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
-                menuOpen ? "translate-y-[4px] rotate-45" : "translate-y-0 rotate-0",
-              )}
-            />
-            <span
-              className={cn(
-                "block h-0.5 w-6 bg-gold transition-all duration-300 ease-in-out origin-center",
-                menuOpen ? "-translate-y-[4px] -rotate-45" : "translate-y-0 rotate-0",
-              )}
-            />
-          </button>
+              <span className="flex flex-col justify-center gap-1">
+                <span className="block h-0.5 w-4 bg-current transition-transform group-hover:scale-x-110 origin-left" />
+                <span className="block h-0.5 w-3.5 bg-current transition-transform group-hover:scale-x-110 origin-left" />
+                <span className="block h-0.5 w-4 bg-current transition-transform group-hover:scale-x-110 origin-left" />
+              </span>
+              <span className="text-xs font-bold uppercase tracking-[0.2em]">Menu</span>
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Sidebar Overlay Backdrop */}
       <div
+        onClick={() => setMenuOpen(false)}
+        aria-hidden={!menuOpen}
         className={cn(
-          "fixed inset-0 top-0 z-40 flex h-[100dvh] w-full flex-col justify-between bg-navy/98 px-6 sm:px-10 pb-10 pt-24 text-white backdrop-blur-2xl transition-all duration-500 ease-out lg:hidden overflow-y-auto",
-          menuOpen
-            ? "translate-x-0 opacity-100 pointer-events-auto"
-            : "translate-x-full opacity-0 pointer-events-none",
+          "fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-opacity duration-400 ease-out",
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
+        )}
+      />
+
+      {/* Sidebar Navigation Drawer (Everything in it) */}
+      <aside
+        aria-label="Sidebar Navigation"
+        aria-hidden={!menuOpen}
+        className={cn(
+          "fixed top-0 right-0 z-50 flex h-[100dvh] w-full max-w-[420px] flex-col justify-between border-l border-amber-500/30 bg-[#0a0f1d]/95 backdrop-blur-2xl p-6 sm:p-8 text-white shadow-2xl transition-transform duration-400 ease-out overflow-y-auto",
+          menuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        <nav className="flex flex-col gap-2 mt-2">
-          {navLinks.map((link, i) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              onClick={() => setMenuOpen(false)}
-              style={{ transitionDelay: menuOpen ? `${60 + i * 30}ms` : "0ms" }}
-              className={cn(
-                "border-b border-white/10 py-3 font-display text-xl sm:text-2xl font-bold text-white transition-all duration-300 hover:text-gold hover:pl-2",
-                menuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
-              )}
-              activeProps={{ className: "text-gold font-black pl-2" }}
-              activeOptions={{ exact: link.to === "/" }}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Drawer Header */}
+        <div>
+          <div className="flex items-center justify-between border-b border-white/10 pb-5">
+            <div className="flex items-center gap-2.5">
+              <div className="grid size-9 place-items-center rounded-xl bg-gradient-to-br from-[#f3e5ab] via-[#d4af37] to-[#aa820a] font-display font-black text-[#080c14] text-base shadow">
+                P
+              </div>
+              <span className="font-display text-lg font-extrabold tracking-tight text-white">
+                PARJANE <span className="text-gradient-gold font-light">BUILDCON</span>
+              </span>
+            </div>
 
-        <div className="mt-8 space-y-4 border-t border-white/10 pt-6">
-          <div className="text-xs text-slate-300">
-            <p className="font-semibold text-gold text-sm">{brand.phone}</p>
-            <p className="mt-1">{brand.email}</p>
+            <button
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close navigation sidebar"
+              className="flex items-center gap-1.5 rounded-lg border border-white/15 px-3 py-1.5 text-xs uppercase font-semibold text-slate-300 hover:border-amber-400 hover:bg-amber-400 hover:text-[#080c14] transition-all cursor-pointer"
+            >
+              <span>✕</span>
+              <span>Close</span>
+            </button>
           </div>
+
+          <p className="eyebrow text-amber-400 mt-6 mb-3 text-[10px] tracking-[0.25em] font-bold">Navigation</p>
+
+          {/* Navigation Links */}
+          <nav className="flex flex-col space-y-1">
+            {navLinks.map((link, i) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setMenuOpen(false)}
+                className="group flex items-center justify-between rounded-xl px-3.5 py-3 transition-all duration-300 hover:bg-white/5"
+                activeProps={{ className: "bg-amber-500/10 border-l-2 border-amber-400 text-amber-400 font-bold" }}
+                activeOptions={{ exact: link.to === "/" }}
+              >
+                <div className="flex items-center gap-3.5">
+                  <span className="text-xs font-mono text-amber-400/70 group-hover:text-amber-400 transition-colors">
+                    0{i + 1}.
+                  </span>
+                  <span className="font-display text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 group-hover:translate-x-1 transition-all">
+                    {link.label}
+                  </span>
+                </div>
+                <span className="text-xs text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1.5 transition-all">
+                  →
+                </span>
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        {/* Drawer Footer / Contact & Booking */}
+        <div className="mt-8 space-y-4 border-t border-white/10 pt-6">
+          <div className="space-y-1 text-xs text-slate-300">
+            <p className="eyebrow text-amber-400 text-[10px] font-bold">Head Office</p>
+            <p className="font-medium text-white">{brand.address[0]}</p>
+            <p className="text-slate-400">{brand.address[1]}</p>
+            <p className="pt-1.5 font-semibold text-amber-400">
+              📞 <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="hover:underline">{brand.phone}</a>
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3 pt-1">
+            {brand.socials.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[10px] uppercase font-bold tracking-widest text-slate-400 hover:text-amber-400 transition-colors"
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
+
           <ButtonLink
             to="/contact"
             onClick={() => setMenuOpen(false)}
             variant="solid"
-            className="w-full rounded-xl bg-gold text-navy font-bold py-3.5 text-center justify-center"
+            className="w-full justify-center rounded-xl bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] py-3 text-center text-xs uppercase tracking-wider font-extrabold text-[#080c14] shadow-lg transition-all hover:scale-[1.02]"
           >
-            Contact Us
+            Schedule Site Tour
           </ButtonLink>
         </div>
-      </div>
-    </header>
+      </aside>
+    </>
   );
 }

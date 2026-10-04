@@ -19,42 +19,42 @@ export function Footer() {
   };
 
   return (
-    <footer className="section-dark bg-navy border-t border-gold/20 text-white">
+    <footer className="relative bg-black/45 backdrop-blur-2xl border-t border-amber-500/20 text-white">
       <div className={layout.container}>
-        <div className="grid gap-10 py-12 sm:py-20 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.4fr] lg:gap-10">
+        <div className="grid gap-10 py-14 sm:py-20 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr] lg:gap-10">
           {/* Brand Column */}
           <div className="max-w-sm">
             <div className="flex items-center gap-3">
-              <div className="grid size-10 place-items-center rounded-xl bg-gold font-display font-black text-navy text-xl shadow-md">
+              <div className="grid size-10 place-items-center rounded-xl bg-gradient-to-br from-[#d4af37] to-[#aa820a] font-display font-black text-[#080c14] text-xl shadow-md">
                 P
               </div>
-              <p className="font-display font-extrabold text-2xl tracking-tight text-white">
-                PARJANE <span className="text-gold font-light">BUILDCON</span>
+              <p className="font-display font-extrabold text-xl sm:text-2xl tracking-tight text-white">
+                PARJANE <span className="text-gradient-gold font-light">BUILDCON</span>
               </p>
             </div>
 
-            <p className="mt-6 text-sm font-light leading-[1.85] text-slate-300">
+            <p className="mt-5 text-xs sm:text-sm font-light leading-relaxed text-slate-400">
               A premier luxury construction and real estate development company. Over 25 years of
-              engineering excellence, structural safety, and unshakeable buyer trust.
+              structural engineering precision, sustainable architecture, and unshakeable buyer trust.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-4 text-xs font-semibold text-gold">
-              <span className="rounded-lg bg-gold/10 border border-gold/30 px-3 py-1">
+            <div className="mt-6 flex flex-wrap gap-3 text-[11px] font-bold text-amber-400">
+              <span className="rounded-lg bg-amber-500/10 border border-amber-500/30 px-3 py-1">
                 ISO 9001:2015
               </span>
-              <span className="rounded-lg bg-gold/10 border border-gold/30 px-3 py-1">
-                RERA Registered
+              <span className="rounded-lg bg-amber-500/10 border border-amber-500/30 px-3 py-1">
+                MahaRERA Registered
               </span>
             </div>
 
-            <div className="mt-8 flex gap-5">
+            <div className="mt-6 flex gap-4">
               {brand.socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="link-reveal text-xs uppercase tracking-[0.2em] font-medium text-slate-400 hover:text-gold"
+                  className="text-xs uppercase tracking-wider font-semibold text-slate-400 hover:text-amber-400 transition-colors"
                 >
                   {s.label}
                 </a>
@@ -64,13 +64,13 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <p className="eyebrow text-gold mb-6">Navigation</p>
-            <ul className="space-y-3">
+            <p className="eyebrow text-amber-400 mb-5 font-bold">Navigation</p>
+            <ul className="space-y-2.5">
               {navLinks.map((l) => (
                 <li key={l.to}>
                   <Link
                     to={l.to}
-                    className="link-reveal text-sm font-light text-slate-300 hover:text-white"
+                    className="text-xs sm:text-sm font-normal text-slate-300 hover:text-amber-400 transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -79,24 +79,24 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Buyer's Guide */}
+          {/* Buyer's Tools */}
           <div>
-            <p className="eyebrow text-gold mb-6">Buyer Tools</p>
-            <ul className="space-y-3">
+            <p className="eyebrow text-amber-400 mb-5 font-bold">Buyer Tools</p>
+            <ul className="space-y-2.5">
               {buyerGuideLinks.map((l) => (
                 <li key={l}>
                   {l === "Loan calculator" || l === "Home loans" ? (
                     <button
                       type="button"
                       onClick={() => handleGuideClick(l)}
-                      className="link-reveal text-left text-sm font-light text-slate-300 hover:text-gold cursor-pointer"
+                      className="text-left text-xs sm:text-sm font-normal text-slate-300 hover:text-amber-400 transition-colors cursor-pointer"
                     >
-                      {l} <span className="text-[10px] font-semibold text-gold">↗ EMI Tool</span>
+                      {l} <span className="text-[10px] font-bold text-amber-400">↗ EMI Tool</span>
                     </button>
                   ) : (
                     <Link
                       to="/contact"
-                      className="link-reveal text-sm font-light text-slate-300 hover:text-white"
+                      className="text-xs sm:text-sm font-normal text-slate-300 hover:text-amber-400 transition-colors"
                     >
                       {l}
                     </Link>
@@ -106,22 +106,22 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact + Newsletter & Map Link */}
+          {/* Headquarters & Newsletter */}
           <div>
-            <p className="eyebrow text-gold mb-6">Headquarters</p>
-            <address className="space-y-2 text-sm font-light not-italic text-slate-300">
+            <p className="eyebrow text-amber-400 mb-5 font-bold">Headquarters</p>
+            <address className="space-y-1.5 text-xs sm:text-sm font-normal not-italic text-slate-300">
               {brand.address.map((line) => (
                 <p key={line}>{line}</p>
               ))}
-              <p className="pt-2 font-medium text-white">
+              <p className="pt-2 font-semibold text-white">
                 📞{" "}
-                <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="link-reveal text-gold">
+                <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-amber-400 hover:underline">
                   {brand.phone}
                 </a>
               </p>
               <p>
                 ✉️{" "}
-                <a href={`mailto:${brand.email}`} className="link-reveal text-slate-200">
+                <a href={`mailto:${brand.email}`} className="text-slate-300 hover:text-amber-400">
                   {brand.email}
                 </a>
               </p>
@@ -136,30 +136,30 @@ export function Footer() {
                 toast.success("Subscribed to Parjane Buildcon updates.");
               }}
             >
-              <label htmlFor="footer-email" className="eyebrow text-gold text-[10px]">
-                Stay Updated
+              <label htmlFor="footer-email" className="block text-[10px] font-bold uppercase tracking-wider text-amber-400 mb-1.5">
+                Stay Updated With Developments
               </label>
-              <div className="mt-2 flex gap-2">
+              <div className="flex gap-2">
                 <input
                   id="footer-email"
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Corporate Email"
-                  className="h-11 min-w-0 flex-1 rounded-xl border border-white/20 bg-navy/80 px-4 text-sm outline-none placeholder:text-slate-500 focus:border-gold"
+                  placeholder="Your Corporate Email"
+                  className="h-10 min-w-0 flex-1 rounded-xl border border-white/15 bg-[#0e1526] px-3.5 text-xs text-white outline-none placeholder:text-slate-500 focus:border-amber-400"
                 />
                 <Button
                   type="submit"
                   size="sm"
-                  className="h-11 rounded-xl bg-gold text-navy font-bold shrink-0"
+                  className="h-10 rounded-xl bg-gradient-to-r from-[#d4af37] to-[#c59b27] text-[#080c14] font-bold text-xs uppercase shrink-0 shadow-md"
                 >
-                  Subscribe
+                  Join
                 </Button>
               </div>
               {done && (
-                <p className="mt-2 text-xs font-light text-gold">
-                  Thank you — you've been added to our corporate list.
+                <p className="mt-2 text-xs font-medium text-amber-400">
+                  Thank you — you have been added to our VIP release list.
                 </p>
               )}
             </form>
@@ -168,18 +168,17 @@ export function Footer() {
 
         <Hairline />
 
-        <div className="flex flex-col gap-3 py-8 text-[11px] uppercase tracking-[0.18em] text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 py-6 text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {brand.name}. All rights reserved. Crafting Tomorrow's
-            Landmarks.
+            © {new Date().getFullYear()} {brand.name}. All rights reserved. Engineering Tomorrow's Landmarks.
           </p>
-          <p className="flex gap-4">
-            <span>MahaRERA Registered</span>
+          <div className="flex flex-wrap gap-4 text-slate-400">
+            <span>MahaRERA Compliance</span>
             <span>·</span>
             <span>Privacy Policy</span>
             <span>·</span>
             <span>Terms of Service</span>
-          </p>
+          </div>
         </div>
       </div>
 

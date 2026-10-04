@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Modal } from "../Modal";
-import { Button } from "../Button";
+import { Modal } from "../common/Modal";
+import { Button } from "../common/Button";
 import { toast } from "sonner";
 
-export function LoanCalculatorModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
   const [propertyPrice, setPropertyPrice] = useState<number>(35000000); // 3.5 Cr default
   const [downPaymentPercent, setDownPaymentPercent] = useState<number>(20);
   const [interestRate, setInterestRate] = useState<number>(8.5);
@@ -35,151 +35,158 @@ export function LoanCalculatorModal({ open, onClose }: { open: boolean; onClose:
   };
 
   const handleEnquireWithEstimate = () => {
-    toast.success("Estimate saved! Our residence finance specialist will reach out to you.");
-    onClose();
+    toast.success("Estimate saved! Our residence finance specialist will reach out with payment schedules.");
+    if (onComplete) onComplete();
   };
 
   return (
-    <Modal open={open} onClose={onClose} label="Luxury Residence Loan Calculator">
-      <div className="rounded-3xl border border-gold/30 bg-navy p-6 text-white sm:p-10 max-h-[85vh] overflow-y-auto">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+    <div className="rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-7 shadow-xl text-white">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between border-b border-white/10 pb-4">
+        <div>
+          <span className="eyebrow text-amber-400 font-bold text-[10px]">Investment Planning</span>
+          <h3 className="mt-1 font-display text-lg sm:text-xl font-semibold text-white drop-shadow-sm">
+            Residence Mortgage &amp; EMI Calculator
+          </h3>
+        </div>
+        <p className="text-xs font-normal text-slate-300">
+          Real-time banking rate estimates
+        </p>
+      </div>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        {/* Controls */}
+        <div className="space-y-4">
           <div>
-            <p className="eyebrow text-gold font-bold">Buyer's Tool</p>
-            <h2 className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-white">
-              Residence EMI Calculator
-            </h2>
+            <div className="flex justify-between text-xs font-medium tracking-wider">
+              <span className="uppercase text-slate-300 font-semibold text-[10px]">Property Investment Value</span>
+              <span className="font-display text-sm sm:text-base font-bold text-amber-300">
+                {formatCurrency(propertyPrice)}
+              </span>
+            </div>
+            <input
+              type="range"
+              min={10000000}
+              max={200000000}
+              step={2500000}
+              value={propertyPrice}
+              onChange={(e) => setPropertyPrice(Number(e.target.value))}
+              className="mt-2 h-1.5 w-full accent-amber-400 cursor-pointer bg-black/50 rounded-lg"
+            />
           </div>
-          <p className="text-xs font-light text-slate-300">
-            Estimates powered by standard bank terms
-          </p>
+
+          <div>
+            <div className="flex justify-between text-xs font-medium tracking-wider">
+              <span className="uppercase text-slate-300 font-semibold text-[10px]">
+                Down Payment ({downPaymentPercent}%)
+              </span>
+              <span className="font-display text-sm sm:text-base font-bold text-amber-300">
+                {formatCurrency(downPayment)}
+              </span>
+            </div>
+            <input
+              type="range"
+              min={10}
+              max={50}
+              step={5}
+              value={downPaymentPercent}
+              onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
+              className="mt-2 h-1.5 w-full accent-amber-400 cursor-pointer bg-black/50 rounded-lg"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-[10px] uppercase tracking-wider text-slate-300 font-semibold mb-1">
+                Interest Rate (% p.a.)
+              </label>
+              <input
+                type="number"
+                step="0.1"
+                min="5"
+                max="15"
+                value={interestRate}
+                onChange={(e) => setInterestRate(Number(e.target.value))}
+                className="h-10 w-full rounded-xl border border-white/10 bg-black/25 px-3 text-xs sm:text-sm text-white outline-none focus:border-amber-400 focus:bg-black/40 focus:ring-1 focus:ring-amber-400"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[10px] uppercase tracking-wider text-slate-300 font-semibold mb-1">
+                Tenure (Years)
+              </label>
+              <input
+                type="number"
+                min="5"
+                max="30"
+                value={tenureYears}
+                onChange={(e) => setTenureYears(Number(e.target.value))}
+                className="h-10 w-full rounded-xl border border-white/10 bg-black/25 px-3 text-xs sm:text-sm text-white outline-none focus:border-amber-400 focus:bg-black/40 focus:ring-1 focus:ring-amber-400"
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-2">
-          {/* Controls */}
-          <div className="space-y-6">
-            <div>
-              <div className="flex justify-between text-xs font-light tracking-wider">
-                <span className="uppercase text-slate-300 font-semibold">Property Value</span>
-                <span className="font-display text-lg font-bold text-gold">
-                  {formatCurrency(propertyPrice)}
-                </span>
+        {/* Breakdown & EMI Result */}
+        <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-black/25 backdrop-blur-md p-5 sm:p-6 shadow-md">
+          <div>
+            <p className="text-[10px] uppercase tracking-wider font-bold text-amber-400">Estimated Monthly EMI</p>
+            <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-amber-300">
+              ₹ {emi.toLocaleString("en-IN")}
+              <span className="text-xs font-normal text-slate-400"> / month</span>
+            </p>
+
+            <div className="mt-4 space-y-2.5 divide-y divide-white/10 text-xs">
+              <div className="flex justify-between pt-1.5">
+                <span className="text-slate-300">Net Loan Principal</span>
+                <span className="font-semibold text-white">{formatCurrency(loanAmount)}</span>
               </div>
-              <input
-                type="range"
-                min={10000000}
-                max={200000000}
-                step={2500000}
-                value={propertyPrice}
-                onChange={(e) => setPropertyPrice(Number(e.target.value))}
-                className="mt-2 h-1.5 w-full accent-gold cursor-pointer bg-white/20 rounded-lg"
-              />
+              <div className="flex justify-between pt-1.5">
+                <span className="text-slate-300">Total Interest Payable</span>
+                <span className="font-semibold text-white">{formatCurrency(totalInterest)}</span>
+              </div>
+              <div className="flex justify-between pt-1.5">
+                <span className="text-slate-300">Total Outflow</span>
+                <span className="font-bold text-amber-300">{formatCurrency(totalPayment)}</span>
+              </div>
             </div>
 
-            <div>
-              <div className="flex justify-between text-xs font-light tracking-wider">
-                <span className="uppercase text-slate-300 font-semibold">
-                  Down Payment ({downPaymentPercent}%)
-                </span>
-                <span className="font-display text-lg font-bold text-gold">
-                  {formatCurrency(downPayment)}
-                </span>
-              </div>
-              <input
-                type="range"
-                min={10}
-                max={50}
-                step={5}
-                value={downPaymentPercent}
-                onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className="mt-2 h-1.5 w-full accent-gold cursor-pointer bg-white/20 rounded-lg"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs uppercase tracking-wider text-slate-300 font-semibold">
-                  Interest Rate (% p.a.)
-                </label>
-                <input
-                  type="number"
-                  step="0.1"
-                  min="5"
-                  max="15"
-                  value={interestRate}
-                  onChange={(e) => setInterestRate(Number(e.target.value))}
-                  className="mt-2 h-11 w-full rounded-xl border border-white/20 bg-navy/80 px-3 text-sm text-white outline-none focus:border-gold"
+            {/* Stacked bar visualization */}
+            <div className="mt-4">
+              <div className="flex h-2 w-full overflow-hidden rounded-full bg-white/10">
+                <div
+                  style={{ width: `${totalPayment > 0 ? (loanAmount / totalPayment) * 100 : 50}%` }}
+                  className="bg-amber-400"
+                />
+                <div
+                  style={{ width: `${totalPayment > 0 ? (totalInterest / totalPayment) * 100 : 50}%` }}
+                  className="bg-slate-500"
                 />
               </div>
-
-              <div>
-                <label className="block text-xs uppercase tracking-wider text-slate-300 font-semibold">
-                  Tenure (Years)
-                </label>
-                <input
-                  type="number"
-                  min="5"
-                  max="30"
-                  value={tenureYears}
-                  onChange={(e) => setTenureYears(Number(e.target.value))}
-                  className="mt-2 h-11 w-full rounded-xl border border-white/20 bg-navy/80 px-3 text-sm text-white outline-none focus:border-gold"
-                />
+              <div className="mt-1.5 flex justify-between text-[9px] uppercase tracking-wider text-slate-400">
+                <span>■ Principal ({totalPayment > 0 ? Math.round((loanAmount / totalPayment) * 100) : 0}%)</span>
+                <span>■ Interest ({totalPayment > 0 ? Math.round((totalInterest / totalPayment) * 100) : 0}%)</span>
               </div>
             </div>
           </div>
 
-          {/* Breakdown & EMI Result */}
-          <div className="flex flex-col justify-between rounded-2xl border border-white/10 bg-slate-900/60 p-6 sm:p-8">
-            <div>
-              <p className="eyebrow text-gold font-bold">Estimated Monthly Outflow</p>
-              <p className="mt-2 font-display text-4xl sm:text-5xl font-extrabold text-gold">
-                ₹ {emi.toLocaleString("en-IN")}
-                <span className="text-sm font-light text-slate-300"> / mo</span>
-              </p>
-
-              <div className="mt-6 space-y-3 divide-y divide-white/10 text-xs font-light">
-                <div className="flex justify-between pt-2">
-                  <span className="text-slate-300">Loan Principal</span>
-                  <span className="font-semibold text-white">{formatCurrency(loanAmount)}</span>
-                </div>
-                <div className="flex justify-between pt-2">
-                  <span className="text-slate-300">Total Interest Payable</span>
-                  <span className="font-semibold text-white">{formatCurrency(totalInterest)}</span>
-                </div>
-                <div className="flex justify-between pt-2">
-                  <span className="text-slate-300">Total Amount Payable</span>
-                  <span className="font-bold text-gold">{formatCurrency(totalPayment)}</span>
-                </div>
-              </div>
-
-              {/* Stacked bar visualization */}
-              <div className="mt-6">
-                <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-white/10">
-                  <div
-                    style={{ width: `${(loanAmount / totalPayment) * 100}%` }}
-                    className="bg-gold"
-                  />
-                  <div
-                    style={{ width: `${(totalInterest / totalPayment) * 100}%` }}
-                    className="bg-white/40"
-                  />
-                </div>
-                <div className="mt-2 flex justify-between text-[10px] uppercase tracking-wider text-slate-400">
-                  <span>■ Principal ({Math.round((loanAmount / totalPayment) * 100)}%)</span>
-                  <span>■ Interest ({Math.round((totalInterest / totalPayment) * 100)}%)</span>
-                </div>
-              </div>
-            </div>
-
-            <Button
-              onClick={handleEnquireWithEstimate}
-              variant="solid"
-              className="mt-8 w-full rounded-xl bg-gold text-navy font-bold hover:bg-gold-light transition-all"
-            >
-              Request Custom Structuring Plan
-            </Button>
-          </div>
+          <Button
+            onClick={handleEnquireWithEstimate}
+            variant="solid"
+            size="sm"
+            className="mt-5 w-full rounded-xl bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] py-2.5 text-xs font-bold uppercase tracking-wider text-[#080c14] shadow-md transition-all hover:scale-[1.01]"
+          >
+            Request Custom Financial Structure
+          </Button>
         </div>
       </div>
+    </div>
+  );
+}
+
+export function LoanCalculatorModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  return (
+    <Modal open={open} onClose={onClose} label="Luxury Residence Loan Calculator">
+      <LoanCalculator onComplete={onClose} />
     </Modal>
   );
 }

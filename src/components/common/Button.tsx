@@ -2,28 +2,31 @@ import { Link } from "@tanstack/react-router";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "solid" | "outline" | "ghost" | "light";
+type Variant = "solid" | "outline" | "ghost" | "light" | "gold";
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-sans text-[11px] uppercase tracking-[0.22em] " +
-  "transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-none cursor-pointer " +
-  "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 " +
-  "focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 font-sans text-xs uppercase tracking-[0.16em] " +
+  "transition-all duration-300 ease-out rounded-xl cursor-pointer font-bold " +
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 " +
+  "disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<Variant, string> = {
-  solid: "bg-gold text-navy font-bold hover:bg-gold-light hover:tracking-[0.26em]",
+  solid:
+    "bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] text-[#080c14] shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:scale-105 hover:shadow-[0_6px_25px_rgba(212,175,55,0.5)]",
+  gold:
+    "bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] text-[#080c14] shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:scale-105 hover:shadow-[0_6px_25px_rgba(212,175,55,0.5)]",
   outline:
-    "border border-border text-foreground hover:border-gold hover:text-gold hover:tracking-[0.26em]",
-  ghost: "text-foreground hover:text-gold",
+    "border border-white/25 bg-[#0e1526]/70 text-white backdrop-blur-md hover:border-amber-400 hover:bg-amber-400/10 hover:text-amber-300 shadow-md",
+  ghost: "text-slate-300 hover:text-amber-300 hover:bg-white/5",
   light:
-    "border border-white/40 text-white backdrop-blur-[2px] hover:bg-white hover:text-navy hover:tracking-[0.26em]",
+    "border border-white/30 text-white bg-white/5 backdrop-blur-md hover:border-amber-400 hover:bg-amber-400/20 hover:text-amber-300",
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-9 px-5",
-  md: "h-12 px-8",
-  lg: "h-14 px-10",
+  sm: "h-9 px-4 text-[11px]",
+  md: "h-11 px-6 text-xs",
+  lg: "h-13 px-8 text-xs sm:text-sm",
 };
 
 export function buttonClasses(variant: Variant = "solid", size: Size = "md", className?: string) {

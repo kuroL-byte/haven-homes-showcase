@@ -105,11 +105,11 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
   const current: PlanVariant = (plans[activeIdx] ?? plans[0] ?? defaultPlans[0]) as PlanVariant;
 
   return (
-    <div className="border border-slate-200 rounded-3xl bg-white p-6 sm:p-10 shadow-sm">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="border border-white/10 rounded-2xl bg-black/25 backdrop-blur-xl p-5 sm:p-7 shadow-xl text-white">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="eyebrow text-gold font-bold">Architectural Layouts</p>
-          <h3 className="font-display text-2xl sm:text-3xl font-bold text-navy">
+          <p className="eyebrow text-amber-400 font-bold text-[10px]">Architectural Layouts</p>
+          <h3 className="font-display text-lg sm:text-xl font-semibold text-white drop-shadow-sm">
             Interactive Floor Plans
           </h3>
         </div>
@@ -121,10 +121,10 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
               key={p.title}
               onClick={() => setActiveIdx(i)}
               className={cn(
-                "rounded-xl border px-4 py-2 text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300 cursor-pointer",
+                "rounded-xl border px-3.5 py-1.5 text-[11px] uppercase tracking-wider font-semibold transition-all duration-300 cursor-pointer",
                 activeIdx === i
-                  ? "border-gold bg-gold text-navy shadow-md"
-                  : "border-slate-200 text-slate-600 hover:border-gold/50 hover:text-navy",
+                  ? "border-amber-400 bg-amber-400 text-[#080c14] font-bold shadow-md"
+                  : "border-white/10 bg-black/20 text-slate-300 hover:border-amber-400/50 hover:text-white",
               )}
             >
               {p.title}
@@ -133,29 +133,29 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
         </div>
       </div>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[1.3fr_1fr]">
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
         {/* Schematic Layout Card */}
-        <div className="relative flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50 p-8 min-h-[340px]">
+        <div className="relative flex flex-col justify-between rounded-xl border border-white/10 bg-black/25 backdrop-blur-md p-5 sm:p-6 min-h-[300px] shadow-md">
           <div className="flex justify-between items-start">
             <div>
-              <span className="inline-block rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.22em] font-bold text-gold">
+              <span className="inline-block rounded-full border border-amber-400/30 bg-amber-500/10 px-2.5 py-0.5 text-[9px] uppercase tracking-wider font-bold text-amber-300">
                 {current.type}
               </span>
-              <h4 className="mt-4 font-display text-2xl font-bold text-navy">{current.title}</h4>
+              <h4 className="mt-3 font-display text-lg sm:text-xl font-semibold text-white drop-shadow-sm">{current.title}</h4>
             </div>
             <div className="text-right">
-              <p className="font-display text-3xl font-bold text-gold">{current.carpetArea}</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-400">
+              <p className="font-display text-xl sm:text-2xl font-bold text-amber-300">{current.carpetArea}</p>
+              <p className="text-[9px] uppercase tracking-wider font-bold text-slate-400">
                 Carpet Area
               </p>
             </div>
           </div>
 
-          {/* Graphical Schematic Diagram Placeholder */}
-          <div className="my-8 relative flex h-48 w-full items-center justify-center rounded-2xl border border-dashed border-gold/40 bg-white p-6 text-center shadow-inner">
-            <div className="space-y-2">
+          {/* Graphical Schematic Diagram */}
+          <div className="my-6 relative flex h-40 w-full items-center justify-center rounded-xl border border-dashed border-amber-400/30 bg-black/20 p-5 text-center shadow-inner">
+            <div className="space-y-1.5">
               <svg
-                className="mx-auto h-10 w-10 text-gold"
+                className="mx-auto h-8 w-8 text-amber-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -167,35 +167,35 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
                   d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V11m0 0H7m4 0h4m0 0v10"
                 />
               </svg>
-              <p className="font-display text-lg text-foreground">{current.type}</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="font-display text-base font-semibold text-white">{current.type}</p>
+              <p className="text-xs text-slate-300">
                 Deck: {current.balconyArea} • Orientation: {current.exposure}
               </p>
             </div>
           </div>
 
-          <p className="text-xs font-light leading-relaxed text-muted-foreground">
+          <p className="text-xs font-normal leading-relaxed text-slate-300">
             {current.description}
           </p>
         </div>
 
         {/* Specifications List */}
-        <div className="flex flex-col justify-between border border-border p-6 sm:p-8">
+        <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-black/25 backdrop-blur-md p-5 sm:p-6 shadow-md">
           <div>
-            <p className="eyebrow mb-4">Key Metrics</p>
-            <dl className="divide-y divide-border">
+            <p className="eyebrow text-amber-400 font-bold mb-3 text-[10px]">Key Metrics</p>
+            <dl className="divide-y divide-white/10">
               {current.specs.map((s) => (
-                <div key={s.label} className="py-3">
-                  <dt className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                <div key={s.label} className="py-2.5">
+                  <dt className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">
                     {s.label}
                   </dt>
-                  <dd className="mt-1 text-sm font-light">{s.value}</dd>
+                  <dd className="mt-0.5 text-xs sm:text-sm font-semibold text-white">{s.value}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          <div className="mt-8 border-t border-border pt-6 text-xs font-light text-muted-foreground">
+          <div className="mt-6 border-t border-white/10 pt-4 text-[11px] font-normal text-slate-400">
             <p>
               * Certified as-built CAD drawings and MEP schematics available upon NDA execution.
             </p>
