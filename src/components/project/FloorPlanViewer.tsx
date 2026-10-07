@@ -105,7 +105,7 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
   const current: PlanVariant = (plans[activeIdx] ?? plans[0] ?? defaultPlans[0]) as PlanVariant;
 
   return (
-    <div className="border border-white/10 rounded-2xl bg-black/25 backdrop-blur-xl p-5 sm:p-7 shadow-xl text-white">
+    <div className="border border-white/10 rounded-2xl bg-black/15 backdrop-blur-[2px] p-5 sm:p-7 shadow-xl text-white">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="eyebrow text-amber-400 font-bold text-[10px]">Architectural Layouts</p>
@@ -135,7 +135,7 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
         {/* Schematic Layout Card */}
-        <div className="relative flex flex-col justify-between rounded-xl border border-white/10 bg-black/25 backdrop-blur-md p-5 sm:p-6 min-h-[300px] shadow-md">
+        <div className="relative flex flex-col justify-between rounded-xl border border-white/10 bg-black/15 backdrop-blur-[2px] p-5 sm:p-6 min-h-[300px] shadow-md">
           <div className="flex justify-between items-start">
             <div>
               <span className="inline-block rounded-full border border-amber-400/30 bg-amber-500/10 px-2.5 py-0.5 text-[9px] uppercase tracking-wider font-bold text-amber-300">
@@ -180,7 +180,7 @@ export function FloorPlanViewer({ projectName }: { projectName: string }) {
         </div>
 
         {/* Specifications List */}
-        <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-black/25 backdrop-blur-md p-5 sm:p-6 shadow-md">
+        <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-black/15 backdrop-blur-[2px] p-5 sm:p-6 shadow-md">
           <div>
             <p className="eyebrow text-amber-400 font-bold mb-3 text-[10px]">Key Metrics</p>
             <dl className="divide-y divide-white/10">

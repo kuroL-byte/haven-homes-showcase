@@ -40,16 +40,16 @@ export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-7 shadow-xl text-white">
+    <div className="rounded-2xl border border-white/15 bg-black/25 backdrop-blur-[2px] p-5 sm:p-7 shadow-xl text-white">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between border-b border-white/10 pb-4">
         <div>
-          <span className="eyebrow text-amber-400 font-bold text-[10px]">Investment Planning</span>
-          <h3 className="mt-1 font-display text-lg sm:text-xl font-semibold text-white drop-shadow-sm">
+          <span className="eyebrow text-amber-300 font-bold text-[10px]">Investment Planning</span>
+          <h3 className="mt-1 font-display text-lg sm:text-xl font-bold text-white drop-shadow-sm">
             Residence Mortgage &amp; EMI Calculator
           </h3>
         </div>
-        <p className="text-xs font-normal text-slate-300">
-          Real-time banking rate estimates
+        <p className="text-xs font-semibold text-amber-300/90">
+          ✦ Real-time banking rate estimates
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
         <div className="space-y-4">
           <div>
             <div className="flex justify-between text-xs font-medium tracking-wider">
-              <span className="uppercase text-slate-300 font-semibold text-[10px]">Property Investment Value</span>
+              <span className="uppercase text-slate-100 font-bold text-[10px]">Property Investment Value</span>
               <span className="font-display text-sm sm:text-base font-bold text-amber-300">
                 {formatCurrency(propertyPrice)}
               </span>
@@ -70,13 +70,13 @@ export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
               step={2500000}
               value={propertyPrice}
               onChange={(e) => setPropertyPrice(Number(e.target.value))}
-              className="mt-2 h-1.5 w-full accent-amber-400 cursor-pointer bg-black/50 rounded-lg"
+              className="mt-2 h-2 w-full accent-amber-400 cursor-pointer bg-black/50 rounded-lg border border-white/10"
             />
           </div>
 
           <div>
             <div className="flex justify-between text-xs font-medium tracking-wider">
-              <span className="uppercase text-slate-300 font-semibold text-[10px]">
+              <span className="uppercase text-slate-100 font-bold text-[10px]">
                 Down Payment ({downPaymentPercent}%)
               </span>
               <span className="font-display text-sm sm:text-base font-bold text-amber-300">
@@ -90,13 +90,13 @@ export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
               step={5}
               value={downPaymentPercent}
               onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-              className="mt-2 h-1.5 w-full accent-amber-400 cursor-pointer bg-black/50 rounded-lg"
+              className="mt-2 h-2 w-full accent-amber-400 cursor-pointer bg-black/50 rounded-lg border border-white/10"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-[10px] uppercase tracking-wider text-slate-300 font-semibold mb-1">
+              <label className="block text-[10px] uppercase tracking-wider text-amber-300 font-bold mb-1">
                 Interest Rate (% p.a.)
               </label>
               <input
@@ -106,12 +106,12 @@ export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
                 max="15"
                 value={interestRate}
                 onChange={(e) => setInterestRate(Number(e.target.value))}
-                className="h-10 w-full rounded-xl border border-white/10 bg-black/25 px-3 text-xs sm:text-sm text-white outline-none focus:border-amber-400 focus:bg-black/40 focus:ring-1 focus:ring-amber-400"
+                className="h-10 w-full rounded-xl border border-white/15 bg-black/25 px-3 text-xs sm:text-sm text-white font-semibold outline-none focus:border-amber-400 focus:bg-black/35 focus:ring-1 focus:ring-amber-400"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] uppercase tracking-wider text-slate-300 font-semibold mb-1">
+              <label className="block text-[10px] uppercase tracking-wider text-amber-300 font-bold mb-1">
                 Tenure (Years)
               </label>
               <input
@@ -120,50 +120,50 @@ export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
                 max="30"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}
-                className="h-10 w-full rounded-xl border border-white/10 bg-black/25 px-3 text-xs sm:text-sm text-white outline-none focus:border-amber-400 focus:bg-black/40 focus:ring-1 focus:ring-amber-400"
+                className="h-10 w-full rounded-xl border border-white/15 bg-black/25 px-3 text-xs sm:text-sm text-white font-semibold outline-none focus:border-amber-400 focus:bg-black/35 focus:ring-1 focus:ring-amber-400"
               />
             </div>
           </div>
         </div>
 
         {/* Breakdown & EMI Result */}
-        <div className="flex flex-col justify-between rounded-xl border border-white/10 bg-black/25 backdrop-blur-md p-5 sm:p-6 shadow-md">
+        <div className="flex flex-col justify-between rounded-xl border border-white/15 bg-black/25 backdrop-blur-[2px] p-5 sm:p-6 shadow-md">
           <div>
-            <p className="text-[10px] uppercase tracking-wider font-bold text-amber-400">Estimated Monthly EMI</p>
-            <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-amber-300">
+            <p className="text-[10px] uppercase tracking-wider font-bold text-amber-300">Estimated Monthly EMI</p>
+            <p className="mt-1 font-display text-2xl sm:text-3xl font-bold text-white drop-shadow">
               ₹ {emi.toLocaleString("en-IN")}
-              <span className="text-xs font-normal text-slate-400"> / month</span>
+              <span className="text-xs font-semibold text-amber-300"> / month</span>
             </p>
 
             <div className="mt-4 space-y-2.5 divide-y divide-white/10 text-xs">
               <div className="flex justify-between pt-1.5">
-                <span className="text-slate-300">Net Loan Principal</span>
-                <span className="font-semibold text-white">{formatCurrency(loanAmount)}</span>
+                <span className="text-slate-100 font-medium">Net Loan Principal</span>
+                <span className="font-bold text-white">{formatCurrency(loanAmount)}</span>
               </div>
               <div className="flex justify-between pt-1.5">
-                <span className="text-slate-300">Total Interest Payable</span>
-                <span className="font-semibold text-white">{formatCurrency(totalInterest)}</span>
+                <span className="text-slate-100 font-medium">Total Interest Payable</span>
+                <span className="font-bold text-white">{formatCurrency(totalInterest)}</span>
               </div>
               <div className="flex justify-between pt-1.5">
-                <span className="text-slate-300">Total Outflow</span>
-                <span className="font-bold text-amber-300">{formatCurrency(totalPayment)}</span>
+                <span className="text-slate-100 font-medium">Total Outflow</span>
+                <span className="font-extrabold text-amber-300">{formatCurrency(totalPayment)}</span>
               </div>
             </div>
 
             {/* Stacked bar visualization */}
             <div className="mt-4">
-              <div className="flex h-2 w-full overflow-hidden rounded-full bg-white/10">
+              <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-white/10 border border-white/10">
                 <div
                   style={{ width: `${totalPayment > 0 ? (loanAmount / totalPayment) * 100 : 50}%` }}
-                  className="bg-amber-400"
+                  className="bg-gradient-to-r from-amber-400 to-amber-300"
                 />
                 <div
                   style={{ width: `${totalPayment > 0 ? (totalInterest / totalPayment) * 100 : 50}%` }}
                   className="bg-slate-500"
                 />
               </div>
-              <div className="mt-1.5 flex justify-between text-[9px] uppercase tracking-wider text-slate-400">
-                <span>■ Principal ({totalPayment > 0 ? Math.round((loanAmount / totalPayment) * 100) : 0}%)</span>
+              <div className="mt-2 flex justify-between text-[9px] uppercase tracking-wider text-slate-100 font-bold">
+                <span className="text-amber-300">■ Principal ({totalPayment > 0 ? Math.round((loanAmount / totalPayment) * 100) : 0}%)</span>
                 <span>■ Interest ({totalPayment > 0 ? Math.round((totalInterest / totalPayment) * 100) : 0}%)</span>
               </div>
             </div>
@@ -173,7 +173,7 @@ export function LoanCalculator({ onComplete }: { onComplete?: () => void }) {
             onClick={handleEnquireWithEstimate}
             variant="solid"
             size="sm"
-            className="mt-5 w-full rounded-xl bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] py-2.5 text-xs font-bold uppercase tracking-wider text-[#080c14] shadow-md transition-all hover:scale-[1.01]"
+            className="mt-5 w-full rounded-xl bg-gradient-to-r from-[#d4af37] via-[#fce79a] to-[#c59b27] py-3 text-xs font-bold uppercase tracking-wider text-[#080c14] shadow-md transition-all hover:scale-[1.01]"
           >
             Request Custom Financial Structure
           </Button>

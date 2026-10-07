@@ -32,7 +32,7 @@ export const type = {
   h1: "font-display font-bold text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.18] tracking-tight text-white drop-shadow-sm",
   h2: "font-display font-bold text-[clamp(1.35rem,2.2vw,1.85rem)] leading-[1.22] tracking-tight text-white",
   h3: "font-display font-semibold text-[clamp(1.1rem,1.5vw,1.35rem)] leading-[1.3] text-white",
-  body: "text-xs sm:text-[13.5px] leading-[1.7] font-normal text-slate-200/90",
+  body: "text-xs sm:text-[13.5px] leading-[1.7] font-medium text-slate-100 drop-shadow-sm",
   eyebrow: "eyebrow",
 } as const;
 
@@ -40,9 +40,7 @@ export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Projects", to: "/projects" },
-  { label: "Amenities", to: "/amenities" },
-  { label: "Gallery", to: "/gallery" },
-  { label: "Testimonials", to: "/testimonials" },
+  { label: "Gallery & Testimonials", to: "/gallery" },
   { label: "Insights", to: "/blog" },
   { label: "Contact", to: "/contact" },
 ] as const;

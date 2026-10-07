@@ -17,10 +17,10 @@ const variants: Record<Variant, string> = {
   gold:
     "bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#c59b27] text-[#080c14] shadow-[0_4px_20px_rgba(212,175,55,0.3)] hover:scale-105 hover:shadow-[0_6px_25px_rgba(212,175,55,0.5)]",
   outline:
-    "border border-white/25 bg-[#0e1526]/70 text-white backdrop-blur-md hover:border-amber-400 hover:bg-amber-400/10 hover:text-amber-300 shadow-md",
+    "border border-white/25 bg-[#0e1526]/70 text-white backdrop-blur-[2px] hover:border-amber-400 hover:bg-amber-400/10 hover:text-amber-300 shadow-md",
   ghost: "text-slate-300 hover:text-amber-300 hover:bg-white/5",
   light:
-    "border border-white/30 text-white bg-white/5 backdrop-blur-md hover:border-amber-400 hover:bg-amber-400/20 hover:text-amber-300",
+    "border border-white/30 text-white bg-white/5 backdrop-blur-[2px] hover:border-amber-400 hover:bg-amber-400/20 hover:text-amber-300",
 };
 
 const sizes: Record<Size, string> = {

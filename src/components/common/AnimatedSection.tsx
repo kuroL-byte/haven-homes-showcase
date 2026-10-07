@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-/**
- * Reveals children on scroll using IntersectionObserver.
- * Subtle fade-up (default) or scale-in, never bouncy.
- */
+
 export function AnimatedSection({
   children,
   className,

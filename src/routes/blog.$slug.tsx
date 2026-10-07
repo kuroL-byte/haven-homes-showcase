@@ -79,7 +79,7 @@ function BlogPost() {
 
       <Container className="mt-6 sm:mt-8">
         <AnimatedSection variant="scale">
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-xl">
+          <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/15 shadow-xl">
             <LazyImage
               src={post.image}
               alt={post.title}
@@ -93,7 +93,7 @@ function BlogPost() {
       </Container>
 
       <SectionWrapper narrow>
-        <div className="space-y-4 rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-8 shadow-xl">
+        <div className="space-y-4 rounded-2xl border border-white/10 bg-black/15 backdrop-blur-[2px] p-5 sm:p-8 shadow-xl">
           {post.body.map((para, i) => (
             <AnimatedSection key={i} delay={i * 30}>
               <p
@@ -123,7 +123,7 @@ function BlogPost() {
         </AnimatedSection>
       </SectionWrapper>
 
-      <SectionWrapper className="border-t border-amber-500/20 bg-black/25 backdrop-blur-md">
+      <SectionWrapper className="border-t border-amber-500/20 bg-transparent">
         <p className="eyebrow text-amber-400 font-bold mb-4">Related Engineering Articles</p>
         <div className="grid gap-4 sm:gap-6 md:grid-cols-3">
           {related.map((p, i) => (

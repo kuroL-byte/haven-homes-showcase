@@ -41,7 +41,7 @@ export function Modal({
       <button
         aria-label="Close"
         onClick={onClose}
-        className="absolute inset-0 animate-[fade-in_0.4s_ease-out] bg-navy/92 backdrop-blur-md"
+        className="absolute inset-0 animate-[fade-in_0.4s_ease-out] bg-black/80 backdrop-blur-[2px]"
       />
       <div
         className={cn("relative z-10 w-full max-w-5xl animate-[scale-in_0.4s_ease-out]", className)}

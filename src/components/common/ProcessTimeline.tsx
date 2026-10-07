@@ -34,10 +34,10 @@ export function ProcessTimeline() {
                   className={cn(
                     "relative z-10 grid size-12 place-items-center rounded-xl border-2 font-display text-xs font-bold transition-all duration-400",
                     isActive
-                      ? "border-amber-400 bg-black/60 text-amber-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] scale-105"
+                      ? "border-amber-400 bg-black/40 text-amber-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] scale-105"
                       : isPassed
                         ? "border-amber-400/80 bg-amber-400 text-[#080c14] font-bold"
-                        : "border-white/15 bg-black/25 text-slate-400 group-hover:border-amber-400/50 group-hover:text-white",
+                        : "border-white/15 bg-black/15 text-slate-400 group-hover:border-amber-400/50 group-hover:text-white",
                   )}
                 >
                   {s.step}
@@ -62,19 +62,19 @@ export function ProcessTimeline() {
         <AnimatedSection
           key={activeStep}
           variant="scale"
-          className="rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-7 shadow-xl"
+          className="rounded-2xl border border-white/15 bg-black/25 backdrop-blur-[2px] p-5 sm:p-7 shadow-xl"
         >
           <div className="grid gap-5 lg:grid-cols-[auto_1fr_auto] lg:items-center">
-            <div className="grid size-14 place-items-center rounded-xl bg-gradient-to-br from-[#d4af37] to-[#aa820a] font-display text-xl font-bold text-[#080c14] shadow-md shadow-amber-500/15">
+            <div className="grid size-14 place-items-center rounded-xl bg-gradient-to-br from-[#d4af37] via-[#fce79a] to-[#aa820a] font-display text-xl font-black text-[#080c14] shadow-md shadow-amber-500/20">
               {processSteps[activeStep]?.step}
             </div>
 
             <div>
-              <p className="eyebrow text-amber-400 text-[11px] font-bold">Phase {activeStep + 1} of 6</p>
-              <h3 className="mt-1 font-display text-lg sm:text-xl font-semibold text-white drop-shadow-sm">
+              <p className="eyebrow text-amber-300 text-[11px] font-bold">Phase {activeStep + 1} of 6</p>
+              <h3 className="mt-1 font-display text-lg sm:text-xl font-bold text-white drop-shadow-sm">
                 {processSteps[activeStep]?.title}
               </h3>
-              <p className="mt-1.5 text-xs sm:text-sm font-normal leading-relaxed text-slate-300">
+              <p className="mt-1.5 text-xs sm:text-sm font-medium leading-relaxed text-slate-100 drop-shadow-sm">
                 {processSteps[activeStep]?.body}
               </p>
             </div>
@@ -83,7 +83,7 @@ export function ProcessTimeline() {
               <button
                 disabled={activeStep === 0}
                 onClick={() => setActiveStep((prev) => Math.max(0, prev - 1))}
-                className="grid size-9 place-items-center rounded-lg border border-white/15 bg-black/25 text-slate-300 transition-all hover:border-amber-400 hover:text-amber-400 disabled:opacity-20 cursor-pointer"
+                className="grid size-10 place-items-center rounded-xl border border-white/20 bg-black/30 text-white transition-all hover:border-amber-400 hover:text-amber-300 hover:bg-amber-400/10 disabled:opacity-30 cursor-pointer shadow-sm font-bold"
                 aria-label="Previous phase"
               >
                 ←
@@ -91,7 +91,7 @@ export function ProcessTimeline() {
               <button
                 disabled={activeStep === processSteps.length - 1}
                 onClick={() => setActiveStep((prev) => Math.min(processSteps.length - 1, prev + 1))}
-                className="grid size-9 place-items-center rounded-lg border border-white/15 bg-black/25 text-slate-300 transition-all hover:border-amber-400 hover:text-amber-400 disabled:opacity-20 cursor-pointer"
+                className="grid size-10 place-items-center rounded-xl border border-white/20 bg-black/30 text-white transition-all hover:border-amber-400 hover:text-amber-300 hover:bg-amber-400/10 disabled:opacity-30 cursor-pointer shadow-sm font-bold"
                 aria-label="Next phase"
               >
                 →

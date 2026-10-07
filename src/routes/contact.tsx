@@ -40,7 +40,7 @@ function Contact() {
       <SectionWrapper>
         <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12">
           {/* Form */}
-          <AnimatedSection className="rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-7 shadow-xl">
+          <AnimatedSection className="rounded-2xl border border-white/10 bg-black/15 backdrop-blur-[2px] p-5 sm:p-7 shadow-xl">
             <p className="eyebrow text-amber-400 font-bold mb-1.5 text-[10px]">Direct Enquiry</p>
             <h2 className="font-display text-xl sm:text-2xl font-semibold text-white leading-tight drop-shadow-sm">
               Let's Discuss Your Landmark Requirements.
@@ -54,7 +54,7 @@ function Contact() {
           <AnimatedSection delay={120} className="flex flex-col justify-between">
             <div>
               <p className="eyebrow text-amber-400 font-bold mb-1.5 text-[10px]">Corporate Office</p>
-              <address className="space-y-0.5 text-xs sm:text-sm font-normal not-italic text-slate-200">
+              <address className="space-y-0.5 text-xs sm:text-sm font-medium not-italic text-white drop-shadow-sm">
                 {brand.address.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
@@ -71,12 +71,12 @@ function Contact() {
                   { label: "Office Hours", value: brand.hours },
                 ].map((row) => (
                   <div key={row.label} className="grid gap-1 py-2.5 sm:grid-cols-[7rem_1fr] sm:gap-4">
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-slate-400">
+                    <dt className="text-[10px] uppercase tracking-wider font-bold text-amber-300">
                       {row.label}
                     </dt>
-                    <dd className="text-xs sm:text-sm font-semibold text-white">
+                    <dd className="text-xs sm:text-sm font-bold text-white drop-shadow-sm">
                       {row.href ? (
-                        <a href={row.href} className="text-amber-400 hover:underline">
+                        <a href={row.href} className="text-amber-300 hover:text-white transition-colors">
                           {row.value}
                         </a>
                       ) : (
@@ -102,7 +102,7 @@ function Contact() {
                     href={s.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex h-9 items-center px-2.5 text-[11px] uppercase font-semibold tracking-wider text-slate-300 hover:text-amber-400 transition-colors"
+                    className="inline-flex h-9 items-center px-2.5 text-[11px] uppercase font-bold tracking-wider text-slate-100 hover:text-amber-300 transition-colors"
                   >
                     <span>{s.label}</span>
                   </a>
@@ -134,7 +134,7 @@ function Contact() {
           title="Common Buyer &amp; Investor Questions"
           lede="Clear answers regarding MahaRERA certifications, customization, payment milestones, and possession schedules."
         />
-        <div className="mt-8 sm:mt-10 rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-5 sm:p-7 shadow-xl">
+        <div className="mt-8 sm:mt-10 rounded-2xl border border-white/10 bg-black/15 backdrop-blur-[2px] p-5 sm:p-7 shadow-xl">
           <Accordion items={faqs.map((f) => ({ title: f.q, content: f.a }))} />
         </div>
       </SectionWrapper>

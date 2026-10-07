@@ -54,7 +54,7 @@ export function Navbar() {
         className={cn(
           "fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out",
           scrolled
-            ? "bg-black/60 py-3 sm:py-3.5 text-white shadow-md border-b border-white/10 backdrop-blur-md"
+            ? "bg-black/60 py-3 sm:py-3.5 text-white shadow-md border-b border-white/10 backdrop-blur-[2px]"
             : "bg-transparent py-4 sm:py-5 text-white",
         )}
       >
@@ -90,7 +90,7 @@ export function Navbar() {
               onClick={() => setMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}
-              className="group flex items-center gap-2.5 rounded-xl border border-white/25 bg-black/35 backdrop-blur-md px-4 py-2 text-white transition-all duration-300 hover:border-amber-400 hover:bg-amber-400 hover:text-[#080c14] cursor-pointer shadow-lg"
+              className="group flex items-center gap-2.5 rounded-xl border border-white/25 bg-black/35 backdrop-blur-[2px] px-4 py-2 text-white transition-all duration-300 hover:border-amber-400 hover:bg-amber-400 hover:text-[#080c14] cursor-pointer shadow-lg"
             >
               <span className="flex flex-col justify-center gap-1">
                 <span className="block h-0.5 w-4 bg-current transition-transform group-hover:scale-x-110 origin-left" />
@@ -108,7 +108,7 @@ export function Navbar() {
         onClick={() => setMenuOpen(false)}
         aria-hidden={!menuOpen}
         className={cn(
-          "fixed inset-0 z-50 bg-black/70 backdrop-blur-sm transition-opacity duration-400 ease-out",
+          "fixed inset-0 z-50 bg-black/70 backdrop-blur-[2px] transition-opacity duration-400 ease-out",
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         )}
       />
@@ -118,7 +118,7 @@ export function Navbar() {
         aria-label="Sidebar Navigation"
         aria-hidden={!menuOpen}
         className={cn(
-          "fixed top-0 right-0 z-50 flex h-[100dvh] w-full max-w-[420px] flex-col justify-between border-l border-amber-500/30 bg-[#0a0f1d]/95 backdrop-blur-2xl p-6 sm:p-8 text-white shadow-2xl transition-transform duration-400 ease-out overflow-y-auto",
+          "fixed top-0 right-0 z-50 flex h-[100dvh] w-full max-w-[420px] flex-col justify-between border-l border-amber-500/30 bg-[#0a0f1d]/95 backdrop-blur-[2px] p-6 sm:p-8 text-white shadow-2xl transition-transform duration-400 ease-out overflow-y-auto",
           menuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >

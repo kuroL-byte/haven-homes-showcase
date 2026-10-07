@@ -12,7 +12,7 @@ function Stars({ rating }: { rating: number }) {
           ★
         </span>
       ))}
-      <span className="ml-2 text-[10px] font-semibold text-slate-400">Verified Owner</span>
+      <span className="ml-2 text-[10px] font-bold text-amber-300">Verified Owner</span>
     </div>
   );
 }
@@ -42,16 +42,16 @@ export function TestimonialCard({
   return (
     <figure
       className={cn(
-        "flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-black/25 p-5 sm:p-6 shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-amber-400/50 hover:bg-black/35 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_20px_rgba(212,175,55,0.12)]",
+        "flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-black/15 p-5 sm:p-6 shadow-xl backdrop-blur-[2px] transition-all duration-300 hover:border-amber-400/50 hover:bg-black/25 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.6),0_0_20px_rgba(212,175,55,0.12)]",
         className,
       )}
     >
       <div>
         <div className="flex items-center justify-between">
           <Stars rating={testimonial.rating} />
-          <span className="text-3xl text-amber-400/35 font-serif leading-none">“</span>
+          <span className="text-3xl text-amber-400 font-serif leading-none">“</span>
         </div>
-        <blockquote className="mt-4 font-display text-sm sm:text-[15px] font-medium leading-relaxed text-slate-200">
+        <blockquote className="mt-4 font-display text-sm sm:text-[15px] font-medium leading-relaxed text-white drop-shadow-sm">
           “{testimonial.quote}”
         </blockquote>
       </div>

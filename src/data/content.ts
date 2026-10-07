@@ -28,6 +28,14 @@ export const images = {
 export type ProjectStatus = "Ongoing" | "Upcoming" | "Completed";
 export type ProjectType = "Residential" | "Commercial" | "Industrial" | "Infrastructure";
 
+export interface ProjectAmenity {
+  title: string;
+  category: string;
+  description: string;
+  image?: string;
+  icon?: string;
+}
+
 export interface Project {
   slug: string;
   name: string;
@@ -41,6 +49,7 @@ export interface Project {
   overview: string[];
   specs: { label: string; value: string }[];
   amenities: string[];
+  amenityHighlights: ProjectAmenity[];
   gallery: string[];
   mapQuery: string;
 }
@@ -79,6 +88,44 @@ export const projects: Project[] = [
       "EV-ready basement parking",
       "Concierge valet services",
     ],
+    amenityHighlights: [
+      {
+        title: "28th-Floor Cantilevered Infinity Pool",
+        category: "Aquatics & Leisure",
+        description: "Heated 25-meter infinity edge pool with anti-skid Italian marble deck, underwater lighting, and panoramic Sahyadri mountain vistas.",
+        image: images.pool,
+      },
+      {
+        title: "Private Sky Spa & Himalayan Salt Room",
+        category: "Wellness & Recovery",
+        description: "Bespoke therapeutic treatment suites, eucalyptus dry sauna, chilled plunge bath, and personal aroma massage rooms.",
+        image: images.interior1,
+      },
+      {
+        title: "Executive Residents' Wine & Cigar Club",
+        category: "Private Social Club",
+        description: "Double-height private club room featuring climate-controlled sommelier wine lockers, billiard salon, and private catering kitchen.",
+        image: images.clubhouse,
+      },
+      {
+        title: "Touchless Biometric Private Elevator Foyer",
+        category: "Security & Privacy",
+        description: "Direct-to-residence biometric and facial recognition elevators ensuring completely private, unshared arrivals.",
+        image: images.hero,
+      },
+      {
+        title: "Dedicated High-Speed EV Supercharging Bays",
+        category: "Eco-Tech Mobility",
+        description: "Subterranean automated parking with dedicated 22kW AC/DC fast chargers for every residential unit.",
+        image: images.horizon,
+      },
+      {
+        title: "24/7 White-Glove Valet & Concierge Desk",
+        category: "Estate Services",
+        description: "Dedicated concierge team providing package handling, airport luxury transfers, housekeeping dispatch, and dry cleaning.",
+        image: images.project1,
+      },
+    ],
     gallery: [images.hero, images.interior1, images.pool, images.clubhouse],
     mapQuery: "FC Road, Pune, Maharashtra",
   },
@@ -114,6 +161,44 @@ export const projects: Project[] = [
       "High-speed smart lifts",
       "Integrated BMS & Security",
     ],
+    amenityHighlights: [
+      {
+        title: "12-Meter Triple-Height Marble Atrium",
+        category: "Grand Arrival",
+        description: "Spectacular glass-fronted grand entrance atrium with acoustic baffle ceilings, turnstile security gates, and barista café.",
+        image: images.project2,
+      },
+      {
+        title: "150-Seat 4K Executive Auditorium",
+        category: "Corporate Business",
+        description: "Acoustically tuned corporate amphitheater equipped with 4K broadcast video wall, studio microphones, and live translation booths.",
+        image: images.clubhouse,
+      },
+      {
+        title: "Biophilic Sky Garden Breakout Terraces",
+        category: "Workplace Wellness",
+        description: "Open-air landscaped green terraces on alternating levels providing collaborative outdoor ideation zones and fresh sea breeze.",
+        image: images.garden,
+      },
+      {
+        title: "MERV-13 Clean Air Filtration & UV-C Disinfection",
+        category: "Health & Safety",
+        description: "Commercial HVAC plant with continuous PM2.5 monitoring, positive air pressure lobbies, and UV-C microbial sterilizers.",
+        image: images.gym,
+      },
+      {
+        title: "Destination-Controlled Smart Elevators",
+        category: "Vertical Mobility",
+        description: "Bank of 8 high-speed 3.5 m/s Mitsubishi elevators with AI transit routing, keeping waiting times under 20 seconds.",
+        image: images.horizon,
+      },
+      {
+        title: "24/7 Centralized Command BMS Center",
+        category: "Infrastructure",
+        description: "Automated building management system supervising energy consumption, fire safety, water optimization, and 360° AI CCTV.",
+        image: images.hero,
+      },
+    ],
     gallery: [images.project2, images.construction, images.clubhouse, images.gym],
     mapQuery: "Bandra Kurla Complex, Mumbai",
   },
@@ -145,6 +230,44 @@ export const projects: Project[] = [
       "Rooftop infinity pool",
       "Olympic size swimming pool",
       "Squash & badminton courts",
+    ],
+    amenityHighlights: [
+      {
+        title: "24th-Floor Glass Skybridge Promenade",
+        category: "Architectural Icon",
+        description: "Suspended 80 meters above ground connecting both towers, featuring observatory telescopes, sunset bar, and reading pods.",
+        image: images.horizon,
+      },
+      {
+        title: "50-Meter Olympic Sized Heated Lap Pool",
+        category: "Aquatics",
+        description: "Championship-grade heated outdoor pool accompanied by heated toddler splash pools, submerged loungers, and poolside sun cabanas.",
+        image: images.pool,
+      },
+      {
+        title: "Technogym Two-Tier Fitness & Crossfit Arena",
+        category: "Sports & Fitness",
+        description: "Cardio decks, free-weight stations, dedicated TRX & spin studio, and climate-controlled indoor squash and badminton courts.",
+        image: images.gym,
+      },
+      {
+        title: "IoT Smart Home Integrated Ecosystem",
+        category: "Smart Living",
+        description: "Centralized touchscreen automation controlling circadian lighting, motorized sheer drapery, video access, and digital locks.",
+        image: images.interior1,
+      },
+      {
+        title: "Children's Interactive STEM & Play Park",
+        category: "Family & Recreation",
+        description: "Soft-cushioned indoor discovery playroom, Lego workshop, outdoor adventure climbing wall, and toddler sand zone.",
+        image: images.garden,
+      },
+      {
+        title: "EV Supercharger Network & Subterranean Valet",
+        category: "Infrastructure",
+        description: "Automated multi-level vehicle entry with fast EV points, tire inflation bays, and car wash facility in basement.",
+        image: images.grandeur,
+      },
     ],
     gallery: [images.horizon, images.pool, images.gym, images.interior1],
     mapQuery: "Kharadi, Pune, Maharashtra",
@@ -179,6 +302,44 @@ export const projects: Project[] = [
       "24/7 estate concierge",
       "Solar powered grid",
     ],
+    amenityHighlights: [
+      {
+        title: "Individual Villa Infinity Plunge Pools",
+        category: "Private Luxury",
+        description: "Every standalone villa boasts a private heated infinity pool cantilevered over mist-covered valley ravines.",
+        image: images.pool,
+      },
+      {
+        title: "Private Organic Flora & Fruit Orchard",
+        category: "Nature & Serenity",
+        description: "Up to 1.2 acres of private grounds per villa, planted with native spice gardens, fruit groves, and outdoor stone fire pits.",
+        image: images.garden,
+      },
+      {
+        title: "Hilltop Heritage Stone Clubhouse & Jacuzzi",
+        category: "Estate Club",
+        description: "Basalt rock clubhouse with heated hydrotherapy jacuzzi, library lounge, cigar den, and gourmet wood-fired pizza kitchen.",
+        image: images.project3,
+      },
+      {
+        title: "100% Zero-Carbon Solar Micro-Grid",
+        category: "Sustainable Living",
+        description: "Independent rooftop solar solar panels with battery storage, gravity-fed spring water, and organic composting.",
+        image: images.hero,
+      },
+      {
+        title: "Private Helipad & Estate Chauffeur Fleet",
+        category: "VIP Services",
+        description: "On-site helicopter landing pad, helipad shuttle, resident on-demand private chefs, and full butler service.",
+        image: images.bayfront,
+      },
+      {
+        title: "Multi-Tier Perimeter Laser Radar Security",
+        category: "Estate Safety",
+        description: "Thermal perimeter detection, automated drone patrolling, and round-the-clock trained security command.",
+        image: images.clubhouse,
+      },
+    ],
     gallery: [images.project3, images.pool, images.garden, images.interior1],
     mapQuery: "Lonavala, Maharashtra",
   },
@@ -207,6 +368,44 @@ export const projects: Project[] = [
       "Rooftop helipad & lounge",
       "Indoor heated lap pool",
       "Private wine cellar & cigar lounge",
+    ],
+    amenityHighlights: [
+      {
+        title: "Exclusive Resident Yacht Marina Jetty",
+        category: "Marine Lifestyle",
+        description: "Direct private ocean dock with reserved yacht berthing rights, speed boat transfers, and coastal sailing club.",
+        image: images.bayfront,
+      },
+      {
+        title: "55th-Floor Rooftop Helipad & Stargazing Lounge",
+        category: "Iconic Living",
+        description: "Aviation-approved rooftop helipad connected to a 360-degree glass ocean observation lounge and sunset terrace.",
+        image: images.pool,
+      },
+      {
+        title: "Heated Thalassotherapy Indoor Saltwater Pool",
+        category: "Aquatic Wellness",
+        description: "Mineral-rich therapeutic indoor saltwater pool with hydro-massage jets, infrared heat lamps, and sea-facing panorama.",
+        image: images.interior1,
+      },
+      {
+        title: "Private Vintage Sommelier Cellar & Tasting Room",
+        category: "Private Social Club",
+        description: "Humidity-controlled temperature lockers for vintage wine collectors, private dining table, and premium cigar humidor.",
+        image: images.clubhouse,
+      },
+      {
+        title: "Acoustic Double-Glazed Hurricane Rated Facade",
+        category: "Engineering Marvel",
+        description: "Custom European curved glass engineered to withstand 200 km/h coastal winds with zero audible sound penetration.",
+        image: images.hero,
+      },
+      {
+        title: "Quantum Biometric Security & Safe Chambers",
+        category: "Elite Security",
+        description: "Multi-factor iris and palm biometric authorization with secure subterranean panic rooms and encrypted network hubs.",
+        image: images.grandeur,
+      },
     ],
     gallery: [images.bayfront, images.pool, images.interior1, images.clubhouse],
     mapQuery: "Worli Sea Face, Mumbai",
@@ -244,6 +443,44 @@ export const projects: Project[] = [
       "Clubhouse & gym",
       "Subterranean parking",
     ],
+    amenityHighlights: [
+      {
+        title: "Preserved Heritage Banyan Waterfall Court",
+        category: "Ecological Oasis",
+        description: "Built around 100-year-old rain trees with cascading natural basalt waterfalls, lotus ponds, and ambient stone illumination.",
+        image: images.garden,
+      },
+      {
+        title: "Zen Bamboo Yoga & Reflexology Walkway",
+        category: "Wellness & Mindfulness",
+        description: "Open-air teakwood meditation pavilion framed by Japanese bamboo groves and smooth acupuncture pebble pathways.",
+        image: images.project1,
+      },
+      {
+        title: "Artisanal Teakwood Community Club & Library",
+        category: "Community Clubhouse",
+        description: "Heritage-inspired private lounge crafted with seasoned Burma teak, artisanal coffee bar, and board game library.",
+        image: images.clubhouse,
+      },
+      {
+        title: "Temperature-Controlled Heated Garden Pool",
+        category: "Aquatics",
+        description: "Ozone-filtered heated leisure swimming pool sheltered by canopy trees with private daybeds and outdoor rain showers.",
+        image: images.pool,
+      },
+      {
+        title: "Eco-Friendly Rain Harvesting & Greywater Recycling",
+        category: "Green Engineering",
+        description: "100% on-site water recycling, rainwater recharge wells, and zero-runoff sustainable drainage.",
+        image: images.hero,
+      },
+      {
+        title: "Smart Intercom & 24/7 Monitored Gated Access",
+        category: "Security & Safety",
+        description: "HD video door intercoms, gated automated barrier arms, and dedicated 24-hour estate management staff.",
+        image: images.horizon,
+      },
+    ],
     gallery: [images.project1, images.garden, images.interior1, images.clubhouse],
     mapQuery: "Koregaon Park, Pune",
   },
@@ -271,6 +508,44 @@ export const projects: Project[] = [
       "Resident banquet lounge",
       "State-of-the-art gym",
       "EV charging bays",
+    ],
+    amenityHighlights: [
+      {
+        title: "Illuminated Grand Arrival Water Plaza",
+        category: "Grand Arrival",
+        description: "Choreographed musical fountains with programmable LED lighting welcoming homeowners and guests at the grand entry gates.",
+        image: images.grandeur,
+      },
+      {
+        title: "Resident Celebration Ballroom & Banquet Hall",
+        category: "Private Entertaining",
+        description: "High-ceiling air-conditioned banquet lounge equipped with surround audio systems, dining tables, and prep pantry.",
+        image: images.clubhouse,
+      },
+      {
+        title: "Technogym Precision Fitness Studio",
+        category: "Sports & Fitness",
+        description: "State-of-the-art cardiovascular and weight training studio with personal lockers and post-workout steam rooms.",
+        image: images.gym,
+      },
+      {
+        title: "Elevated Landscaped Podium Promenade",
+        category: "Landscape & Outdoors",
+        description: "Traffic-free walking and jogging track lined with decorative flora, quiet shaded gazebos, and senior citizen seating.",
+        image: images.garden,
+      },
+      {
+        title: "Dedicated EV Charging Infrastructure",
+        category: "Green Mobility",
+        description: "High-capacity EV charging ports installed across basement resident parking with smart load balancing.",
+        image: images.horizon,
+      },
+      {
+        title: "24/7 Security Ring & Automated RFID Gates",
+        category: "Safety & Access",
+        description: "Automatic vehicle RFID boom barriers, HD CCTV recording, and digital visitor pre-clearance app.",
+        image: images.hero,
+      },
     ],
     gallery: [images.grandeur, images.gym, images.pool, images.interior1],
     mapQuery: "Kalyani Nagar, Pune",

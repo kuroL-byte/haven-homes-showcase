@@ -41,7 +41,7 @@ function BlogIndex() {
       />
 
       <SectionWrapper>
-        <div className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-black/25 backdrop-blur-xl p-3 shadow-xl">
+        <div className="flex flex-wrap gap-2 rounded-2xl border border-white/10 bg-black/15 backdrop-blur-[2px] p-3 shadow-xl">
           {categories.map((c) => (
             <button
               key={c}
